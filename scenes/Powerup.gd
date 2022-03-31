@@ -15,3 +15,7 @@ func _on_Powerup_body_entered(body):
 
 func _on_Timer_timeout():
 	queue_free()
+
+
+func _on_Powerup_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	$Timer.start()

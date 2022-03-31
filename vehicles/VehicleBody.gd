@@ -143,4 +143,3 @@ func _physics_process(delta):
 		steering_angle = -max_steer
 	
 	steering = steering_angle
-	
