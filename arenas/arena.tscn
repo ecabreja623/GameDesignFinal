@@ -26,7 +26,7 @@ shadow_enabled = true
 shadow_bias = 0.0
 
 [node name="VehicleSpawnPoint" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -100, -2, 50 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -100, -2.78926, 50 )
 
 [node name="Powerup" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43.903, -3.00297, 45.4065 )
