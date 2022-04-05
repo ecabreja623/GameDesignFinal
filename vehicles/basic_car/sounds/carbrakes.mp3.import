@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/carbrakes.mp3-177094b4ef09a00caac32093e54a6992.mp3str"
+
+[deps]
+
+source_file="res://vehicles/basic_car/sounds/carbrakes.mp3"
+dest_files=[ "res://.import/carbrakes.mp3-177094b4ef09a00caac32093e54a6992.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
