@@ -61,6 +61,7 @@ func _physics_process(delta):
 	var local_velocity = get_transform().basis.z.dot(linear_velocity)
 	
 	var kph = local_velocity * 3.6	
+	Globals.kph = kph;
 	var omega = local_velocity / wheel_radius * 6.28;
 	var rpm = abs(omega) * abs(gear_ratios[current_gear]) * differential_ratio * (60.0 / 6.28)
 

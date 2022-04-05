@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://arenas/arena.gd" type="Script" id=1]
 [ext_resource path="res://track/track.tscn" type="PackedScene" id=2]
 [ext_resource path="res://arenas/cloudy_noon.png" type="Texture" id=3]
 [ext_resource path="res://assets/Powerup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/needle.png" type="Texture" id=5]
+[ext_resource path="res://assets/speedo.png" type="Texture" id=6]
+[ext_resource path="res://arenas/Speedometer.gd" type="Script" id=7]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 3 )
@@ -33,3 +36,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43.903, -3.00297, 45.4065 )
 
 [node name="Powerup2" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9294, -2.57643, 1.21008 )
+
+[node name="Speedometer" type="CanvasLayer" parent="."]
+script = ExtResource( 7 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Speedometer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -352.0
+margin_top = -296.0
+margin_right = -16.0
+margin_bottom = 8.0
+
+[node name="Dial" type="Sprite" parent="Speedometer/MarginContainer"]
+position = Vector2( 242, 195.5 )
+scale = Vector2( 0.365, 0.331667 )
+texture = ExtResource( 6 )
+
+[node name="Needle" type="Sprite" parent="Speedometer/MarginContainer"]
+position = Vector2( 244, 195.5 )
+scale = Vector2( 0.196875, 0.262917 )
+texture = ExtResource( 5 )
