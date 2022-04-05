@@ -57,6 +57,24 @@ func _physics_process(delta):
 	if (Input.is_action_pressed("ui_down")):
 		brake = brake_strength
 		
+	elif has_handbrake:
+		if Input.is_action_pressed("handbrake"):
+			brake = brake_strength / 4
+
+			if (spin_out > 3):
+				spin_out -= 10 * delta
+
+			get_node("VehicleWheel").wheel_friction_slip = spin_out
+			get_node("VehicleWheel2").wheel_friction_slip = spin_out
+		else:
+			brake = 0
+			if (spin_out < 4):
+				spin_out += 1 * delta
+			if spin_out > 4:
+				spin_out = 4
+			get_node("VehicleWheel").wheel_friction_slip = spin_out
+			get_node("VehicleWheel2").wheel_friction_slip = spin_out
+		
 	var wheel_radius = get_node("VehicleWheel").wheel_radius
 	var local_velocity = get_transform().basis.z.dot(linear_velocity)
 	
