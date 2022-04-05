@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/carbrakes.mp3-1b59e959b14cd63d083b0b17317e2ac8.mp3str"
+
+[deps]
+
+source_file="res://vehicles/gt/carbrakes.mp3"
+dest_files=[ "res://.import/carbrakes.mp3-1b59e959b14cd63d083b0b17317e2ac8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

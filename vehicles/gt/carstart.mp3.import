@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/carstart.mp3-c6e0a3473a0974e8b39eee53d9175ef5.mp3str"
+
+[deps]
+
+source_file="res://vehicles/gt/carstart.mp3"
+dest_files=[ "res://.import/carstart.mp3-c6e0a3473a0974e8b39eee53d9175ef5.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
