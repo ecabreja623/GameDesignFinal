@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Nitro/NitroSprite.tres" type="ArrayMesh" id=1]
+
+[node name="Rocket" type="Sprite3D"]
+
+[node name="RootNode" type="Spatial" parent="."]
+
+[node name="Cube" type="MeshInstance" parent="RootNode"]
+mesh = ExtResource( 1 )
+material/0 = null
