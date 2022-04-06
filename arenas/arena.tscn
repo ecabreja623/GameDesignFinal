@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://arenas/arena.gd" type="Script" id=1]
 [ext_resource path="res://track/track.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/needle.png" type="Texture" id=5]
 [ext_resource path="res://assets/speedo.png" type="Texture" id=6]
 [ext_resource path="res://arenas/Speedometer.gd" type="Script" id=7]
+[ext_resource path="res://Nitro/Nitro.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 3 )
@@ -59,3 +60,8 @@ texture = ExtResource( 6 )
 position = Vector2( 244, 195.5 )
 scale = Vector2( 0.196875, 0.262917 )
 texture = ExtResource( 5 )
+
+[node name="NitroHandler" type="Node" parent="."]
+
+[node name="Nitro" parent="NitroHandler" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90, -2.54635, 0 )

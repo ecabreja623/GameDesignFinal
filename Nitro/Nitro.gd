@@ -16,5 +16,12 @@ func _ready():
 #	pass
 
 
-func _on_Area_area_entered(area):
-	pass # Replace with function body.
+func _on_Area_body_entered(body):
+	print("inside")
+	if body.is_in_group('player'):
+		print("hello")
+		body.nitro_fuel += 50
+		if body.nitro_fuel > 100 :
+			body.nitro_fuel = 100
+		print(body.nitro_fuel)	
+	

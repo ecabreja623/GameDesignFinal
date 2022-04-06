@@ -1,7 +1,9 @@
 extends VehicleBody
 
 # Member variables
-
+export var nitro_fuel = 50
+export var nitro_usage = 0.2
+var nitro_toggle = 0
 export var steering_max_angle = 0.75
 export var steering_speed = 4.0
 export var steering_percent_drop = 0.75
@@ -53,6 +55,14 @@ func _physics_process(delta):
 		throttle = 1
 	else:
 		throttle = 0
+		
+	if (Input.is_action_pressed("nitrous")) and nitro_fuel > 0:
+		nitro_toggle = 1
+		nitro_fuel -= nitro_usage
+		if nitro_fuel < 0:
+			nitro_fuel = 0
+	else:
+		nitro_toggle = 0
 	
 	if (Input.is_action_pressed("ui_down")):
 		brake = brake_strength
@@ -85,7 +95,7 @@ func _physics_process(delta):
 
 	if rpm < torque_curve_rpms[0]:
 		rpm = torque_curve_rpms[0]
-	if rpm > torque_curve_rpms[5]:
+	if rpm > torque_curve_rpms[5] and nitro_toggle == 0:
 		rpm = torque_curve_rpms[5]
 		
 	if (current_gear == 1 and omega <= 1.0 and omega >= 0 and brake > 0):
@@ -126,7 +136,12 @@ func _physics_process(delta):
 	
 	engine_force = wheel_torque * wheel_radius * 2
 	
-	#  print("Gear: %d  RPM: %d  KPH: %d  Force: %d" % [current_gear, rpm, kph, engine_force])
+	if nitro_toggle == 1:
+		engine_force = engine_force * 2.5
+	
+	
+	
+	print("Gear: %d  RPM: %d  KPH: %d  Force: %d  Nitrous: %d" % [current_gear, rpm, kph, engine_force, nitro_fuel])
 		
 	#calculate steering angle
 	steering_angle += steering_speed * steering_target * delta
