@@ -12,6 +12,7 @@ func _ready():
 	#load_arena_file("res://arenas/simple.arena")
 	#load_arena_file("res://arenas/equilibriste.arena")
 	load_vehicle("res://vehicles/gt/gt.tscn")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -1,2 +1,2 @@
-﻿64642
-/private/var/folders/wp/4ptw2kn97zl8sp16thmf1fj80000gn/T/AppTranslocation/E0970FD6-C07D-4AFB-9330-CAA9E6C1BDE1/d/Godot_mono.app/Contents/MacOS/Godot
+﻿61247
+/private/var/folders/wp/4ptw2kn97zl8sp16thmf1fj80000gn/T/AppTranslocation/949B7FE6-CAF2-4124-9086-1C9DD6E0BD07/d/Godot_mono.app/Contents/MacOS/Godot

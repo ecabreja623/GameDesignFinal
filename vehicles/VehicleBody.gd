@@ -15,6 +15,7 @@ var steering_angle = 0
 
 var throttle = 0;
 var brakes = false
+var start_sound = true
 
 #Alternative A
 export var torque_curve_rpms = [500, 5000, 5500, 6500, 7500, 9000]
@@ -36,9 +37,19 @@ var current_gear
 	
 var spin_out = 4
 
+
+
 func _ready():
 	steering_speed_range = steering_to_speed - steering_from_speed
 	current_gear = 1
+	if (start_sound):
+		$Start_Sound.play()
+		start_sound = false
+		print("soundpls")
+	elif (!start_sound):
+		$Start_Sound.stream_paused = true
+		print("nosoundpls")
+	
 
 func _physics_process(delta):
 
@@ -53,6 +64,7 @@ func _physics_process(delta):
 	
 	if (Input.is_action_pressed("ui_up")):
 		throttle = 1
+		
 	else:
 		throttle = 0
 		
@@ -166,6 +178,7 @@ func _physics_process(delta):
 	elif kph > steering_to_speed:
 		#going faster than highest speed, so remove completely!
 		max_steer -= max_steer * steering_percent_drop
+		
 	else:
 		#inside the range [steering_from_speed, steering_to_speed]
 		var steer_delta = (kph - steering_from_speed) / steering_speed_range
@@ -176,4 +189,14 @@ func _physics_process(delta):
 	elif steering_angle < -max_steer:
 		steering_angle = -max_steer
 	
+	if (kph > 0) and (engine_force > 0):
+		if $Acceleration_Sound.is_playing():
+			$Acceleration_Sound.stream_paused = false
+		else:
+			$Acceleration_Sound.play()
+		
+	else:
+		
+		$Acceleration_Sound.stream_paused = true
+
 	steering = steering_angle

@@ -50,6 +50,9 @@ margin_left = -352.0
 margin_top = -296.0
 margin_right = -16.0
 margin_bottom = 8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Dial" type="Sprite" parent="Speedometer/MarginContainer"]
 position = Vector2( 242, 195.5 )
