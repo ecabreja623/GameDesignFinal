@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://arenas/arena.gd" type="Script" id=1]
 [ext_resource path="res://track/track.tscn" type="PackedScene" id=2]
@@ -8,6 +8,14 @@
 [ext_resource path="res://assets/speedo.png" type="Texture" id=6]
 [ext_resource path="res://arenas/Speedometer.gd" type="Script" id=7]
 [ext_resource path="res://Nitro/Nitro.tscn" type="PackedScene" id=8]
+[ext_resource path="res://arenas/display.gd" type="Script" id=9]
+[ext_resource path="res://props/barrel/barrel.tscn" type="PackedScene" id=10]
+[ext_resource path="res://props/barrel/barrel.gd" type="Script" id=11]
+[ext_resource path="res://props/super_jump1/super_jump1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://props/concrete/concrete.tscn" type="PackedScene" id=13]
+[ext_resource path="res://props/simple_jump1/simple_jump1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://vehicles/pantera/pantera.tscn" type="PackedScene" id=15]
+[ext_resource path="res://vehicles/monster/monster.tscn" type="PackedScene" id=16]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 3 )
@@ -16,10 +24,29 @@ panorama = ExtResource( 3 )
 background_mode = 2
 background_sky = SubResource( 1 )
 
+[sub_resource type="PhysicsMaterial" id=3]
+friction = 0.01
+
 [node name="Arena" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.111954, 0, -0.639656 )
+
+[node name="Concrete" parent="." instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.434011, -3.41974, 5.7609 )
+
+[node name="Barrel" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8525, -2.72655, 10.901 )
+contacts_reported = 100
+contact_monitor = true
+script = ExtResource( 11 )
+
+[node name="Simple Jump" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.6075, -2.85328, -24.0976 )
+
+[node name="Super Jump" parent="Simple Jump" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6453, -0.737643, 57.5388 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
@@ -31,6 +58,13 @@ shadow_bias = 0.0
 
 [node name="VehicleSpawnPoint" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -100, -2.78926, 50 )
+
+[node name="VehicleBody" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.312057, -1.84329, 0.106285 )
+physics_material_override = SubResource( 3 )
+
+[node name="VehicleBody2" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7333, -1.26728, -10.056 )
 
 [node name="Powerup" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43.903, -3.00297, 45.4065 )
@@ -64,7 +98,19 @@ position = Vector2( 244, 195.5 )
 scale = Vector2( 0.196875, 0.262917 )
 texture = ExtResource( 5 )
 
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Text display" type="Label" parent="HUD"]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 151.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+script = ExtResource( 9 )
+
 [node name="NitroHandler" type="Node" parent="."]
 
 [node name="Nitro" parent="NitroHandler" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90, -2.54635, 0 )
+
+[connection signal="body_entered" from="Barrel" to="Barrel" method="_on_Barrel_body_entered"]
