@@ -20,6 +20,7 @@ background_sky = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.346466, 0.116462, -0.261774 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
@@ -68,3 +69,6 @@ texture = ExtResource( 5 )
 
 [node name="Nitro" parent="NitroHandler" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90, -2.54635, 0 )
+
+[node name="skidmarks" type="Node2D" parent="."]
+scale = Vector2( -333.466, 93.3374 )

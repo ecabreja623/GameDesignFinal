@@ -54,7 +54,6 @@ func _ready():
 func _physics_process(delta):
 
 
-			
 	if (Input.is_action_pressed("ui_left")):
 		steering_target = 1
 	elif (Input.is_action_pressed("ui_right")):
@@ -152,7 +151,10 @@ func _physics_process(delta):
 		engine_force = engine_force * 2.5
 	
 	
-	
+	if (Input.is_action_pressed("drift") and (current_gear > 3) and (kph > 60)):
+		if(Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left")):
+			print("driftinggggg")
+			doSkidmarks()
 	print("Gear: %d  RPM: %d  KPH: %d  Force: %d  Nitrous: %d" % [current_gear, rpm, kph, engine_force, nitro_fuel])
 		
 	#calculate steering angle
@@ -200,3 +202,10 @@ func _physics_process(delta):
 		$Acceleration_Sound.stream_paused = true
 
 	steering = steering_angle
+const Skidmark = preload("res://scenes/skidmark.tscn")
+
+func doSkidmarks():
+	var skidmark = Skidmark.instance()
+	#skidmark.position = position
+	#skidmark.rotation = rotation
+	get_node("/root/Arena/skidmarks").add_child(skidmark)
