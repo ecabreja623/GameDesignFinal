@@ -20,3 +20,4 @@ func _on_Timer_timeout():
 func _on_Powerup_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
 	$Timer.start()
 	Globals.power_ups_collected += 1
+	Globals.player_health += 20
