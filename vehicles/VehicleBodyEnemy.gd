@@ -16,6 +16,14 @@ var throttle = 0;
 var brakes = false
 var start_sound = false
 
+var path = []
+var curr_path_index = 0
+var target = null
+
+onready var nav = get_parent()
+
+var has_powerup = false;
+
 #Alternative A
 export var torque_curve_rpms = [500, 5000, 5500, 6500, 7500, 9000]
 export var torque_curve_torques = [400, 1100, 1300, 1800, 1600, 0]
@@ -47,8 +55,13 @@ export var has_handbrake = true
 
 
 func _ready():
+
 	steering_speed_range = steering_to_speed - steering_from_speed
 	current_gear = 1
+	
+	target = Globals.player_pos
+	
+	get_target_path(target)
 	
 
 func compute():
@@ -66,6 +79,19 @@ func apply_friction(delta):
 
 	
 func _physics_process(delta):
+
+	var distance_to_player = transform.origin.distance_to(Globals.player_pos)
+	
+	#print_debug("Player")
+	#print_debug(Globals.player_pos)
+	#print_debug("enemy:")
+	#print_debug(global_transform.origin)
+	
+	target = Globals.player_pos
+	
+	if path.size() > 0:
+		move_to_target()
+		#print_debug(path)
 	
 	var wheel_radius = get_node("VehicleWheel").wheel_radius
 	var local_velocity = get_transform().basis.z.dot(linear_velocity)
@@ -168,12 +194,41 @@ func _physics_process(delta):
 
 	steering = steering_angle
 
+func move_to_target():
+	if curr_path_index >= path.size():
+		return
+	
+	var dirToMovePosition = target - transform.origin
+	
+	var dot = get_global_transform().basis.z.dot(dirToMovePosition)
+	
+	#print_debug(dot)
+	if dot > 0:
+		throttle = 1;
+	else:
+		throttle = -1;
+		
+	var angleToDir = get_global_transform().basis.z.signed_angle_to(dirToMovePosition, Vector3.UP)
+	#print_debug(angleToDir)	# left is positive, right is negative
+	
+	if angleToDir > 0:
+		steering_target = 1;
+	else:
+		steering_target = -1;
+		
+func get_target_path(target_pos):
+	path = nav.get_simple_path(global_transform.origin, target_pos)
+	
+	curr_path_index = 0
+	
+	
+	
 
 func _on_VehicleBody_body_entered(body):
 	print('Enem hit')
-	if body.is_in_group('player'):
-		Globals.score += 5
-		Globals.player_health -= 2
+	if body.is_in_group('enemy'):
+		#Globals.score += 5
+		Globals.player_health -= 10
 	return
 
 

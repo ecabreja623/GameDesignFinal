@@ -20,5 +20,5 @@ func _on_Area_body_entered(body):
 	if body.is_in_group('player'):
 		Globals.nitro_fuel += 50
 		if Globals.nitro_fuel > 100 :
-			body.nitro_fuel = 100
+			Globals.nitro_fuel = 100
 	
