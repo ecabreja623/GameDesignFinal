@@ -94,6 +94,13 @@ func _physics_process(delta):
 			Globals.nitro_fuel = 0
 	else:
 		nitro_toggle = 0
+	
+#	if nitro_toggle == 1:
+#		get_node("NitroParticles_left").emitting = true
+#		get_node("NitroParticles_right").emitting = true
+#	else:
+#		get_node("NitroParticles_left").emitting = false
+#		get_node("NitroParticles_right").emitting = false
 
 	if (Input.is_action_pressed("ui_down")):
 		brake = brake_strength
@@ -116,6 +123,11 @@ func _physics_process(delta):
 			get_node("VehicleWheel").wheel_friction_slip = spin_out
 			get_node("VehicleWheel2").wheel_friction_slip = spin_out
 
+	if (Input.is_action_pressed("drift") and (current_gear > 3) and (Globals.kph > 60)):
+		if(Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left")):
+			print("driftinggggg")
+			doSkidmarks()
+	
 	var wheel_radius = get_node("VehicleWheel").wheel_radius
 	var local_velocity = get_transform().basis.z.dot(linear_velocity)
 
@@ -228,3 +240,10 @@ func _physics_process(delta):
 
 	steering = steering_angle
 
+const Skidmark = preload("res://scenes/skidmark.tscn")
+
+func doSkidmarks():
+	var skidmark = Skidmark.instance()
+	#skidmark.position = position
+	#skidmark.rotation = rotation
+	get_node("/root/Arena/skidmarks").add_child(skidmark)
