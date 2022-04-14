@@ -1,8 +1,7 @@
 extends VehicleBody
 
 # Member variables
-
-var health = 100;
+var health = 100
 
 export var steering_max_angle = 0.75
 export var steering_speed = 4.0
@@ -229,8 +228,11 @@ func get_target_path(target_pos):
 	
 
 func _on_VehicleBody_body_entered(body):
-	print('Enem hit')
 	if body.is_in_group('player'):
+		if self.is_in_group('enemy1'):
+			Globals.enemy_health1 -= 15
+		elif self.is_in_group('enemy2'):
+			Globals.enemy_health2 -= 15
 		health -= 15
 		Globals.score += 5
 		Globals.player_health -= 10

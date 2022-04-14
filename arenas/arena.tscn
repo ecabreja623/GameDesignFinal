@@ -115,11 +115,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.6075, -2.85328, -24.0976 )
 [node name="Super Jump" parent="Navigation/NavigationMeshInstance/Simple Jump" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6453, -0.737643, 57.5388 )
 
-[node name="VehicleBody" parent="Navigation" instance=ExtResource( 15 )]
+[node name="VehicleBody" parent="Navigation" groups=["enemy1"] instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.312057, -1.84329, 0.106285 )
 physics_material_override = SubResource( 3 )
 
-[node name="VehicleBody2" parent="Navigation" instance=ExtResource( 16 )]
+[node name="VehicleBody2" parent="Navigation" groups=["enemy2"] instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7333, -1.26728, -10.056 )
 
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Barrel" to="Navigation/NavigationMeshInstance/Barrel" method="_on_Barrel_body_entered"]
