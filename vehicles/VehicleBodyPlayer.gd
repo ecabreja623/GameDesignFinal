@@ -73,6 +73,8 @@ func apply_friction(delta):
 
 	
 func _physics_process(delta):
+	Globals.player_pos = global_transform.origin;
+	
 	if (Input.is_action_pressed("ui_left")):
 		steering_target = 1
 	elif (Input.is_action_pressed("ui_right")):
