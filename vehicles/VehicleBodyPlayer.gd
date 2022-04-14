@@ -95,12 +95,12 @@ func _physics_process(delta):
 	else:
 		nitro_toggle = 0
 	
-#	if nitro_toggle == 1:
-#		get_node("NitroParticles_left").emitting = true
-#		get_node("NitroParticles_right").emitting = true
-#	else:
-#		get_node("NitroParticles_left").emitting = false
-#		get_node("NitroParticles_right").emitting = false
+	if nitro_toggle == 1:
+		get_node("NitroParticles_left").emitting = true
+		get_node("NitroParticles_right").emitting = true
+	else:
+		get_node("NitroParticles_left").emitting = false
+		get_node("NitroParticles_right").emitting = false
 
 	if (Input.is_action_pressed("ui_down")):
 		brake = brake_strength
