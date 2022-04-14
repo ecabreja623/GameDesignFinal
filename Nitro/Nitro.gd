@@ -17,11 +17,8 @@ func _ready():
 
 
 func _on_Area_body_entered(body):
-	print("inside")
 	if body.is_in_group('player'):
-		print("hello")
-		body.nitro_fuel += 50
-		if body.nitro_fuel > 100 :
-			body.nitro_fuel = 100
-		print(body.nitro_fuel)	
+		Globals.nitro_fuel += 50
+		if Globals.nitro_fuel > 100 :
+			Globals.nitro_fuel = 100
 	

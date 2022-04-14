@@ -12,19 +12,19 @@ roughness = 0.22
 [sub_resource type="SphereMesh" id=5]
 material = SubResource( 6 )
 
-[node name="Powerup" type="Area"]
+[node name="Powerup" type="Area" groups=["Powerup"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.20957, 0.638177, 5.56396 )
 script = ExtResource( 1 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
+[node name="CollisionShape" type="CollisionShape" parent="." groups=["Powerup"]]
 shape = SubResource( 7 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="MeshInstance" type="MeshInstance" parent="." groups=["Powerup"]]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 mesh = SubResource( 5 )
 material/0 = null
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." groups=["Powerup"]]
 wait_time = 0.2
 
 [connection signal="body_shape_entered" from="." to="." method="_on_Powerup_body_shape_entered"]
