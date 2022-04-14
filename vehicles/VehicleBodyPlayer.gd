@@ -14,7 +14,7 @@ var steering_angle = 0
 
 var throttle = 0;
 var brakes = false
-var start_sound = false
+var start_sound = true
 
 #Alternative A
 export var torque_curve_rpms = [500, 5000, 5500, 6500, 7500, 9000]
@@ -73,6 +73,9 @@ func apply_friction(delta):
 
 	
 func _physics_process(delta):
+	if Globals.player_health <= 0:
+		queue_free()
+	
 	Globals.player_pos = global_transform.origin;
 	
 	if (Input.is_action_pressed("ui_left")):
@@ -247,3 +250,10 @@ func doSkidmarks():
 	#skidmark.position = position
 	#skidmark.rotation = rotation
 	get_node("/root/Arena/skidmarks").add_child(skidmark)
+	
+func _on_VehicleBody_body_entered(body):
+	print('Enem hit me')
+	if body.is_in_group('enemy'):
+		#Globals.score += 10
+		Globals.player_health -= 5
+	return

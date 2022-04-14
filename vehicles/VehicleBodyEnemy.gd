@@ -2,6 +2,7 @@ extends VehicleBody
 
 # Member variables
 
+var health = 100;
 
 export var steering_max_angle = 0.75
 export var steering_speed = 4.0
@@ -79,6 +80,9 @@ func apply_friction(delta):
 
 	
 func _physics_process(delta):
+
+	if health <= 0:
+		queue_free()
 
 	var distance_to_player = transform.origin.distance_to(Globals.player_pos)
 	
@@ -226,8 +230,9 @@ func get_target_path(target_pos):
 
 func _on_VehicleBody_body_entered(body):
 	print('Enem hit')
-	if body.is_in_group('enemy'):
-		#Globals.score += 5
+	if body.is_in_group('player'):
+		health -= 15
+		Globals.score += 5
 		Globals.player_health -= 10
 	return
 
