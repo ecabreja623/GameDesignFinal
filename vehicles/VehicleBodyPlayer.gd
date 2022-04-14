@@ -73,6 +73,10 @@ func apply_friction(delta):
 
 	
 func _physics_process(delta):
+	if Input.is_action_just_pressed("reset"):
+		#get_tree().reload_current_scene()
+		apply_impulse(Vector3(1, 0, 0), Vector3(0, mass * 2, 0))
+	
 	if Globals.player_health <= 0:
 		queue_free()
 	
