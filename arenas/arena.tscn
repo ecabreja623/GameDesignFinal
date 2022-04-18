@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://arenas/arena.gd" type="Script" id=1]
 [ext_resource path="res://track/track.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://props/simple_jump1/simple_jump1.tscn" type="PackedScene" id=14]
 [ext_resource path="res://vehicles/pantera/pantera.tscn" type="PackedScene" id=15]
 [ext_resource path="res://vehicles/monster/monster.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/HealthBar.tscn" type="PackedScene" id=17]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 3 )
@@ -122,7 +123,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6453, -0.737643, 57.5388 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.312057, -1.84329, 0.106285 )
 physics_material_override = SubResource( 3 )
 
+[node name="HealthBar3d" parent="Navigation/VehicleBody" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41072, 0 )
+
 [node name="VehicleBody2" parent="Navigation" groups=["enemy2"] instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7333, -1.26728, -10.056 )
+
+[node name="HealthBar3d" parent="Navigation/VehicleBody2" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5672, 0 )
 
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Barrel" to="Navigation/NavigationMeshInstance/Barrel" method="_on_Barrel_body_entered"]

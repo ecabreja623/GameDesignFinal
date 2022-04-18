@@ -8,6 +8,8 @@ export var steering_speed = 4.0
 export var steering_percent_drop = 0.75
 export var steering_from_speed = 18
 export var steering_to_speed = 100
+var health = 100;
+var max_health = 100;
 var steering_speed_range = 0
 var steering_target = 0
 var steering_angle = 0
@@ -260,4 +262,8 @@ func _on_VehicleBody_body_entered(body):
 	if body.is_in_group('enemy'):
 		#Globals.score += 10
 		Globals.player_health -= 5
+		health = Globals.player_health
+		print_debug(health)
+		$HealthBar3d.update(health , max_health)
 	return
+

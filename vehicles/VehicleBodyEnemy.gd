@@ -2,6 +2,7 @@ extends VehicleBody
 
 # Member variables
 var health = 100
+var max_health = 100
 
 export var steering_max_angle = 0.75
 export var steering_speed = 4.0
@@ -231,8 +232,10 @@ func _on_VehicleBody_body_entered(body):
 	if body.is_in_group('player'):
 		if self.is_in_group('enemy1'):
 			Globals.enemy_health1 -= 15
+			$HealthBar3d.update(Globals.enemy_health1 , max_health)
 		elif self.is_in_group('enemy2'):
 			Globals.enemy_health2 -= 15
+			$HealthBar3d.update(Globals.enemy_health2 , max_health)
 		health -= 15
 		Globals.score += 5
 		Globals.player_health -= 10
