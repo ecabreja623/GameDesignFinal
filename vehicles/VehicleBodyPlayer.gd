@@ -131,12 +131,7 @@ func _physics_process(delta):
 				spin_out = 4
 			get_node("VehicleWheel").wheel_friction_slip = spin_out
 			get_node("VehicleWheel2").wheel_friction_slip = spin_out
-
-	if (Input.is_action_pressed("drift") and (current_gear > 3) and (Globals.kph > 60)):
-		if(Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left")):
-			print("driftinggggg")
-			doSkidmarks()
-	
+			
 	var wheel_radius = get_node("VehicleWheel").wheel_radius
 	var local_velocity = get_transform().basis.z.dot(linear_velocity)
 
@@ -200,7 +195,7 @@ func _physics_process(delta):
 
 
 
-	# print("Gear: %d  RPM: %d  KPH: %d  Force: %d  Nitrous: %d" % [current_gear, rpm, kph, engine_force, nitro_fuel])
+	#print("Gear: %d  RPM: %d  KPH: %d  Force: %d  Nitrous: %d" % [current_gear, rpm, kph, engine_force, Globals.nitro_fuel])
 	# apply_friction(delta)
 	#calculate steering angle
 	steering_angle += steering_speed * steering_target * delta
@@ -236,16 +231,29 @@ func _physics_process(delta):
 	elif steering_angle < -max_steer:
 		steering_angle = -max_steer
 	
+	if (Input.is_action_pressed("drift") and (current_gear > 3) and (kph > 60)):
+		print('registered')
+		if(Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left")):
+			print("driftinggggg")
+			doSkidmarks()
 
-	if (kph != 0) and (engine_force > 0):
+	if (kph != 0) and (engine_force >= 0):
 		if $Acceleration_Sound.is_playing():
 			$Acceleration_Sound.stream_paused = false
 		else:
 			$Acceleration_Sound.play()
-
 	else:
-
 		$Acceleration_Sound.stream_paused = true
+		
+		
+	if (Input.is_action_pressed("ui_down") and kph > -1):
+		if $Brake_Sound.is_playing():
+			$Brake_Sound.stream_paused = false
+		else:
+			$Brake_Sound.play()
+	else:
+		$Brake_Sound.stream_paused = true
+		
 
 	steering = steering_angle
 
@@ -253,9 +261,11 @@ const Skidmark = preload("res://scenes/skidmark.tscn")
 
 func doSkidmarks():
 	var skidmark = Skidmark.instance()
+	#print(skidmark.get_global_position())
+	#print($VehicleWheel.position)
 	#skidmark.position = position
 	#skidmark.rotation = rotation
-	get_node("/root/Arena/skidmarks").add_child(skidmark)
+	#$skidmarks/skidmark.add_child(skidmark)
 	
 func _on_VehicleBody_body_entered(body):
 	print('Enem hit me')
