@@ -55,6 +55,8 @@ export var has_handbrake = true
 
 var kph
 
+var despawn = false;
+
 
 func _ready():
 
@@ -83,6 +85,9 @@ func apply_friction(delta):
 func _physics_process(delta):
 
 	if health <= 0:
+		despawn = true
+		get_node("AnimationPlayer").play("despawn")
+		yield(get_node("AnimationPlayer"), "animation_finished")
 		queue_free()
 
 	var distance_to_player = transform.origin.distance_to(Globals.player_pos)
@@ -230,7 +235,7 @@ func get_target_path(target_pos):
 	
 
 func _on_VehicleBody_body_entered(body):
-	if body.is_in_group('player'):
+	if body.is_in_group('player') and despawn == false:
 		if abs(kph) > abs(Globals.kph):	#enemy is moving faster than player
 			
 			Globals.player_health -= abs(kph) * 0.3

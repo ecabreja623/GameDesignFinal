@@ -264,7 +264,7 @@ func _on_CollisionArea_body_entered(body):
 		if cooldown <= 0:
 			Globals.player_health -= abs(Globals.kph) * 0.05
 			cooldown = 1
-		print("you collided w the track")
+		#print("you collided w the track")
 		
 		
 	return
