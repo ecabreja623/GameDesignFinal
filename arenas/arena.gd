@@ -15,3 +15,5 @@ func load_vehicle(name):
 	var vehicle = load(name).instance()
 	add_child(vehicle)
 	vehicle.global_transform = $VehicleSpawnPoint.global_transform
+
+

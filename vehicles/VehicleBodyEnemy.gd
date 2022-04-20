@@ -53,6 +53,8 @@ export var nitro_usage = 0.2
 var nitro_toggle = 0
 export var has_handbrake = true
 
+var kph
+
 
 func _ready():
 
@@ -99,8 +101,8 @@ func _physics_process(delta):
 	var wheel_radius = get_node("VehicleWheel").wheel_radius
 	var local_velocity = get_transform().basis.z.dot(linear_velocity)
 
-	var kph = local_velocity * 3.6	
-	Globals.kph = kph;
+	kph = local_velocity * 3.6	
+	#Globals.kph = kph;
 	var omega = local_velocity / wheel_radius * 6.28;
 	var rpm = abs(omega) * abs(gear_ratios[current_gear]) * differential_ratio * (60.0 / 6.28)
 
@@ -229,13 +231,23 @@ func get_target_path(target_pos):
 
 func _on_VehicleBody_body_entered(body):
 	if body.is_in_group('player'):
-		if self.is_in_group('enemy1'):
-			Globals.enemy_health1 -= 15
-		elif self.is_in_group('enemy2'):
-			Globals.enemy_health2 -= 15
-		health -= 15
-		Globals.score += 5
-		Globals.player_health -= 10
+		if abs(kph) > abs(Globals.kph):	#enemy is moving faster than player
+			
+			Globals.player_health -= abs(kph) * 0.3
+			if self.is_in_group('enemy1'):
+				Globals.enemy_health1 -= abs(Globals.kph) * 0.1
+			elif self.is_in_group('enemy2'):
+				Globals.enemy_health2 -= abs(Globals.kph) * 0.1
+			health -= abs(Globals.kph) * 0.1
+		
+		else:
+			if self.is_in_group('enemy1'):
+				Globals.enemy_health1 -= abs(Globals.kph) * 0.3
+			elif self.is_in_group('enemy2'):
+				Globals.enemy_health2 -= abs(Globals.kph) * 0.3
+			health -= abs(Globals.kph) * 0.3
+			Globals.score += 5
+			Globals.player_health -= abs(kph) * 0.1
 	return
 
 
