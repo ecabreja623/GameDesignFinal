@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "ImmediateGeometry",
+"class": "Trail3D",
+"language": "GDScript",
+"path": "res://scenes/ImmediateGeometry.gd"
+} ]
+_global_script_class_icons={
+"Trail3D": "res://assets/skidmark_long_1.png"
+}
+
 [application]
 
 config/name="GameDesignFinal"

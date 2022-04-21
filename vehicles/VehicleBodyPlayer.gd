@@ -54,10 +54,8 @@ func _ready():
 	if (start_sound):
 		$Start_Sound.play()
 		start_sound = false
-		print("soundpls")
 	elif (!start_sound):
 		$Start_Sound.stream_paused = true
-		print("nosoundpls")
 	
 
 func compute():
@@ -232,10 +230,26 @@ func _physics_process(delta):
 		steering_angle = -max_steer
 	
 	if (Input.is_action_pressed("drift") and (current_gear > 3) and (kph > 60)):
-		print('registered')
+		
 		if(Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left")):
-			print("driftinggggg")
-			doSkidmarks()
+			$"Scene Root/skidmark1".rotation_degrees += .5
+			$"Scene Root/skidmark1".visible = true
+		
+			$"Scene Root/skidmark2".visible = true
+			#doSkidmarks()
+			if $Drift_Sound.is_playing():
+				$Drift_Sound.stream_paused = false
+			else:
+				$Drift_Sound.play()
+		else:
+			$"Scene Root/skidmark1".visible = false
+			$"Scene Root/skidmark2".visible = false
+			$Drift_Sound.stream_paused = true
+	else:
+			$"Scene Root/skidmark1".visible = false
+			
+			$"Scene Root/skidmark2".visible = false
+			$Drift_Sound.stream_paused = true
 
 	if (kph != 0) and (engine_force >= 0):
 		if $Acceleration_Sound.is_playing():
@@ -257,10 +271,20 @@ func _physics_process(delta):
 
 	steering = steering_angle
 
-const Skidmark = preload("res://scenes/skidmark.tscn")
+const Skidmark = preload("res://scenes/skidmark3d.tscn")
 
 func doSkidmarks():
 	var skidmark = Skidmark.instance()
+	skidmark.add_child($skidmark1)
+	skidmark.add_child($skidmark2)
+	print(skidmark.get_node("ImmediateGeometry").visible)
+	skidmark.get_node("ImmediateGeometry").visible = false
+	print(skidmark.get_node("ImmediateGeometry").visible)
+	$skidmark1.visible = true
+	$skidmark2.visible = true
+	
+	#print(get_node("skidmark1").get("drifting"))
+	#$skidmark1.drifting = true
 	#print(skidmark.get_global_position())
 	#print($VehicleWheel.position)
 	#skidmark.position = position
