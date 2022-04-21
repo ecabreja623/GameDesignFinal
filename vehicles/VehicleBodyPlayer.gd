@@ -47,6 +47,7 @@ export var nitro_usage = 0.2
 var nitro_toggle = 0
 export var has_handbrake = true
 
+var cooldown = 0;
 
 func _ready():
 	steering_speed_range = steering_to_speed - steering_from_speed
@@ -73,6 +74,7 @@ func apply_friction(delta):
 
 	
 func _physics_process(delta):
+	
 	if Input.is_action_just_pressed("reset"):
 		#get_tree().reload_current_scene()
 		apply_impulse(Vector3(1, 0, 0), Vector3(0, mass * 2, 0))
@@ -80,6 +82,7 @@ func _physics_process(delta):
 	if Globals.player_health <= 0:
 		queue_free()
 	
+	cooldown -= delta;
 	Globals.player_pos = global_transform.origin;
 	
 	if (Input.is_action_pressed("ui_left")):
@@ -289,15 +292,16 @@ func doSkidmarks():
 	#print($VehicleWheel.position)
 	#skidmark.position = position
 	#skidmark.rotation = rotation
-	#$skidmarks/skidmark.add_child(skidmark)
-	
-func _on_VehicleBody_body_entered(body):
-	print('Enem hit me')
-	if body.is_in_group('enemy'):
-		#Globals.score += 10
-		Globals.player_health -= 5
-		health = Globals.player_health
-		print_debug(health)
-		$HealthBar3d.update(health , max_health)
+	get_node("/root/Arena/skidmarks").add_child(skidmark)
+
+func _on_CollisionArea_body_entered(body):
+	if body.is_in_group("track"):
+		
+		if cooldown <= 0:
+			Globals.player_health -= abs(Globals.kph) * 0.05
+			cooldown = 1
+		#print("you collided w the track")
+		
+		
 	return
 
