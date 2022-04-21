@@ -41,7 +41,7 @@ export var friction_coefficient = -0.8
 export var drag_coefficient = -0.8
 export var brake_strength = 25
 
-
+export var frame_count = 0
 var current_gear
 var spin_out = 8
 export var slip_speed = 9.0
@@ -73,16 +73,6 @@ func compute():
 	pass
 
 
-func apply_friction(delta):
-	if linear_velocity.length() < 0.02 and engine_force == 0:
-		linear_velocity.x = 0
-		linear_velocity.z = 0
-	var friction_force = linear_velocity.length() *linear_velocity.length()* friction_coefficient * delta
-	var drag_force = linear_velocity.length() * linear_velocity.length() * drag_coefficient * delta
-	engine_force += drag_force + friction_force
-	
-
-	
 func _physics_process(delta):
 
 	if health <= 0:
@@ -98,19 +88,29 @@ func _physics_process(delta):
 	#print_debug("enemy:")
 	#print_debug(global_transform.origin)
 	
-	target = Globals.player_pos
 	
-	if path.size() > 0:
-		move_to_target()
-		#print_debug(path)
+	
+	# steering_angle += steering_speed * steering_target * delta
+
 	
 	var wheel_radius = get_node("VehicleWheel").wheel_radius
 	var local_velocity = get_transform().basis.z.dot(linear_velocity)
 
 	kph = local_velocity * 3.6	
 	#Globals.kph = kph;
+	
+#	if abs(kph)< 0.5: # and frame_count == 10:
+#		apply_impulse(Vector3(1, 0, 0), Vector3(0, mass * 2, 0))
+#	else:
+#		if abs(kph) > 1:
+#			frame_count = 0
+#		else:
+#			# print(kph, frame_count)
+#			frame_count += 1
+
 	var omega = local_velocity / wheel_radius * 6.28;
 	var rpm = abs(omega) * abs(gear_ratios[current_gear]) * differential_ratio * (60.0 / 6.28)
+
 
 	if rpm < torque_curve_rpms[0]:
 		rpm = torque_curve_rpms[0]
@@ -119,7 +119,31 @@ func _physics_process(delta):
 
 	if (current_gear == 1 and omega <= 1.0 and omega >= 0 and brake > 0):
 		current_gear = 0;
-
+		
+		
+	target = Globals.player_pos
+	
+	#if curr_path_index >= path.size():
+	#	return
+	
+	var dirToMovePosition = target - transform.origin
+	
+	var dot = get_global_transform().basis.z.dot(dirToMovePosition)
+	
+	#print_debug(dot)
+	if dot > 0:
+		throttle = 0.7;
+	else:
+		throttle = -0.7;
+		
+	var angleToDir = get_global_transform().basis.z.signed_angle_to(dirToMovePosition, Vector3.UP)
+	#print_debug(angleToDir)	# left is positive, right is negative
+	
+	if angleToDir > 0:
+		steering_target = 1;
+	else:
+		steering_target = -1;
+		
 	if current_gear == 0:
 		if throttle != 0:
 			current_gear = 1
@@ -162,14 +186,8 @@ func _physics_process(delta):
 	# get_node("VehicleWheel").traction = traction_fast if drifting else traction_slow
 	# get_node("VehicleWheel2").traction = traction_fast if drifting else traction_slow
 	# velocity = lerp(velocity, new_heading * velocity.length(), traction)		
-	if nitro_toggle == 1:
-		engine_force = engine_force * 2.5
 
 
-
-	# print("Gear: %d  RPM: %d  KPH: %d  Force: %d  Nitrous: %d" % [current_gear, rpm, kph, engine_force, nitro_fuel])
-	# apply_friction(delta)
-	#calculate steering angle
 	steering_angle += steering_speed * steering_target * delta
 
 	#re-center if not steering
@@ -205,27 +223,10 @@ func _physics_process(delta):
 
 	steering = steering_angle
 
-func move_to_target():
-	if curr_path_index >= path.size():
-		return
-	
-	var dirToMovePosition = target - transform.origin
-	
-	var dot = get_global_transform().basis.z.dot(dirToMovePosition)
-	
-	#print_debug(dot)
-	if dot > 0:
-		throttle = 1;
-	else:
-		throttle = -1;
+func move_to_target(delta):
+	pass
+
 		
-	var angleToDir = get_global_transform().basis.z.signed_angle_to(dirToMovePosition, Vector3.UP)
-	#print_debug(angleToDir)	# left is positive, right is negative
-	
-	if angleToDir > 0:
-		steering_target = 1;
-	else:
-		steering_target = -1;
 		
 func get_target_path(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
