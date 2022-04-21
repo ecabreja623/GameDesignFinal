@@ -10,3 +10,6 @@ texture_under = ExtResource( 1 )
 texture_over = ExtResource( 1 )
 texture_progress = ExtResource( 1 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -6,4 +6,5 @@ func _ready():
 onready var bar = $Viewport/HealthDisplay
 
 func update(value, full):
+	value = Globals.player_health
 	bar.update_bar(value, full)
