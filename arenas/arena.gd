@@ -8,12 +8,13 @@ var prop_loader := {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	load_vehicle("res://vehicles/gt/gt.tscn")
+	pass
+	#load_vehicle("res://vehicles/gt/gt.tscn")
 	
 
-func load_vehicle(name):
-	var vehicle = load(name).instance()
-	add_child(vehicle)
-	vehicle.global_transform = $VehicleSpawnPoint.global_transform
+#func load_vehicle(name):
+#	var vehicle = load(name).instance()
+#	add_child(vehicle)
+#	vehicle.global_transform = $VehicleSpawnPoint.global_transform
 
 
