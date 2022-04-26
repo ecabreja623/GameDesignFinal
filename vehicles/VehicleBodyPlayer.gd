@@ -100,6 +100,7 @@ func _physics_process(delta):
 	if (Input.is_action_pressed("nitrous")) and Globals.nitro_fuel > 0:
 		nitro_toggle = 1
 		Globals.nitro_fuel -= nitro_usage
+	
 		if Globals.nitro_fuel < 0:
 			Globals.nitro_fuel = 0
 	else:

@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Trail3D",
 "language": "GDScript",
 "path": "res://scenes/ImmediateGeometry.gd"
+}, {
+"base": "Sprite3D",
+"class": "healthbar3D",
+"language": "GDScript",
+"path": "res://HealthBar3D/Healthbar3D.gd"
 } ]
 _global_script_class_icons={
-"Trail3D": "res://assets/skidmark_long_1.png"
+"Trail3D": "res://assets/skidmark_long_1.png",
+"healthbar3D": "res://HealthBar3D/class_icon.png"
 }
 
 [application]
