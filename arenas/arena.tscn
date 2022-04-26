@@ -42,7 +42,7 @@ script = ExtResource( 1 )
 environment = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 18 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1951, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2858, -0.00356984, -23.6448 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.0279846, 0.816637, -0.576473, -0.0395966, 0.577152, 0.815676, 0.998824, -1.86045e-09, 0.0484874, 0, 28.959, 0 )
@@ -134,34 +134,52 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.6075, -2.85328, -24.0976 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6453, -0.737643, 57.5388 )
 
 [node name="VehicleBody" parent="Navigation" groups=["enemy1"] instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -71.1666, -0.000657797, 61.8698 )
+transform = Transform( -0.436865, 0, 0.899527, 0, 1, 0, -0.899527, 0, -0.436865, -71.1666, -0.000657797, 61.8698 )
 physics_material_override = SubResource( 3 )
 
 [node name="HealthBar3d" parent="Navigation/VehicleBody" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41072, 0 )
 
 [node name="VehicleBody2" parent="Navigation" groups=["enemy2"] instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90.8827, -1.26728, 47.9268 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90.8827, -1.26728, 63.7572 )
 
 [node name="HealthBar3d" parent="Navigation/VehicleBody2" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5672, 0 )
 
 [node name="VehicleBody3" parent="Navigation" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -66.6634, -1.02614, 110.794 )
+transform = Transform( -0.958581, 0, 0.284819, 0, 1, 0, -0.284819, 0, -0.958581, -66.6634, 1.13534, 110.794 )
+
+[node name="HealthBar3d" parent="Navigation/VehicleBody3" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27, 0 )
 
 [node name="VehicleBody4" parent="Navigation" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.30976, -0.547032, -16.7693 )
 
+[node name="HealthBar3d" parent="Navigation/VehicleBody4" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.336, 0 )
+
 [node name="VehicleBody5" parent="Navigation" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.57171, 1.66976, -22.2459 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.403, -1.02522, -28.8779 )
+
+[node name="HealthBar3d" parent="Navigation/VehicleBody5" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27, 0 )
 
 [node name="VehicleBody6" parent="Navigation" instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -84.3214, -1.67578, 60.152 )
+transform = Transform( -0.0520571, 0, 0.998644, 0, 1, 0, -0.998644, 0, -0.0520571, -84.3214, -1.67578, 106.028 )
+
+[node name="HealthBar3d" parent="Navigation/VehicleBody6" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.022, 0 )
 
 [node name="VehicleBody7" parent="Navigation" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20597, -0.393372, 3.07465 )
 
+[node name="HealthBar3d" parent="Navigation/VehicleBody7" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.964, 0 )
+
 [node name="VehicleBody8" parent="Navigation" instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72756, 1.99145, -4.12415 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0347509, 0.138818, -2.95459 )
+
+[node name="HealthBar3d" parent="Navigation/VehicleBody8" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.886, 0 )
 
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Barrel" to="Navigation/NavigationMeshInstance/Barrel" method="_on_Barrel_body_entered"]
