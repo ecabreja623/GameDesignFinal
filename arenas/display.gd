@@ -42,7 +42,7 @@ func _process(delta):
 			Globals.kph = 0;
 
 			Globals.player_health = 100;
-			Globals.nitro_fuel = 50;
+			Globals.nitro_fuel = 100;
 			Globals.score = 0;
 
 			Globals.power_ups_collected = 0;
@@ -63,7 +63,7 @@ func _process(delta):
 			Globals.kph = 0;
 
 			Globals.player_health = 100;
-			Globals.nitro_fuel = 50;
+			Globals.nitro_fuel = 100;
 			Globals.score = 0;
 
 			Globals.power_ups_collected = 0;

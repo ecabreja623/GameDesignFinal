@@ -135,9 +135,9 @@ func _physics_process(delta):
 			get_node("VehicleWheel2").wheel_friction_slip = spin_out
 			
 	var wheel_radius = get_node("VehicleWheel").wheel_radius
-	var local_velocity = get_transform().basis.z.dot(linear_velocity)
+	var local_velocity = get_transform().basis.x.dot(linear_velocity)
 
-	var kph = local_velocity * 3.6	
+	var kph = abs(local_velocity * 3.6);
 	Globals.kph = kph;
 	var omega = local_velocity / wheel_radius * 6.28;
 	var rpm = abs(omega) * abs(gear_ratios[current_gear]) * differential_ratio * (60.0 / 6.28)
@@ -301,8 +301,6 @@ func _on_CollisionArea_body_entered(body):
 		if cooldown <= 0:
 			Globals.player_health -= abs(Globals.kph) * 0.05
 			cooldown = 1
-		#print("you collided w the track")
-		
 		
 	return
 

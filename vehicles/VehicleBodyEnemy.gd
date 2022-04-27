@@ -96,7 +96,8 @@ func _physics_process(delta):
 	var wheel_radius = get_node("VehicleWheel").wheel_radius
 	var local_velocity = get_transform().basis.z.dot(linear_velocity)
 
-	kph = local_velocity * 3.6	
+	kph = abs(local_velocity * 3.6);
+	
 	#Globals.kph = kph;
 	
 #	if abs(kph)< 0.5: # and frame_count == 10:
