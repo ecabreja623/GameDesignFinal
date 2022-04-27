@@ -55,15 +55,6 @@ transform = Transform( 0.0279846, 0.816637, -0.576473, -0.0395966, 0.577152, 0.8
 shadow_enabled = true
 shadow_bias = 0.0
 
-[node name="Powerup" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -200 )
-
-[node name="Powerup3" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.2677, 9.17393, 32 )
-
-[node name="Powerup2" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09975, 195.722 )
-
 [node name="Speedometer" type="CanvasLayer" parent="."]
 script = ExtResource( 7 )
 
@@ -114,228 +105,251 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NitroHandler" type="Node" parent="."]
-
-[node name="Nitro" parent="NitroHandler" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63.3973, -2.54635, 34.5984 )
-
-[node name="Nitro3" parent="NitroHandler" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.6854, -2.54635, -36.1948 )
-
-[node name="Nitro4" parent="NitroHandler" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9116, -2.65607, -54.3466 )
-
-[node name="Nitro2" parent="NitroHandler" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.176, 3.70554, 93.6412 )
-
 [node name="Navigation" type="Navigation" parent="."]
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
 navmesh = SubResource( 4 )
 
-[node name="Scene Root" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 2 )]
+[node name="Track" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.111954, 0, -0.639656 )
 
-[node name="Tunnel Ramp" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 28 )]
-transform = Transform( -0.334218, 0, -0.942496, 0, 1, 0, 0.942496, 0, -0.334218, -70.5479, -4.04883, -79.5381 )
+[node name="Static Objects" type="Spatial" parent="Navigation/NavigationMeshInstance"]
 
-[node name="Barrel" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 10 )]
+[node name="Tunnel Ramp" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 28 )]
+transform = Transform( -0.334218, 0, -1.41374, 0, 1, 0, 0.942496, 0, -0.501327, -70.5479, -4.04883, -79.5381 )
+
+[node name="Super Jump" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.9622, -3.59092, 33.4412 )
+
+[node name="Simple Jump" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 14 )]
+transform = Transform( -0.999838, 0, -0.0180283, 0, 1, 0, 0.0180283, 0, -0.999838, -100.973, -3.07965, 77.3615 )
+
+[node name="Simple Jump2" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 14 )]
+transform = Transform( 0.00671957, 0, -0.999977, 0, 1, 0, 0.999977, 0, 0.00671957, -40.3813, -3.07965, 94.6233 )
+
+[node name="Simple Jump3" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 14 )]
+transform = Transform( -0.027032, 0, 0.999635, 0, 1, 0, -0.999635, 0, -0.027032, -11.5747, -3.07965, 94.7457 )
+
+[node name="Loop" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2201, -3.5912, -47.4018 )
+
+[node name="Ring" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 26 )]
+transform = Transform( 0.234107, 0, 0.972211, 0, 1, 0, -0.972211, 0, 0.234107, 33.6013, -3.57474, 32.2267 )
+
+[node name="Tunnel" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 27 )]
+transform = Transform( 0.0501223, 0, -0.998743, -0.468235, 0.883291, -0.0234986, 0.882181, 0.468824, 0.0442726, 0, 0, -200.132 )
+
+[node name="Kicker" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 24 )]
+transform = Transform( -0.0229491, 0, 0.999737, 0, 1, 0, -0.999737, 0, -0.0229491, 104.307, -3.65956, 38.3885 )
+mode = 1
+
+[node name="Big Box" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0879, -1.25328, 94.1052 )
+
+[node name="Rigid Objects" type="Spatial" parent="Navigation/NavigationMeshInstance"]
+
+[node name="Dumpster" parent="Navigation/NavigationMeshInstance/Rigid Objects" groups=["props"] instance=ExtResource( 22 )]
+transform = Transform( -0.104372, 0, 0.994538, 0, 1, 0, -0.994538, 0, -0.104372, -26.9105, -2.35119, 89.7999 )
+
+[node name="Garage Stand" parent="Navigation/NavigationMeshInstance/Rigid Objects" groups=["props"] instance=ExtResource( 23 )]
+transform = Transform( 0.0839039, 0, -0.996474, 0, 1, 0, 0.996474, 0, 0.0839039, -100.862, -2.01232, 68.721 )
+
+[node name="Barrels" type="Spatial" parent="Navigation/NavigationMeshInstance/Rigid Objects"]
+
+[node name="Barrel" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8525, -2.72655, -105.827 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
-[node name="Barrel2" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 10 )]
+[node name="Barrel2" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.8637, -2.72655, -105.827 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
-[node name="Barrel3" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 10 )]
+[node name="Barrel3" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.8637, -2.72655, 1.44707 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
-[node name="Barrel4" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 10 )]
+[node name="Barrel4" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.8637, -2.72655, 53.0576 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
-[node name="Barrel5" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 10 )]
+[node name="Barrel5" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.8637, -2.72655, 130.265 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
-[node name="Barrel6" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 10 )]
+[node name="Barrel6" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.63, -2.72655, 130.265 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
-[node name="Barrel7" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 10 )]
+[node name="Barrel7" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1897, -2.72655, 130.265 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
-[node name="Barrel8" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 10 )]
+[node name="Barrel8" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1897, -2.72655, 64.2236 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
-[node name="Barrel9" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 10 )]
+[node name="Barrel9" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1897, -2.72655, 7.5653 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
-[node name="Barrel10" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 10 )]
+[node name="Barrel10" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1897, -2.72655, -79.3025 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
-[node name="Barrel11" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 10 )]
+[node name="Barrel11" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6224, -2.72655, -12.8 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
-[node name="Barrel12" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 10 )]
+[node name="Barrel12" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6224, -2.72655, 62.2132 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
-[node name="Super Jump" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.9622, -3.59092, 33.4412 )
-
-[node name="Simple Jump" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 14 )]
-transform = Transform( -0.999838, 0, -0.0180283, 0, 1, 0, 0.0180283, 0, -0.999838, -100.973, -3.07965, 77.3615 )
-
-[node name="Simple Jump2" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 14 )]
-transform = Transform( 0.00671957, 0, -0.999977, 0, 1, 0, 0.999977, 0, 0.00671957, -40.3813, -3.07965, 94.6233 )
-
-[node name="Simple Jump3" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 14 )]
-transform = Transform( -0.027032, 0, 0.999635, 0, 1, 0, -0.999635, 0, -0.027032, -11.5747, -3.07965, 94.7457 )
-
-[node name="Big Box" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0879, -1.25328, 94.1052 )
-
-[node name="Cone" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.6268, -3.35486, 28.5312 )
-
-[node name="Cone7" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.5792, -3.35486, 70.4676 )
-
-[node name="Cone8" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.5792, -3.35486, 67.0659 )
-
-[node name="Cone9" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -99.7929, -3.35486, 63.2883 )
-
-[node name="Cone10" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -103.105, -3.35486, 61.7421 )
-
-[node name="Cone2" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.8903, -3.35486, 28.5312 )
-
-[node name="Cone3" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7092, -3.35486, 28.5312 )
-
-[node name="Cone4" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7092, -3.35486, 39.0675 )
-
-[node name="Cone5" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3802, -3.35486, 39.0675 )
-
-[node name="Cone6" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6444, -3.35486, 39.0675 )
-
-[node name="Dumpster" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 22 )]
-transform = Transform( -0.104372, 0, 0.994538, 0, 1, 0, -0.994538, 0, -0.104372, -26.9105, -2.35119, 89.7999 )
-
-[node name="Garage Stand" parent="Navigation/NavigationMeshInstance" groups=["props"] instance=ExtResource( 23 )]
-transform = Transform( 0.0839039, 0, -0.996474, 0, 1, 0, 0.996474, 0, 0.0839039, -100.862, -2.01232, 68.721 )
-
-[node name="Loop" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 25 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2201, -3.5912, -47.4018 )
-
-[node name="Ring" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 26 )]
-transform = Transform( 0.234107, 0, 0.972211, 0, 1, 0, -0.972211, 0, 0.234107, 33.6013, -3.57474, 32.2267 )
-
-[node name="Tunnel" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 27 )]
-transform = Transform( 0.0501223, 0, -0.998743, -0.468235, 0.883291, -0.0234986, 0.882181, 0.468824, 0.0442726, 0, 0, -200.132 )
-
-[node name="Tunnel2" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 27 )]
+[node name="Tunnel2" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" instance=ExtResource( 27 )]
 transform = Transform( 0.0501223, 0, -0.998743, 0.624062, 0.780747, 0.0313188, 0.779765, -0.624848, 0.0391328, 0, 0, 195.722 )
 
-[node name="Kicker" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 24 )]
-transform = Transform( -0.0229491, 0, 0.999737, 0, 1, 0, -0.999737, 0, -0.0229491, 104.307, -3.65956, 38.3885 )
-mode = 1
+[node name="Cones" type="Spatial" parent="Navigation/NavigationMeshInstance/Rigid Objects"]
 
-[node name="VehicleBody" parent="Navigation" groups=["enemy1"] instance=ExtResource( 15 )]
+[node name="Cone" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.6268, -3.35486, 28.5312 )
+
+[node name="Cone7" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.5792, -3.35486, 70.4676 )
+
+[node name="Cone8" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.5792, -3.35486, 67.0659 )
+
+[node name="Cone9" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -99.7929, -3.35486, 63.2883 )
+
+[node name="Cone10" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -103.105, -3.35486, 61.7421 )
+
+[node name="Cone2" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.8903, -3.35486, 28.5312 )
+
+[node name="Cone3" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7092, -3.35486, 28.5312 )
+
+[node name="Cone4" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7092, -3.35486, 39.0675 )
+
+[node name="Cone5" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3802, -3.35486, 39.0675 )
+
+[node name="Cone6" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6444, -3.35486, 39.0675 )
+
+[node name="Enemies" type="Spatial" parent="Navigation"]
+
+[node name="VehicleBody" parent="Navigation/Enemies" groups=["enemy1"] instance=ExtResource( 15 )]
 transform = Transform( 0.910156, 0, 0.414265, 0, 1, 0, -0.414265, 0, 0.910156, -99.7461, -0.000657797, -8.85692 )
 physics_material_override = SubResource( 3 )
 
-[node name="HealthBar3d" parent="Navigation/VehicleBody" instance=ExtResource( 17 )]
+[node name="HealthBar3d" parent="Navigation/Enemies/VehicleBody" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41072, 0 )
 
-[node name="VehicleBody2" parent="Navigation" groups=["enemy2"] instance=ExtResource( 16 )]
+[node name="VehicleBody2" parent="Navigation/Enemies" groups=["enemy2"] instance=ExtResource( 16 )]
 transform = Transform( -0.0859907, 0, 0.996296, 0, 1, 0, -0.996296, 0, -0.0859907, -99.4017, -1.26728, 49.8637 )
 
-[node name="HealthBar3d" parent="Navigation/VehicleBody2" instance=ExtResource( 17 )]
+[node name="HealthBar3d" parent="Navigation/Enemies/VehicleBody2" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5672, 0 )
 
-[node name="VehicleBody3" parent="Navigation" instance=ExtResource( 16 )]
+[node name="VehicleBody3" parent="Navigation/Enemies" instance=ExtResource( 16 )]
 transform = Transform( -0.958581, 0, 0.284819, 0, 1, 0, -0.284819, 0, -0.958581, -52.4997, 1.13534, 151.599 )
 
-[node name="HealthBar3d" parent="Navigation/VehicleBody3" instance=ExtResource( 17 )]
+[node name="HealthBar3d" parent="Navigation/Enemies/VehicleBody3" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27, 0 )
 
-[node name="VehicleBody4" parent="Navigation" instance=ExtResource( 16 )]
+[node name="VehicleBody4" parent="Navigation/Enemies" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41.4198, -0.547032, -154.008 )
 
-[node name="HealthBar3d" parent="Navigation/VehicleBody4" instance=ExtResource( 17 )]
+[node name="HealthBar3d" parent="Navigation/Enemies/VehicleBody4" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.336, 0 )
 
-[node name="VehicleBody5" parent="Navigation" instance=ExtResource( 16 )]
+[node name="VehicleBody5" parent="Navigation/Enemies" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.403, -1.02522, -162.269 )
 
-[node name="HealthBar3d" parent="Navigation/VehicleBody5" instance=ExtResource( 17 )]
+[node name="HealthBar3d" parent="Navigation/Enemies/VehicleBody5" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27, 0 )
 
-[node name="VehicleBody6" parent="Navigation" instance=ExtResource( 15 )]
+[node name="VehicleBody6" parent="Navigation/Enemies" instance=ExtResource( 15 )]
 transform = Transform( -0.0520571, 0, 0.998644, 0, 1, 0, -0.998644, 0, -0.0520571, -98.6949, -2.33811, 93.5825 )
 
-[node name="HealthBar3d" parent="Navigation/VehicleBody6" instance=ExtResource( 17 )]
+[node name="HealthBar3d" parent="Navigation/Enemies/VehicleBody6" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.022, 0 )
 
-[node name="VehicleBody7" parent="Navigation" instance=ExtResource( 15 )]
+[node name="VehicleBody7" parent="Navigation/Enemies" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20597, -0.393372, 130.526 )
 
-[node name="HealthBar3d" parent="Navigation/VehicleBody7" instance=ExtResource( 17 )]
+[node name="HealthBar3d" parent="Navigation/Enemies/VehicleBody7" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.964, 0 )
 
-[node name="VehicleBody8" parent="Navigation" instance=ExtResource( 15 )]
+[node name="VehicleBody8" parent="Navigation/Enemies" instance=ExtResource( 15 )]
 transform = Transform( -0.362715, 0, -0.9319, 0, 1, 0, 0.9319, 0, -0.362715, 31.7691, -2.20495, -42.4494 )
 
-[node name="HealthBar3d" parent="Navigation/VehicleBody8" instance=ExtResource( 17 )]
+[node name="HealthBar3d" parent="Navigation/Enemies/VehicleBody8" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.886, 0 )
 
-[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Barrel" to="Navigation/NavigationMeshInstance/Barrel" method="_on_Barrel_body_entered"]
-[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Barrel2" to="Navigation/NavigationMeshInstance/Barrel2" method="_on_Barrel_body_entered"]
-[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Barrel3" to="Navigation/NavigationMeshInstance/Barrel3" method="_on_Barrel_body_entered"]
-[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Barrel4" to="Navigation/NavigationMeshInstance/Barrel4" method="_on_Barrel_body_entered"]
-[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Barrel5" to="Navigation/NavigationMeshInstance/Barrel5" method="_on_Barrel_body_entered"]
-[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Barrel6" to="Navigation/NavigationMeshInstance/Barrel6" method="_on_Barrel_body_entered"]
-[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Barrel7" to="Navigation/NavigationMeshInstance/Barrel7" method="_on_Barrel_body_entered"]
-[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Barrel8" to="Navigation/NavigationMeshInstance/Barrel8" method="_on_Barrel_body_entered"]
-[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Barrel9" to="Navigation/NavigationMeshInstance/Barrel9" method="_on_Barrel_body_entered"]
-[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Barrel10" to="Navigation/NavigationMeshInstance/Barrel10" method="_on_Barrel_body_entered"]
-[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Barrel11" to="Navigation/NavigationMeshInstance/Barrel11" method="_on_Barrel_body_entered"]
-[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Barrel12" to="Navigation/NavigationMeshInstance/Barrel12" method="_on_Barrel_body_entered"]
+[node name="Powerups" type="Spatial" parent="."]
+
+[node name="NitroHandler" type="Node" parent="Powerups"]
+
+[node name="Nitro" parent="Powerups/NitroHandler" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63.3973, -2.54635, 34.5984 )
+
+[node name="Nitro3" parent="Powerups/NitroHandler" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.6854, -2.54635, -36.1948 )
+
+[node name="Nitro4" parent="Powerups/NitroHandler" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9116, -2.65607, -54.3466 )
+
+[node name="Nitro2" parent="Powerups/NitroHandler" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.176, 3.70554, 93.6412 )
+
+[node name="Health" type="Spatial" parent="Powerups"]
+
+[node name="Powerup" parent="Powerups/Health" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -200 )
+
+[node name="Powerup3" parent="Powerups/Health" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.2677, 9.17393, 32 )
+
+[node name="Powerup2" parent="Powerups/Health" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09975, 195.722 )
+
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel2" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel2" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel3" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel3" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel4" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel4" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel5" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel5" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel6" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel6" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel7" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel7" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel8" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel8" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel9" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel9" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel10" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel10" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel11" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel11" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel12" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel12" method="_on_Barrel_body_entered"]

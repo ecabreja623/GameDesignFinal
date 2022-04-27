@@ -21,7 +21,7 @@ var path = []
 var curr_path_index = 0
 var target = null
 
-onready var nav = get_parent()
+onready var nav = get_parent().get_parent()
 
 var has_powerup = false;
 
