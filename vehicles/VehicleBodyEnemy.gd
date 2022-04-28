@@ -238,6 +238,7 @@ func get_target_path(target_pos):
 	
 
 func _on_VehicleBody_body_entered(body):
+	
 	if body.is_in_group('player') and despawn == false:
 		if abs(kph) > abs(Globals.kph):	#enemy is moving faster than player
 			
@@ -256,6 +257,14 @@ func _on_VehicleBody_body_entered(body):
 			health -= abs(Globals.kph) * 0.3
 			Globals.score += 5
 			Globals.player_health -= abs(kph) * 0.1
+			
+		#if get_node("Crash").is_playing():
+			#$Crash.stream_paused = false
+		#else:
+		#$Crash.play()
+			
+	
+			
 	return
 
 

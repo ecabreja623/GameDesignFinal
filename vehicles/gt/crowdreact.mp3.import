@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/crowdreact.mp3-d5609407add09cc6fabb8bc128f0e621.mp3str"
+
+[deps]
+
+source_file="res://vehicles/gt/crowdreact.mp3"
+dest_files=[ "res://.import/crowdreact.mp3-d5609407add09cc6fabb8bc128f0e621.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

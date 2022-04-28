@@ -75,6 +75,7 @@ func apply_friction(delta):
 	
 func _physics_process(delta):
 	
+	
 	if Input.is_action_just_pressed("reset"):
 		#get_tree().reload_current_scene()
 		apply_impulse(Vector3(1, 0, 0), Vector3(0, mass * 2, 0))
@@ -261,7 +262,8 @@ func _physics_process(delta):
 	if (Input.is_action_pressed("drift") and (current_gear > 3) and (kph > 60)):
 		
 		if(Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left")):
-			$"Scene Root/skidmark1".rotation_degrees += .5
+			
+			$"Scene Root/skidmark1".rotation_degrees.x += .5
 			$"Scene Root/skidmark1".visible = true
 		
 			$"Scene Root/skidmark2".visible = true
@@ -297,6 +299,15 @@ func _physics_process(delta):
 	else:
 		$Brake_Sound.stream_paused = true
 		
+	if ($"Scene Root/obj1".get_global_transform().origin.y > 5):
+		if $CrowdReact.is_playing():
+			$CrowdReact.stream_paused = false
+		else:
+			$CrowdReact.play()
+	else:
+		$CrowdReact.stream_paused = true
+		
+		
 
 	steering = steering_angle
 
@@ -326,6 +337,8 @@ func _on_CollisionArea_body_entered(body):
 		if cooldown <= 0:
 			Globals.player_health -= abs(Globals.kph) * 0.05
 			cooldown = 1
-		
+	if body.is_in_group("enemy"):
+		print("enemy fire")
+		$CarCrash.play()
 	return
 

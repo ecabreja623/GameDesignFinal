@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ccrashcar2.mp3-d7677de6d5d49905f5e08ca9a10a149f.mp3str"
+
+[deps]
+
+source_file="res://vehicles/gt/ccrashcar2.mp3"
+dest_files=[ "res://.import/ccrashcar2.mp3-d7677de6d5d49905f5e08ca9a10a149f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
