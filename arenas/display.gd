@@ -53,7 +53,7 @@ func _process(delta):
 			get_tree().reload_current_scene();
 			
 			
-	elif Globals.enemies_left < 0:
+	elif Globals.enemies_left < 1:
 		display_game_win_text()
 		if (Input.is_action_pressed("ui_cancel")):
 			Globals.kph = 0;
