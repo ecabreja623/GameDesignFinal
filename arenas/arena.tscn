@@ -165,7 +165,7 @@ transform = Transform( -0.027032, 0, 0.999635, 0, 1, 0, -0.999635, 0, -0.027032,
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.978, -1.53543, -44.8983 )
 
 [node name="Ring" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 26 )]
-transform = Transform( -0.0294222, 0, 0.999567, 0, 1, 0, -0.999567, 0, -0.0294222, 29.7694, -1.26675, 33.1363 )
+transform = Transform( -0.0294222, 0, 0.999567, 0, 1, 0, -0.999567, 0, -0.0294222, 39.9641, -1.26675, 33.1363 )
 
 [node name="Tunnel" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 27 )]
 transform = Transform( 0.0501223, 0, -0.998743, -0.0421715, 0.999108, -0.00211643, 0.997852, 0.0422244, 0.0500776, -51.0652, -1.42177, -37.0397 )
@@ -375,7 +375,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.679, 9.69411, -41.706 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09975, 195.722 )
 
 [node name="Mine" parent="Powerups" instance=ExtResource( 19 )]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 29, 12, 32 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 39.9634, 12, 32 )
 
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel2" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel2" method="_on_Barrel_body_entered"]

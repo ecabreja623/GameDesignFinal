@@ -58,12 +58,15 @@ export var has_handbrake = true
 var kph;
 var despawn = false;
 var airborne = false;
+var rng = RandomNumberGenerator.new()
 
 func _ready():
 	Globals.enemies_left += 1
 	groups_list = get_groups()
 	steering_speed_range = steering_to_speed - steering_from_speed
 	current_gear = 1
+	rng.randomize()
+	
 
 func _exit_tree():
 	Globals.enemies_left -= 1
@@ -73,9 +76,10 @@ func _physics_process(delta):
 	if num_frame > 100:
 		if 'enemy1' in groups_list:
 			apply_impulse(Vector3(1, 0, 0), Vector3(0, mass * 2, 0))
+			num_frame = 40
 		elif 'enemy2' in groups_list:
-			apply_impulse(Vector3(1, 0, 0), Vector3(0, mass * 3, 0))
-		num_frame = 40
+			apply_impulse(Vector3(1, 0, 0), Vector3(0, mass * 3.3, 0))
+			num_frame = 20
 		
 		# print('upside down')
 	if Input.is_action_pressed("enemy_destory"):
@@ -125,6 +129,7 @@ func _physics_process(delta):
 		if dot > 0:
 			throttle = 0.8;
 		else:
+			
 			steering_target = -1;
 			throttle = 0.5;
 			
@@ -132,11 +137,13 @@ func _physics_process(delta):
 		if dot > 0:
 			throttle = 0.5;
 		else:
-			steering_target = -1;
-			throttle = 0.5;
-	
+			if rng.randi_range(0,1):
+				steering_target = -1;
+				throttle = 0.5;
+			else:
+				steering_target = -1;
+				throttle = 0.5;
 
-	
 	if angleToDir > -0.15 and angleToDir < 0.15:
 		steering_target = 0;
 	elif angleToDir > 0.15:
