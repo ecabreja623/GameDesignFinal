@@ -74,6 +74,9 @@ func compute():
 
 
 func _physics_process(delta):
+	if Input.is_action_pressed("enemy_destory"):
+		health -= 1
+		$Healthbar3D.update(health, max_health)
 
 	if health <= 0:
 		despawn = true
