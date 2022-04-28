@@ -85,18 +85,24 @@ shadow_bias = 0.0
 script = ExtResource( 7 )
 
 [node name="Nitro" type="TextureProgress" parent="Speedometer"]
-margin_left = 820.0
-margin_top = 568.0
-margin_right = 989.0
-margin_bottom = 593.0
+anchor_left = 0.800781
+anchor_top = 0.946667
+anchor_right = 0.96582
+anchor_bottom = 0.988333
 script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Health" type="TextureProgress" parent="Speedometer"]
-margin_left = 820.0
-margin_top = 535.0
-margin_right = 998.0
-margin_bottom = 561.0
+anchor_left = 0.800781
+anchor_top = 0.891667
+anchor_right = 0.974609
+anchor_bottom = 0.935
 script = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="Speedometer"]
 anchor_left = 1.0

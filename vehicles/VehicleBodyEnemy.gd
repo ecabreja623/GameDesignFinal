@@ -60,6 +60,7 @@ var despawn = false;
 
 
 func _ready():
+	Globals.enemies_left += 1
 
 	steering_speed_range = steering_to_speed - steering_from_speed
 	current_gear = 1
@@ -72,6 +73,8 @@ func _ready():
 func compute():
 	pass
 
+func _exit_tree():
+	Globals.enemies_left -= 1
 
 func _physics_process(delta):
 	if Input.is_action_pressed("enemy_destory"):
@@ -246,18 +249,18 @@ func _on_VehicleBody_body_entered(body):
 		if abs(kph) > abs(Globals.kph):	#enemy is moving faster than player
 			
 			Globals.player_health -= abs(kph) * 0.3
-			if self.is_in_group('enemy1'):
-				Globals.enemy_health1 -= abs(Globals.kph) * 0.1
-			elif self.is_in_group('enemy2'):
-				Globals.enemy_health2 -= abs(Globals.kph) * 0.1
+#			if self.is_in_group('enemy1'):
+#				Globals.enemy_health1 -= abs(Globals.kph) * 0.1
+#			elif self.is_in_group('enemy2'):
+#				Globals.enemy_health2 -= abs(Globals.kph) * 0.1
 			health -= abs(Globals.kph) * 0.1
 			$Healthbar3D.update(health, max_health)
 		
 		else:
-			if self.is_in_group('enemy1'):
-				Globals.enemy_health1 -= abs(Globals.kph) * 0.3
-			elif self.is_in_group('enemy2'):
-				Globals.enemy_health2 -= abs(Globals.kph) * 0.3
+#			if self.is_in_group('enemy1'):
+#				Globals.enemy_health1 -= abs(Globals.kph) * 0.3
+#			elif self.is_in_group('enemy2'):
+#				Globals.enemy_health2 -= abs(Globals.kph) * 0.3
 			health -= abs(Globals.kph) * 0.3
 			$Healthbar3D.update(health, max_health)
 			Globals.score += 5

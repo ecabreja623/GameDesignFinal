@@ -6,8 +6,7 @@ var kph = 0;
 var player_health = 100;
 var nitro_fuel = 100;
 
-var enemy_health1 = 100;
-var enemy_health2 = 100;
+var enemies_left = 0;
 
 var score = 0;
 

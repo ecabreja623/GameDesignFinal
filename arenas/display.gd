@@ -18,7 +18,7 @@ func display_text():
 	self.text += '\n' + "Nitro:" + str(Globals.nitro_fuel)
 	#self.text += '\n' + "Power ups:" + str(Globals.power_ups_collected)
 	# self.text += '\n' + "Gear:" + str(Globals.gear)
-	#self.text += '\n' + "Health Enemy1: " + str(Globals.enemy_health1)
+	self.text += '\n' + "Enemies left: " + str(Globals.enemies_left)
 	#self.text += '\n' + "Health Enemy2: " + str(Globals.enemy_health2)
 	self.text += '\n' + "Speed(KPH):" + str(Globals.kph)
 	
@@ -56,8 +56,7 @@ func _process(delta):
 			get_tree().reload_current_scene();
 			
 			
-	elif (Globals.enemy_health1 <= 0 and Globals.enemy_health2 <= 0):
-		
+	elif Globals.enemies_left < 0:
 		display_game_win_text()
 		if (Input.is_action_pressed("ui_cancel")):
 			Globals.kph = 0;
@@ -71,8 +70,8 @@ func _process(delta):
 
 			Globals.player_pos = Vector3.ZERO;
 			
-			Globals.enemy_health1 = 100;
-			Globals.enemy_health2 = 100;
+#			Globals.enemy_health1 = 100;
+#			Globals.enemy_health2 = 100;
 
 			get_tree().reload_current_scene()
 	else:
