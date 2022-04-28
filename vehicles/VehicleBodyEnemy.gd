@@ -80,7 +80,7 @@ func _physics_process(delta):
 		get_node("AnimationPlayer").play("despawn")
 		yield(get_node("AnimationPlayer"), "animation_finished")
 		queue_free()
-
+		
 	var distance_to_player = transform.origin.distance_to(Globals.player_pos)
 	
 	#print_debug("Player")
@@ -248,6 +248,7 @@ func _on_VehicleBody_body_entered(body):
 			elif self.is_in_group('enemy2'):
 				Globals.enemy_health2 -= abs(Globals.kph) * 0.1
 			health -= abs(Globals.kph) * 0.1
+			$Healthbar3D.update(health, max_health)
 		
 		else:
 			if self.is_in_group('enemy1'):
@@ -255,6 +256,7 @@ func _on_VehicleBody_body_entered(body):
 			elif self.is_in_group('enemy2'):
 				Globals.enemy_health2 -= abs(Globals.kph) * 0.3
 			health -= abs(Globals.kph) * 0.3
+			$Healthbar3D.update(health, max_health)
 			Globals.score += 5
 			Globals.player_health -= abs(kph) * 0.1
 			
