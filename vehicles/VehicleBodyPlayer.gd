@@ -141,7 +141,32 @@ func _physics_process(delta):
 	Globals.kph = kph;
 	var omega = local_velocity / wheel_radius * 6.28;
 	var rpm = abs(omega) * abs(gear_ratios[current_gear]) * differential_ratio * (60.0 / 6.28)
-
+	
+	#SpeedLines
+	
+	if kph<40:
+		get_node("SpeedLines/Particles2D").emitting = false
+		get_node("SpeedLines/Particles2D").speed_scale = 0.2
+		
+	elif kph >= 40 and kph <50:
+		get_node("SpeedLines/Particles2D").emitting = true
+		get_node("SpeedLines/Particles2D").amount = 5
+	elif kph >= 50 and kph <60:
+		get_node("SpeedLines/Particles2D").emitting = true
+		get_node("SpeedLines/Particles2D").amount = 6
+	elif kph >= 60 and kph <70:
+		get_node("SpeedLines/Particles2D").emitting = true
+		get_node("SpeedLines/Particles2D").amount = 8
+	elif kph >= 70 and kph <80:
+		get_node("SpeedLines/Particles2D").emitting = true
+		get_node("SpeedLines/Particles2D").amount = 10
+	else:
+		get_node("SpeedLines/Particles2D").emitting = true
+		get_node("SpeedLines/Particles2D").amount = 11
+	print(get_node("SpeedLines/Particles2D").emitting)
+	
+		
+	
 	if rpm < torque_curve_rpms[0]:
 		rpm = torque_curve_rpms[0]
 	if rpm > torque_curve_rpms[5] and nitro_toggle == 0:
