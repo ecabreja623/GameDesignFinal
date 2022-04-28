@@ -49,6 +49,8 @@ export var has_handbrake = true
 
 var cooldown = 0;
 
+var airborne = false;
+
 func _ready():
 	steering_speed_range = steering_to_speed - steering_from_speed
 	current_gear = 1
@@ -83,8 +85,22 @@ func _physics_process(delta):
 	if Globals.player_health <= 0:
 		queue_free()
 	
+	if !(get_node("VehicleWheel").is_in_contact() and  get_node("VehicleWheel2").is_in_contact()
+		and  get_node("VehicleWheel3").is_in_contact() and  get_node("VehicleWheel4").is_in_contact()):
+		airborne = true;
+	else:
+		airborne = false;
+	
 	cooldown -= delta;
 	Globals.player_pos = global_transform.origin;
+	
+	if Input.is_action_just_pressed("ui_select"):
+		if Globals.mine_ready:
+			# add mine code here
+			print_debug("mine dropped BOOM");
+		else:
+			# mine powerup not available, play sound to indicate error
+			print_debug("no mine powerup available")
 	
 	if (Input.is_action_pressed("ui_left")):
 		steering_target = 1

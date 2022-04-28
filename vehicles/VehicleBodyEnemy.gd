@@ -57,7 +57,7 @@ export var has_handbrake = true
 
 var kph;
 var despawn = false;
-
+var airborne = false;
 
 func _ready():
 	Globals.enemies_left += 1
@@ -87,6 +87,12 @@ func _physics_process(delta):
 		get_node("AnimationPlayer").play("despawn")
 		yield(get_node("AnimationPlayer"), "animation_finished")
 		queue_free()
+	
+	if !(get_node("VehicleWheel").is_in_contact() and  get_node("VehicleWheel2").is_in_contact()
+		and  get_node("VehicleWheel3").is_in_contact() and  get_node("VehicleWheel4").is_in_contact()):
+		airborne = true;
+	else:
+		airborne = false;
 		
 	var distance_to_player = transform.origin.distance_to(Globals.player_pos)
 	

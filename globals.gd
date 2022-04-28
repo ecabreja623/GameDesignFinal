@@ -15,4 +15,6 @@ var gear = 0;
 
 var player_pos = Vector3.ZERO;
 
+var mine_ready = false;
+
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://arenas/arena.gd" type="Script" id=1]
 [ext_resource path="res://track/track.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://vehicles/monster/monster.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/Healthbar3D.tscn" type="PackedScene" id=17]
 [ext_resource path="res://vehicles/gt/gt.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/Mine.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/nitro_display.gd" type="Script" id=20]
 [ext_resource path="res://props/cone/cone.tscn" type="PackedScene" id=21]
 [ext_resource path="res://props/dumpster/dumpster.tscn" type="PackedScene" id=22]
@@ -367,10 +368,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.176, 3.70554, 93.6412 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.0206, -0.734612, -21.1923 )
 
 [node name="Powerup3" parent="Powerups/Health" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 34.6498, 12.4184, 32.8383 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.679, 9.69411, -41.706 )
 
 [node name="Powerup2" parent="Powerups/Health" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09975, 195.722 )
+
+[node name="Mine" parent="Powerups" instance=ExtResource( 19 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 29, 12, 32 )
 
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel2" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel2" method="_on_Barrel_body_entered"]
@@ -384,3 +388,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09975, 195.722 )
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel10" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel10" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel11" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel11" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel12" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel12" method="_on_Barrel_body_entered"]
+[connection signal="body_shape_entered" from="Powerups/Mine" to="Powerups/Mine" method="_on_Mine_body_shape_entered"]
