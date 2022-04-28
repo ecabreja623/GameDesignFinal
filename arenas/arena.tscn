@@ -79,6 +79,7 @@ transform = Transform( 0.0107661, -0.295799, -0.955189, -0.0092111, 0.955175, -0
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.0279846, 0.816637, -0.576473, -0.0395966, 0.577152, 0.815676, 0.998824, -1.86045e-09, 0.0484874, 0, 28.959, 0 )
+light_color = Color( 0.952941, 0.741176, 0.411765, 1 )
 shadow_enabled = true
 shadow_bias = 0.0
 
@@ -335,7 +336,7 @@ transform = Transform( -0.0520571, 0, 0.998644, 0, 1, 0, -0.998644, 0, -0.052057
 transform = Transform( 1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 1.23649, 0 )
 
 [node name="VehicleBody7" parent="Navigation/Enemies" groups=["enemy1"] instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20597, -1.35219, 130.526 )
+transform = Transform( -0.999884, 0, 0.0152186, 0, 1, 0, -0.0152186, 0, -0.999884, 1.20597, -1.35219, 130.526 )
 
 [node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody7" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36265, 0 )

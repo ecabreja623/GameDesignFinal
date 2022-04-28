@@ -84,8 +84,8 @@ func _physics_process(delta):
 
 	if health <= 0:
 		despawn = true
-		get_node("AnimationPlayer").play("despawn")
-		yield(get_node("AnimationPlayer"), "animation_finished")
+		#get_node("AnimationPlayer").play("despawn")
+		#yield(get_node("AnimationPlayer"), "animation_finished")
 		queue_free()
 	
 	if !(get_node("VehicleWheel").is_in_contact() and  get_node("VehicleWheel2").is_in_contact()
@@ -126,14 +126,14 @@ func _physics_process(delta):
 			throttle = 0.8;
 		else:
 			steering_target = -1;
-			throttle = 0.4;
+			throttle = 0.5;
 			
 	elif "enemy2" in groups_list:
 		if dot > 0:
 			throttle = 0.5;
 		else:
 			steering_target = -1;
-			throttle = 0.4;
+			throttle = 0.5;
 	
 
 	
@@ -144,16 +144,17 @@ func _physics_process(delta):
 	else:
 		steering_target = -1;
 	
-	if abs(kph) < 2:
-		stop_frame_count += 1
-	elif kph > 2:
-		stop_frame_count = 0
-	elif kph < -40:
-		stop_frame_count -= 1
+	if kph < 5 and stop_frame_count < 100:
+		stop_frame_count += 1;
+	elif kph > 15:
+		stop_frame_count = 0;
+	
+
 		
 	if stop_frame_count > 100:
-		throttle = -0.5
-		steering_target = 0
+		print("reverse", kph, "-", stop_frame_count)
+		throttle = -0.6;
+		steering_target = 0;
 		
 	if current_gear == 0:
 		if throttle != 0:
