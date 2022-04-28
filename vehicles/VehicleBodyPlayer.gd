@@ -164,7 +164,7 @@ func _physics_process(delta):
 	else:
 		get_node("SpeedLines/Particles2D").emitting = true
 		get_node("SpeedLines/Particles2D").amount = 11
-	print(get_node("SpeedLines/Particles2D").emitting)
+	# print(get_node("SpeedLines/Particles2D").emitting)
 	
 		
 	
