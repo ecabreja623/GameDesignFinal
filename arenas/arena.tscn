@@ -144,43 +144,43 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7241, 1.81169, 58.9014 )
 
 [node name="Static Objects" type="Spatial" parent="Navigation/NavigationMeshInstance"]
 
-[node name="Tunnel Ramp" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 28 )]
+[node name="Tunnel Ramp" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 28 )]
 transform = Transform( -0.334218, 0, -1.41374, 0, 1, 0, 0.942496, 0, -0.501327, -70.5479, -1.47332, -79.5381 )
 
-[node name="Super Jump" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 12 )]
+[node name="Super Jump" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.9622, -1.20808, 33.4412 )
 
-[node name="Simple Jump" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 14 )]
+[node name="Simple Jump" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 14 )]
 transform = Transform( -0.999838, 0, -0.0180283, 0, 1, 0, 0.0180283, 0, -0.999838, -100.973, -1.01028, 77.3615 )
 
-[node name="Simple Jump2" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 14 )]
+[node name="Simple Jump2" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 14 )]
 transform = Transform( 0.00671957, 0, -0.999977, 0, 1, 0, 0.999977, 0, 0.00671957, -40.3813, -1.07674, 94.535 )
 
-[node name="Simple Jump3" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 14 )]
+[node name="Simple Jump3" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 14 )]
 transform = Transform( -0.027032, 0, 0.999635, 0, 1, 0, -0.999635, 0, -0.027032, -11.5747, -1.06948, 94.7457 )
 
-[node name="Loop" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 25 )]
+[node name="Loop" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["staic"] instance=ExtResource( 25 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.978, -1.53543, -44.8983 )
 
-[node name="Ring" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 26 )]
+[node name="Ring" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 26 )]
 transform = Transform( -0.0294222, 0, 0.999567, 0, 1, 0, -0.999567, 0, -0.0294222, 29.7694, -1.26675, 33.1363 )
 
-[node name="Tunnel" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 27 )]
+[node name="Tunnel" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 27 )]
 transform = Transform( 0.0501223, 0, -0.998743, -0.0421715, 0.999108, -0.00211643, 0.997852, 0.0422244, 0.0500776, -51.0652, -1.42177, -37.0397 )
 
-[node name="Kicker" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 24 )]
+[node name="Kicker" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 24 )]
 transform = Transform( -0.0229491, 0, 0.999737, 0, 1, 0, -0.999737, 0, -0.0229491, -53.4144, -1.43437, 1.33122 )
 mode = 1
 
-[node name="Big Box" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 13 )]
+[node name="Big Box" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0879, -1.25328, 94.1052 )
 
 [node name="Rigid Objects" type="Spatial" parent="Navigation/NavigationMeshInstance"]
 
-[node name="Dumpster" parent="Navigation/NavigationMeshInstance/Rigid Objects" groups=["props"] instance=ExtResource( 22 )]
+[node name="Dumpster" parent="Navigation/NavigationMeshInstance/Rigid Objects" groups=["props", "static"] instance=ExtResource( 22 )]
 transform = Transform( -0.104372, 0, 0.994538, 0, 1, 0, -0.994538, 0, -0.104372, -26.9105, -0.789845, 89.7999 )
 
-[node name="Garage Stand" parent="Navigation/NavigationMeshInstance/Rigid Objects" groups=["props"] instance=ExtResource( 23 )]
+[node name="Garage Stand" parent="Navigation/NavigationMeshInstance/Rigid Objects" groups=["props", "static"] instance=ExtResource( 23 )]
 transform = Transform( 0.0839039, 0, -0.996474, 0, 1, 0, 0.996474, 0, 0.0839039, -100.862, -0.987846, 68.721 )
 
 [node name="Barrels" type="Spatial" parent="Navigation/NavigationMeshInstance/Rigid Objects"]
@@ -228,7 +228,7 @@ contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Barrel8" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1897, 1.66082, 64.2236 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1897, -1.28314, 64.2236 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
@@ -297,49 +297,50 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6444, -2.30299, 39.0675 )
 [node name="Crash" type="AudioStreamPlayer" parent="Navigation/Enemies"]
 
 [node name="VehicleBody" parent="Navigation/Enemies" groups=["enemy1"] instance=ExtResource( 15 )]
-transform = Transform( 0.910156, 0, 0.414265, 0, 1, 0, -0.414265, 0, 0.910156, -99.7461, -0.000657797, -8.85692 )
+transform = Transform( 0.910156, 0, 0.414265, 0, 1, 0, -0.414265, 0, 0.910156, -99.7461, -1.30866, -8.85692 )
 physics_material_override = SubResource( 3 )
 
 [node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0, 1.34038, 0 )
+transform = Transform( 1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0, 1.42717, 0 )
 
 [node name="VehicleBody2" parent="Navigation/Enemies" groups=["enemy2"] instance=ExtResource( 16 )]
-transform = Transform( 0.176432, 0, 0.984313, 0, 1, 0, -0.984313, 0, 0.176432, -99.4017, -0.108425, 49.8637 )
+transform = Transform( 0.176432, 0, 0.984313, 0, 1, 0, -0.984313, 0, 0.176432, -99.4017, -0.33402, 49.8637 )
 
 [node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody2" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, -7.45058e-09, 0, 1, 0, 7.45058e-09, 0, 1, 0, 1.68294, 0 )
+transform = Transform( 0.993971, 0, 0.109648, 0, 1, 0, -0.109648, 0, 0.993971, 0, 1.77096, 0 )
 
-[node name="VehicleBody3" parent="Navigation/Enemies" instance=ExtResource( 16 )]
-transform = Transform( -0.958581, 0, 0.284819, 0, 1, 0, -0.284819, 0, -0.958581, -52.4997, 1.13534, 151.599 )
+[node name="VehicleBody3" parent="Navigation/Enemies" groups=["enemy2"] instance=ExtResource( 16 )]
+transform = Transform( -0.958581, 0, 0.284819, 0, 1, 0, -0.284819, 0, -0.958581, -52.4997, -0.537396, 151.599 )
 
 [node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody3" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69821, 0 )
+transform = Transform( 0.998994, 0, -0.0448399, 0, 1, 0, 0.0448399, 0, 0.998994, 0, 1.69821, 0 )
 
-[node name="VehicleBody4" parent="Navigation/Enemies" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 59.6139, 3.4652, -64.0883 )
+[node name="VehicleBody4" parent="Navigation/Enemies" groups=["enemy2"] instance=ExtResource( 16 )]
+transform = Transform( 0.737336, 0, -0.675526, 0, 1, 0, 0.675526, 0, 0.737336, 59.6139, -0.535159, -64.0883 )
 
 [node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody4" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80019, 0 )
 
-[node name="VehicleBody5" parent="Navigation/Enemies" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.981, 7.68088, 79.8146 )
+[node name="VehicleBody5" parent="Navigation/Enemies" groups=["enemy2"] instance=ExtResource( 16 )]
+transform = Transform( 0.780026, 0, -0.625747, 0, 1, 0, 0.625747, 0, 0.780026, 26.981, -0.402914, 79.8146 )
 
 [node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody5" instance=ExtResource( 17 )]
+transform = Transform( 0.983947, 0, -0.178459, 0, 1, 0, 0.178459, 0, 0.983947, 0, 1.75733, 0 )
 
-[node name="VehicleBody6" parent="Navigation/Enemies" instance=ExtResource( 15 )]
-transform = Transform( -0.0520571, 0, 0.998644, 0, 1, 0, -0.998644, 0, -0.0520571, -98.6949, -1.20112, 93.5825 )
+[node name="VehicleBody6" parent="Navigation/Enemies" groups=["enemy1"] instance=ExtResource( 15 )]
+transform = Transform( -0.0520571, 0, 0.998644, 0, 1, 0, -0.998644, 0, -0.0520571, -98.6949, -1.3333, 93.5825 )
 
 [node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody6" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 1.11759e-08, 0, 1, 0, -1.11759e-08, 0, 1, 0, 1.23649, 0 )
+transform = Transform( 1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 1.23649, 0 )
 
-[node name="VehicleBody7" parent="Navigation/Enemies" instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20597, -0.393372, 130.526 )
+[node name="VehicleBody7" parent="Navigation/Enemies" groups=["enemy1"] instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20597, -1.35219, 130.526 )
 
 [node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody7" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36265, 0 )
 
-[node name="VehicleBody8" parent="Navigation/Enemies" instance=ExtResource( 15 )]
-transform = Transform( -0.362715, 0, -0.9319, 0, 1, 0, 0.9319, 0, -0.362715, 31.7691, -0.872433, -42.4494 )
+[node name="VehicleBody8" parent="Navigation/Enemies" groups=["enemy1"] instance=ExtResource( 15 )]
+transform = Transform( -0.362715, 0, -0.9319, 0, 1, 0, 0.9319, 0, -0.362715, 31.7691, -1.20311, -42.4494 )
 
 [node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody8" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29501, 0 )

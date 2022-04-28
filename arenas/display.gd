@@ -50,9 +50,6 @@ func _process(delta):
 
 			Globals.player_pos = Vector3.ZERO;
 			
-			Globals.enemy_health1 = 100;
-			Globals.enemy_health2 = 100;
-
 			get_tree().reload_current_scene();
 			
 			

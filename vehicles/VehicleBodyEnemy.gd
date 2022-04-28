@@ -4,19 +4,23 @@ extends VehicleBody
 var health = 100
 var max_health = 100
 
-export var steering_max_angle = 0.75
+export var steering_max_angle = 0.70
 export var steering_speed = 4.0
 export var steering_percent_drop = 0.75
 export var steering_from_speed = 18
-export var steering_to_speed = 100
+export var steering_to_speed = 90
+
 var steering_speed_range = 0
 var steering_target = 0
 var steering_angle = 0
 
+var num_frame = 0
+var wheel_contact = 0
 var throttle = 0;
 var brakes = false
 var start_sound = false
 
+var groups_list = []
 var path = []
 var curr_path_index = 0
 var target = null
@@ -41,7 +45,7 @@ export var friction_coefficient = -0.8
 export var drag_coefficient = -0.8
 export var brake_strength = 25
 
-export var frame_count = 0
+var stop_frame_count = 0
 var current_gear
 var spin_out = 8
 export var slip_speed = 9.0
@@ -49,34 +53,31 @@ export var traction_slow = 0.75
 export var traction_fast = 0.02
 
 var drifting = false
-
-export var nitro_usage = 0.2
-var nitro_toggle = 0
 export var has_handbrake = true
 
-var kph
-
+var kph;
 var despawn = false;
 
 
 func _ready():
 	Globals.enemies_left += 1
-
+	groups_list = get_groups()
 	steering_speed_range = steering_to_speed - steering_from_speed
 	current_gear = 1
-	
-	target = Globals.player_pos
-	
-	get_target_path(target)
-	
-
-func compute():
-	pass
 
 func _exit_tree():
 	Globals.enemies_left -= 1
+	
 
 func _physics_process(delta):
+	if num_frame > 100:
+		if 'enemy1' in groups_list:
+			apply_impulse(Vector3(1, 0, 0), Vector3(0, mass * 2, 0))
+		elif 'enemy2' in groups_list:
+			apply_impulse(Vector3(1, 0, 0), Vector3(0, mass * 3, 0))
+		num_frame = 40
+		
+		# print('upside down')
 	if Input.is_action_pressed("enemy_destory"):
 		health -= 1
 		$Healthbar3D.update(health, max_health)
@@ -89,31 +90,10 @@ func _physics_process(delta):
 		
 	var distance_to_player = transform.origin.distance_to(Globals.player_pos)
 	
-	#print_debug("Player")
-	#print_debug(Globals.player_pos)
-	#print_debug("enemy:")
-	#print_debug(global_transform.origin)
-	
-	
-	
-	# steering_angle += steering_speed * steering_target * delta
-
-	
 	var wheel_radius = get_node("VehicleWheel").wheel_radius
 	var local_velocity = get_transform().basis.z.dot(linear_velocity)
 
 	kph = abs(local_velocity * 3.6);
-	
-	#Globals.kph = kph;
-	
-#	if abs(kph)< 0.5: # and frame_count == 10:
-#		apply_impulse(Vector3(1, 0, 0), Vector3(0, mass * 2, 0))
-#	else:
-#		if abs(kph) > 1:
-#			frame_count = 0
-#		else:
-#			# print(kph, frame_count)
-#			frame_count += 1
 
 	var omega = local_velocity / wheel_radius * 6.28;
 	var rpm = abs(omega) * abs(gear_ratios[current_gear]) * differential_ratio * (60.0 / 6.28)
@@ -121,7 +101,7 @@ func _physics_process(delta):
 
 	if rpm < torque_curve_rpms[0]:
 		rpm = torque_curve_rpms[0]
-	if rpm > torque_curve_rpms[5] and nitro_toggle == 0:
+	if rpm > torque_curve_rpms[5]:
 		rpm = torque_curve_rpms[5]
 
 	if (current_gear == 1 and omega <= 1.0 and omega >= 0 and brake > 0):
@@ -130,26 +110,44 @@ func _physics_process(delta):
 		
 	target = Globals.player_pos
 	
-	#if curr_path_index >= path.size():
-	#	return
-	
 	var dirToMovePosition = target - transform.origin
-	
 	var dot = get_global_transform().basis.z.dot(dirToMovePosition)
-	
-	#print_debug(dot)
-	if dot > 0:
-		throttle = 0.7;
-	else:
-		throttle = -0.7;
-		
 	var angleToDir = get_global_transform().basis.z.signed_angle_to(dirToMovePosition, Vector3.UP)
-	#print_debug(angleToDir)	# left is positive, right is negative
 	
-	if angleToDir > 0:
+	
+	if "enemy1" in groups_list:
+		if dot > 0:
+			throttle = 0.8;
+		else:
+			steering_target = -1;
+			throttle = 0.4;
+			
+	elif "enemy2" in groups_list:
+		if dot > 0:
+			throttle = 0.5;
+		else:
+			steering_target = -1;
+			throttle = 0.4;
+	
+
+	
+	if angleToDir > -0.15 and angleToDir < 0.15:
+		steering_target = 0;
+	elif angleToDir > 0.15:
 		steering_target = 1;
 	else:
 		steering_target = -1;
+	
+	if abs(kph) < 2:
+		stop_frame_count += 1
+	elif kph > 2:
+		stop_frame_count = 0
+	elif kph < -40:
+		stop_frame_count -= 1
+		
+	if stop_frame_count > 100:
+		throttle = -0.5
+		steering_target = 0
 		
 	if current_gear == 0:
 		if throttle != 0:
@@ -163,8 +161,7 @@ func _physics_process(delta):
 			current_gear -= 1
 	else:
 		pass
-		#if rpm < 2000:
-		#	rpm = 2000
+
 
 	if current_gear > 0 and rpm > torque_curve_rpms[4] and current_gear < 5:
 		current_gear += 1
@@ -193,8 +190,20 @@ func _physics_process(delta):
 	# get_node("VehicleWheel").traction = traction_fast if drifting else traction_slow
 	# get_node("VehicleWheel2").traction = traction_fast if drifting else traction_slow
 	# velocity = lerp(velocity, new_heading * velocity.length(), traction)		
-
-
+	wheel_contact = 0
+	if get_node("VehicleWheel").is_in_contact():
+		wheel_contact += 1
+	if get_node("VehicleWheel2").is_in_contact():
+		wheel_contact += 1
+	if get_node("VehicleWheel3").is_in_contact():
+		wheel_contact += 1
+	if get_node("VehicleWheel4").is_in_contact():
+		wheel_contact += 1
+	if wheel_contact < 3:
+		num_frame += 1
+	else: 
+		num_frame = 0
+		
 	steering_angle += steering_speed * steering_target * delta
 
 	#re-center if not steering
@@ -211,17 +220,15 @@ func _physics_process(delta):
 	#calculate the new max steering angle based on velocity data
 	var max_steer = steering_max_angle
 
-#	if kph < steering_from_speed:
-#		#going slower than the minimum speed, so no change.
-#		pass 
-#	elif kph > steering_to_speed:
-#		#going faster than highest speed, so remove completely!
-#		max_steer -= max_steer * steering_percent_drop
-#
-#	else:
-#		#inside the range [steering_from_speed, steering_to_speed]
-#		var steer_delta = (kph - steering_from_speed) / steering_speed_range
-#		max_steer -= max_steer * steering_percent_drop * steer_delta
+	if kph < steering_from_speed:
+		pass 
+	elif kph > steering_to_speed:
+		#going faster than highest speed, so remove completely!
+		max_steer -= max_steer * steering_percent_drop
+
+	else:
+		var steer_delta = (kph - steering_from_speed) / steering_speed_range
+		max_steer -= max_steer * steering_percent_drop * steer_delta
 #
 	if steering_angle > max_steer:
 		steering_angle = max_steer
@@ -230,37 +237,22 @@ func _physics_process(delta):
 
 	steering = steering_angle
 
-func move_to_target(delta):
-	pass
 
-		
 		
 func get_target_path(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
-	
 	curr_path_index = 0
-	
-	
-	
+
 
 func _on_VehicleBody_body_entered(body):
 	
 	if body.is_in_group('player') and despawn == false:
 		if abs(kph) > abs(Globals.kph):	#enemy is moving faster than player
-			
 			Globals.player_health -= abs(kph) * 0.3
-#			if self.is_in_group('enemy1'):
-#				Globals.enemy_health1 -= abs(Globals.kph) * 0.1
-#			elif self.is_in_group('enemy2'):
-#				Globals.enemy_health2 -= abs(Globals.kph) * 0.1
 			health -= abs(Globals.kph) * 0.1
 			$Healthbar3D.update(health, max_health)
 		
 		else:
-#			if self.is_in_group('enemy1'):
-#				Globals.enemy_health1 -= abs(Globals.kph) * 0.3
-#			elif self.is_in_group('enemy2'):
-#				Globals.enemy_health2 -= abs(Globals.kph) * 0.3
 			health -= abs(Globals.kph) * 0.3
 			$Healthbar3D.update(health, max_health)
 			Globals.score += 5
@@ -270,8 +262,12 @@ func _on_VehicleBody_body_entered(body):
 			#$Crash.stream_paused = false
 		#else:
 		#$Crash.play()
-			
-	
+	elif body.is_in_group("enemy"):
+		health -= abs(kph)*0.3
+		body.health -= abs(kph)*0.3
+#	else:
+#		if body.is_in_group("static"):
+#			print("need help")			
 			
 	return
 

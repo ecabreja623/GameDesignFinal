@@ -7,7 +7,7 @@ export var steering_max_angle = 0.75
 export var steering_speed = 4.0
 export var steering_percent_drop = 0.75
 export var steering_from_speed = 18
-export var steering_to_speed = 100
+export var steering_to_speed = 120
 var health = 100;
 var max_health = 100;
 var steering_speed_range = 0
@@ -333,12 +333,11 @@ func doSkidmarks():
 
 func _on_CollisionArea_body_entered(body):
 	if body.is_in_group("track"):
-		
 		if cooldown <= 0:
 			Globals.player_health -= abs(Globals.kph) * 0.05
 			cooldown = 1
 	if body.is_in_group("enemy"):
-		print("enemy fire")
+		#print("enemy fire")
 		$CarCrash.play()
 	return
 
