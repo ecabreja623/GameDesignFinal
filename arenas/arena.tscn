@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://arenas/arena.gd" type="Script" id=1]
 [ext_resource path="res://track/track.tscn" type="PackedScene" id=2]
@@ -14,9 +14,6 @@
 [ext_resource path="res://props/super_jump1/super_jump1.tscn" type="PackedScene" id=12]
 [ext_resource path="res://props/bigbox/bigbox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://props/simple_jump1/simple_jump1.tscn" type="PackedScene" id=14]
-[ext_resource path="res://vehicles/pantera/pantera.tscn" type="PackedScene" id=15]
-[ext_resource path="res://vehicles/monster/monster.tscn" type="PackedScene" id=16]
-[ext_resource path="res://assets/Healthbar3D.tscn" type="PackedScene" id=17]
 [ext_resource path="res://vehicles/gt/gt.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/Mine.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/nitro_display.gd" type="Script" id=20]
@@ -64,9 +61,6 @@ func _on_HealthBar2D_gui_input(event):
 "
 
 [sub_resource type="NavigationMesh" id=4]
-
-[sub_resource type="PhysicsMaterial" id=3]
-friction = 0.01
 
 [node name="Arena" type="Spatial"]
 script = ExtResource( 1 )
@@ -295,57 +289,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3802, 0.177263, 39.0675 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6444, -2.30299, 39.0675 )
 
 [node name="Enemies" type="Spatial" parent="Navigation"]
-
-[node name="Crash" type="AudioStreamPlayer" parent="Navigation/Enemies"]
-
-[node name="VehicleBody" parent="Navigation/Enemies" groups=["enemy1"] instance=ExtResource( 15 )]
-transform = Transform( 0.910156, 0, 0.414265, 0, 1, 0, -0.414265, 0, 0.910156, -99.7461, -1.30866, -8.85692 )
-physics_material_override = SubResource( 3 )
-
-[node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0, 1.42717, 0 )
-
-[node name="VehicleBody2" parent="Navigation/Enemies" groups=["enemy2"] instance=ExtResource( 16 )]
-transform = Transform( 0.176432, 0, 0.984313, 0, 1, 0, -0.984313, 0, 0.176432, -99.4017, -0.33402, 49.8637 )
-
-[node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody2" instance=ExtResource( 17 )]
-transform = Transform( 0.993971, 0, 0.109648, 0, 1, 0, -0.109648, 0, 0.993971, 0, 1.77096, 0 )
-
-[node name="VehicleBody3" parent="Navigation/Enemies" groups=["enemy2"] instance=ExtResource( 16 )]
-transform = Transform( -0.958581, 0, 0.284819, 0, 1, 0, -0.284819, 0, -0.958581, -52.4997, -0.537396, 151.599 )
-
-[node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody3" instance=ExtResource( 17 )]
-transform = Transform( 0.998994, 0, -0.0448399, 0, 1, 0, 0.0448399, 0, 0.998994, 0, 1.69821, 0 )
-
-[node name="VehicleBody4" parent="Navigation/Enemies" groups=["enemy2"] instance=ExtResource( 16 )]
-transform = Transform( 0.737336, 0, -0.675526, 0, 1, 0, 0.675526, 0, 0.737336, 59.6139, -0.535159, -64.0883 )
-
-[node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody4" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80019, 0 )
-
-[node name="VehicleBody5" parent="Navigation/Enemies" groups=["enemy2"] instance=ExtResource( 16 )]
-transform = Transform( 0.780026, 0, -0.625747, 0, 1, 0, 0.625747, 0, 0.780026, 26.981, -0.402914, 79.8146 )
-
-[node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody5" instance=ExtResource( 17 )]
-transform = Transform( 0.983947, 0, -0.178459, 0, 1, 0, 0.178459, 0, 0.983947, 0, 1.75733, 0 )
-
-[node name="VehicleBody6" parent="Navigation/Enemies" groups=["enemy1"] instance=ExtResource( 15 )]
-transform = Transform( -0.0520571, 0, 0.998644, 0, 1, 0, -0.998644, 0, -0.0520571, -98.6949, -1.3333, 93.5825 )
-
-[node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody6" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 1.23649, 0 )
-
-[node name="VehicleBody7" parent="Navigation/Enemies" groups=["enemy1"] instance=ExtResource( 15 )]
-transform = Transform( -0.999884, 0, 0.0152186, 0, 1, 0, -0.0152186, 0, -0.999884, 1.20597, -1.35219, 130.526 )
-
-[node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody7" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36265, 0 )
-
-[node name="VehicleBody8" parent="Navigation/Enemies" groups=["enemy1"] instance=ExtResource( 15 )]
-transform = Transform( -0.362715, 0, -0.9319, 0, 1, 0, 0.9319, 0, -0.362715, 31.7691, -1.20311, -42.4494 )
-
-[node name="Healthbar3D" parent="Navigation/Enemies/VehicleBody8" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29501, 0 )
 
 [node name="Powerups" type="Spatial" parent="."]
 

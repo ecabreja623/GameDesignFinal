@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GameDesignFinal"
-run/main_scene="res://arenas/arena.tscn"
+run/main_scene="res://Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

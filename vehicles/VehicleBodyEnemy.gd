@@ -60,8 +60,21 @@ var despawn = false;
 var airborne = false;
 var rng = RandomNumberGenerator.new()
 
+func set_health(temp_string):
+	var health_bar = load("res://assets/Healthbar3D.tscn").instance()
+	if temp_string == 'pantera':
+		health_bar.translation.y += 1.52
+	elif temp_string == 'monster':
+		health_bar.translation.y += 1.72
+	add_child(health_bar)
+	
 func _ready():
 	Globals.enemies_left += 1
+	groups_list = get_groups()
+	if 'enemy1' in groups_list:
+		set_health('pantera')
+	else:
+		set_health('monster')
 	groups_list = get_groups()
 	steering_speed_range = steering_to_speed - steering_from_speed
 	current_gear = 1
