@@ -101,8 +101,9 @@ func _physics_process(delta):
 
 	if health <= 0:
 		despawn = true
-		#get_node("AnimationPlayer").play("despawn")
-		#yield(get_node("AnimationPlayer"), "animation_finished")
+		$Explosion._explosion()
+		get_node("AnimationPlayer").play("despawn")
+		yield(get_node("AnimationPlayer"), "animation_finished")
 		queue_free()
 	
 	if !(get_node("VehicleWheel").is_in_contact() and  get_node("VehicleWheel2").is_in_contact()

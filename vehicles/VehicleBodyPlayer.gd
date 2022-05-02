@@ -49,6 +49,8 @@ export var has_handbrake = true
 
 var cooldown = 0;
 
+var explosion_countdown = 2;
+
 var airborne = false;
 
 func _ready():
@@ -83,7 +85,10 @@ func _physics_process(delta):
 		apply_impulse(Vector3(1, 0, 0), Vector3(0, mass * 2, 0))
 	
 	if Globals.player_health <= 0:
-		queue_free()
+		$Explosion._explosion();
+		explosion_countdown -= delta
+		if explosion_countdown <= 0:
+			queue_free()
 	
 	if !(get_node("VehicleWheel").is_in_contact() and  get_node("VehicleWheel2").is_in_contact()
 		and  get_node("VehicleWheel3").is_in_contact() and  get_node("VehicleWheel4").is_in_contact()):
