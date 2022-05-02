@@ -1,5 +1,6 @@
 extends VehicleBody
 
+var floating_text = preload("res://floatingtext.tscn")
 # Member variables
 var health = 100
 var max_health = 100
@@ -273,15 +274,20 @@ func get_target_path(target_pos):
 
 
 func _on_VehicleBody_body_entered(body):
+	var text = floating_text.instance()
 	
 	if body.is_in_group('player') and despawn == false:
 		if abs(kph) > abs(Globals.kph):	#enemy is moving faster than player
 			Globals.player_health -= abs(kph) * 0.3
-			health -= abs(Globals.kph) * 0.1
+			var enemydamage = abs(Globals.kph) * 0.1
+			health -= enemydamage
+			add_child(text)
 			$Healthbar3D.update(health, max_health)
 		
 		else:
-			health -= abs(Globals.kph) * 0.3
+			var enemydamage = abs(Globals.kph) * 0.3
+			health -= enemydamage
+			add_child(text)
 			$Healthbar3D.update(health, max_health)
 			Globals.score += 5
 			Globals.player_health -= abs(kph) * 0.1
