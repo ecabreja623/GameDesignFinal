@@ -53,6 +53,9 @@ var explosion_countdown = 2;
 
 var airborne = false;
 
+var bomb = preload("res://Bomb.tscn")
+var bomb_script = preload("res://Bomb.gd")
+
 func _ready():
 	steering_speed_range = steering_to_speed - steering_from_speed
 	current_gear = 1
@@ -102,7 +105,14 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_select"):
 		if Globals.mine_ready:
 			# add mine code here
-			print_debug("mine dropped BOOM");
+			
+			var bomb_instance = bomb.instance()
+			bomb_instance.set_script(bomb_script)
+			bomb_instance.translation = translation
+			
+			get_parent().add_child(bomb_instance)
+			
+			print_debug("mine dropped");
 		else:
 			# mine powerup not available, play sound to indicate error
 			print_debug("no mine powerup available")
@@ -357,8 +367,10 @@ func _on_CollisionArea_body_entered(body):
 		if cooldown <= 0:
 			Globals.player_health -= abs(Globals.kph) * 0.05
 			cooldown = 1
+			
 	if body.is_in_group("enemy"):
 		#print("enemy fire")
 		$CarCrash.play()
+	
 	return
 

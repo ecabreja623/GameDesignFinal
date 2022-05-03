@@ -274,19 +274,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -99.7929, 0.834215, 63.2883 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -103.105, -1.01164, 61.7421 )
 
 [node name="Cone2" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.8903, -1.79882, 28.5312 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.8903, -1.39251, 28.5312 )
 
 [node name="Cone3" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7092, -1.68113, 28.5312 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7092, -1.45707, 28.5312 )
 
 [node name="Cone4" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7092, -1.46828, 39.0675 )
 
 [node name="Cone5" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3802, 0.177263, 39.0675 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3802, -1.38675, 39.0675 )
 
 [node name="Cone6" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6444, -2.30299, 39.0675 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6444, -1.38083, 39.0675 )
 
 [node name="Enemies" type="Spatial" parent="Navigation"]
 
@@ -320,6 +320,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09975, 195.722 )
 [node name="Mine" parent="Powerups" instance=ExtResource( 19 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 39.9634, 12, 32 )
 
+[node name="Mine2" parent="Powerups" instance=ExtResource( 19 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 39.9634, -0.860166, 48.6111 )
+
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel2" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel2" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel3" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel3" method="_on_Barrel_body_entered"]
@@ -333,3 +336,4 @@ transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 39.9634, 12, 32 )
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel11" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel11" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel12" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel12" method="_on_Barrel_body_entered"]
 [connection signal="body_shape_entered" from="Powerups/Mine" to="Powerups/Mine" method="_on_Mine_body_shape_entered"]
+[connection signal="body_shape_entered" from="Powerups/Mine2" to="Powerups/Mine2" method="_on_Mine_body_shape_entered"]

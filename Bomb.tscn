@@ -1,0 +1,171 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Bomb.gd" type="Script" id=1]
+
+[sub_resource type="SphereShape" id=1]
+radius = 1.91351
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0, 0, 0, 1 )
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id=3]
+material = SubResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0, 0, 0, 1 )
+roughness = 0.0
+
+[sub_resource type="CylinderMesh" id=5]
+material = SubResource( 4 )
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.2
+
+[sub_resource type="SphereShape" id=6]
+radius = 8.01603
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_transparent = true
+albedo_color = Color( 0.596078, 0.0823529, 0.0392157, 0 )
+
+[sub_resource type="SphereMesh" id=8]
+material = SubResource( 7 )
+radius = 2.0
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ExplosionBlast:mesh:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ExplosionBlast:mesh:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ExplosionBlast:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ExplosionBlast:mesh:material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.596078, 0.0823529, 0.0392157, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "explosion"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ExplosionBlast:mesh:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 4.0, 8.0, 12.0, 16.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ExplosionBlast:mesh:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, 4.0, 6.0, 8.02 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ExplosionBlast:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ExplosionBlast:mesh:material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.596078, 0.0823529, 0.0392157, 1 ), Color( 0.596078, 0.196078, 0.0392157, 1 ), Color( 0.737255, 0.584314, 0.0470588, 1 ) ]
+}
+
+[node name="Bomb" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="BombMesh" type="MeshInstance" parent="."]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.814824, 0.579708, 0, -0.579708, 0.814824, 0.080296, 0.841363, -0.523486 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="BlastArea" type="Area" parent="."]
+
+[node name="BlastRadius" type="CollisionShape" parent="BlastArea"]
+shape = SubResource( 6 )
+
+[node name="ExplosionBlast" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.96731, 0 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 9 )
+anims/explosion = SubResource( 10 )
+
+[connection signal="body_shape_entered" from="Area" to="." method="_on_Area_body_shape_entered"]
+[connection signal="body_shape_entered" from="BlastArea" to="." method="_on_BlastArea_body_shape_entered"]
