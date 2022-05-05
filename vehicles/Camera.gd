@@ -16,6 +16,14 @@ func _physics_process(_dt):
 func _process(dt):
 	var target = get_parent().get_global_transform().origin
 	var pos = get_global_transform().origin
+	
+	# make camera look backwards
+	if (Input.is_action_pressed("ui_focus_next")):
+		var aim = get_parent().get_global_transform().basis
+		var forward = aim.z
+		
+		pos += forward
+		
 	var up = Vector3(0, 1, 0)
 
 	var delta = pos - target
