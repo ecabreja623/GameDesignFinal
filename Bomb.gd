@@ -1,14 +1,11 @@
 extends Spatial
 
 var countdown = 3;
-var wait = 3;
 var exploded = false;
 
 func _ready():
 	# start ticking / counting down
 	pass
-
-
 
 func _physics_process(delta):
 	
@@ -23,7 +20,6 @@ func _physics_process(delta):
 			
 		# explode + do animation
 
-
 func _explode():
 	
 	get_node("AnimationPlayer").play("explosion")
@@ -37,7 +33,6 @@ func _explode():
 		elif victim.is_in_group("enemy"):
 			victim.health -= 50;
 			print_debug("enemy damaged by bomb")
-	
 	
 	yield(get_node("AnimationPlayer"), "animation_finished")
 	queue_free()

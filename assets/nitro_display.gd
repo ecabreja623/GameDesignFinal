@@ -1,8 +1,6 @@
 extends TextureProgress
 
-var bar_red = preload("res://assets/health_red.png")
-var bar_green = preload("res://assets/health_green.png")
-var bar_yellow = preload("res://assets/health_yellow.png")
+var bar_blue = preload("res://assets/health_blue.png")
 
 func _process(delta):
 	
@@ -11,11 +9,7 @@ func _process(delta):
 func update_nitro(amount, full):
 	if amount < full:
 		show()
-	texture_progress = bar_yellow
-	if amount < 0.75 * full:
-		texture_progress = bar_yellow
-	if value < 0.45 * full:
-		texture_progress = bar_yellow
+	texture_progress = bar_blue
 	value = amount
 
 

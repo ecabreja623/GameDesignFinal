@@ -77,30 +77,63 @@ light_color = Color( 0.952941, 0.741176, 0.411765, 1 )
 shadow_enabled = true
 shadow_bias = 0.0
 
-[node name="Speedometer" type="CanvasLayer" parent="."]
-script = ExtResource( 7 )
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Nitro" type="TextureProgress" parent="Speedometer"]
-anchor_left = 0.800781
-anchor_top = 0.946667
-anchor_right = 0.96582
-anchor_bottom = 0.988333
+[node name="Debug text" type="Label" parent="HUD"]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 151.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nitro" type="TextureProgress" parent="HUD"]
+margin_left = 820.0
+margin_top = 568.0
+margin_right = 860.0
+margin_bottom = 608.0
 script = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Health" type="TextureProgress" parent="Speedometer"]
-anchor_left = 0.800781
-anchor_top = 0.891667
-anchor_right = 0.974609
-anchor_bottom = 0.935
+[node name="Label" type="Label" parent="HUD/Nitro"]
+margin_left = -38.0
+margin_top = 6.0
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Nitro"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="TextureProgress" parent="HUD"]
+margin_left = 820.0
+margin_top = 535.0
+margin_right = 860.0
+margin_bottom = 575.0
 script = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="Speedometer"]
+[node name="Label" type="Label" parent="HUD/Health"]
+margin_left = -48.0
+margin_top = 6.0
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Health"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Speedometer" type="CanvasLayer" parent="HUD"]
+script = ExtResource( 7 )
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Speedometer"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -109,26 +142,19 @@ margin_left = -352.0
 margin_top = -296.0
 margin_right = -16.0
 margin_bottom = 8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Dial" type="Sprite" parent="Speedometer/MarginContainer"]
+[node name="Dial" type="Sprite" parent="HUD/Speedometer/MarginContainer"]
 position = Vector2( 232, 125 )
 scale = Vector2( 0.365, 0.331667 )
 texture = ExtResource( 6 )
 
-[node name="Needle" type="Sprite" parent="Speedometer/MarginContainer"]
+[node name="Needle" type="Sprite" parent="HUD/Speedometer/MarginContainer"]
 position = Vector2( 234, 128 )
 scale = Vector2( 0.196875, 0.262917 )
 texture = ExtResource( 5 )
-
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="Text display" type="Label" parent="HUD"]
-margin_left = 16.0
-margin_top = 15.0
-margin_right = 151.0
-margin_bottom = 40.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-script = ExtResource( 9 )
 
 [node name="Navigation" type="Navigation" parent="."]
 
@@ -295,13 +321,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6444, -1.38083, 39.0675 )
 [node name="NitroHandler" type="Node" parent="Powerups"]
 
 [node name="Nitro" parent="Powerups/NitroHandler" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63.3973, -2.54635, 34.5984 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63.3973, -0.00295877, 34.5984 )
 
 [node name="Nitro3" parent="Powerups/NitroHandler" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.6854, -2.54635, -36.1948 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.6854, -1.02988, -36.1948 )
 
 [node name="Nitro4" parent="Powerups/NitroHandler" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9116, -2.65607, -54.3466 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9116, -0.71671, -54.3466 )
 
 [node name="Nitro2" parent="Powerups/NitroHandler" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.176, 3.70554, 93.6412 )
@@ -317,10 +343,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.679, 9.69411, -41.706 )
 [node name="Powerup2" parent="Powerups/Health" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09975, 195.722 )
 
-[node name="Mine" parent="Powerups" instance=ExtResource( 19 )]
+[node name="Mines" type="Spatial" parent="Powerups"]
+
+[node name="Mine" parent="Powerups/Mines" instance=ExtResource( 19 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 39.9634, 12, 32 )
 
-[node name="Mine2" parent="Powerups" instance=ExtResource( 19 )]
+[node name="Mine2" parent="Powerups/Mines" instance=ExtResource( 19 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 39.9634, -0.860166, 48.6111 )
 
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" method="_on_Barrel_body_entered"]
@@ -335,5 +363,5 @@ transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 39.9634, -0.860166, 48.6
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel10" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel10" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel11" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel11" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel12" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel12" method="_on_Barrel_body_entered"]
-[connection signal="body_shape_entered" from="Powerups/Mine" to="Powerups/Mine" method="_on_Mine_body_shape_entered"]
-[connection signal="body_shape_entered" from="Powerups/Mine2" to="Powerups/Mine2" method="_on_Mine_body_shape_entered"]
+[connection signal="body_shape_entered" from="Powerups/Mines/Mine" to="Powerups/Mines/Mine" method="_on_Mine_body_shape_entered"]
+[connection signal="body_shape_entered" from="Powerups/Mines/Mine2" to="Powerups/Mines/Mine2" method="_on_Mine_body_shape_entered"]

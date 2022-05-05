@@ -13,6 +13,10 @@ func _ready():
 	$VBoxContainer/Monster.value = 4
 	$VBoxContainer/AI.value = 3
 	
+	#$panteraText.text += str($VBoxContainer/Pantera.value)
+	#$truckText.text += str($VBoxContainer/Monster.value)
+	#$difficultyText.text += str($VBoxContainer/AI.value)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,14 +38,17 @@ func _on_quit_pressed():
 
 func _on_AI_value_changed(value):
 	Globals.ai_smartness = int(value)
-	print(Globals.ai_smartness)
+	$difficultyText.text = "AI Intelligence " + str($VBoxContainer/AI.value)
+	#print(Globals.ai_smartness)
 
 
 func _on_Monster_value_changed(value):
 	Globals.num_monsters = int(value)
-	print(Globals.num_monsters)
+	$truckText.text = "Large Vehicle Count " + str($VBoxContainer/Monster.value)
+	#print(Globals.num_monsters)
 
 
 func _on_Pantera_value_changed(value):
 	Globals.num_pantera = int(value)
-	print(Globals.num_pantera)
+	$panteraText.text = "Small Vehicle Count " + str($VBoxContainer/Pantera.value)
+	#print(Globals.num_pantera)
