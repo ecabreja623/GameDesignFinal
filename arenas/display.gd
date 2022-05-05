@@ -15,12 +15,13 @@ func _ready():
 func display_text():
 	self.text = "Health: " + str(Globals.player_health)
 	self.text += '\n' + "Score:" + str(Globals.score)
-	self.text += '\n' + "Nitro:" + str(Globals.nitro_fuel)
+	# self.text += '\n' + "Nitro:" + str(Globals.nitro_fuel)
 	#self.text += '\n' + "Power ups:" + str(Globals.power_ups_collected)
 	# self.text += '\n' + "Gear:" + str(Globals.gear)
 	self.text += '\n' + "Enemies left: " + str(Globals.enemies_left)
 	#self.text += '\n' + "Health Enemy2: " + str(Globals.enemy_health2)
-	self.text += '\n' + "Speed(KPH):" + str(Globals.kph)
+	#self.text += '\n' + "Speed(KPH):" + str(Globals.kph)
+	return
 	
 func display_game_over_text():
 	self.text = "Game Over!"
@@ -34,8 +35,6 @@ func display_game_win_text():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	
-	
 	if Globals.player_health <= 0:
 		display_game_over_text()
 		if (Input.is_action_pressed("ui_cancel")):

@@ -103,8 +103,8 @@ func _physics_process(delta):
 	if health <= 0:
 		despawn = true
 		$Explosion._explosion()
-		get_node("AnimationPlayer").play("despawn")
-		yield(get_node("AnimationPlayer"), "animation_finished")
+		#get_node("AnimationPlayer").play("despawn")
+		#yield(get_node("AnimationPlayer"), "animation_finished")
 		queue_free()
 	
 	if !(get_node("VehicleWheel").is_in_contact() and  get_node("VehicleWheel2").is_in_contact()
@@ -139,45 +139,62 @@ func _physics_process(delta):
 	var dot = get_global_transform().basis.z.dot(dirToMovePosition)
 	var angleToDir = get_global_transform().basis.z.signed_angle_to(dirToMovePosition, Vector3.UP)
 	
-	
-	if "enemy1" in groups_list:
-		if dot > 0:
-			throttle = 0.8;
-		else:
-			
-			steering_target = -1;
-			throttle = 0.5;
-			
-	elif "enemy2" in groups_list:
-		if dot > 0:
-			throttle = 0.5;
-		else:
-			if rng.randi_range(0,1):
+	if Globals.ai_smartness > 2:
+		if "enemy1" in groups_list:
+			if dot > 0:
+				throttle = 0.8;
+			else:
+				
 				steering_target = -1;
+				throttle = 0.5;
+				
+		elif "enemy2" in groups_list:
+			if dot > 0:
 				throttle = 0.5;
 			else:
-				steering_target = -1;
-				throttle = 0.5;
+				if rng.randi_range(0,1):
+					steering_target = -1;
+					throttle = 0.5;
+				else:
+					steering_target = -1;
+					throttle = 0.5;
 
-	if angleToDir > -0.15 and angleToDir < 0.15:
-		steering_target = 0;
-	elif angleToDir > 0.15:
-		steering_target = 1;
+		if angleToDir > -0.15 and angleToDir < 0.15:
+			steering_target = 0;
+		elif angleToDir > 0.15:
+			steering_target = 1;
+		else:
+			steering_target = -1;
+		
+		if kph < 5 and stop_frame_count < 100:
+			stop_frame_count += 1;
+		elif kph > 15:
+			stop_frame_count = 0;
+		
+		if stop_frame_count > 100:
+			throttle = -0.6;
+			steering_target = 0;
+		
 	else:
-		steering_target = -1;
-	
-	if kph < 5 and stop_frame_count < 100:
-		stop_frame_count += 1;
-	elif kph > 15:
-		stop_frame_count = 0;
-	
-
+		if dot > 0:
+			throttle = 0.7;
+		else:
+			throttle = -0.7;
 		
-	if stop_frame_count > 100:
-		print("reverse", kph, "-", stop_frame_count)
-		throttle = -0.6;
-		steering_target = 0;
-		
+		if Globals.ai_smartness == 2:
+			if angleToDir > -0.15 and angleToDir < 0.15:
+				steering_target = 0;
+			elif angleToDir > 0.15:
+				steering_target = 1;
+			else:
+				steering_target = -1;
+		else:
+			if angleToDir > 0:
+				steering_target = 1;
+			else:
+				steering_target = -1;
+	
+	
 	if current_gear == 0:
 		if throttle != 0:
 			current_gear = 1

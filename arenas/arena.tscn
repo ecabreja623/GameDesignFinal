@@ -82,15 +82,12 @@ shadow_bias = 0.0
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="Debug text" type="Label" parent="HUD"]
-margin_left = 16.0
-margin_top = 15.0
+margin_left = 7.0
+margin_top = 9.0
 margin_right = 151.0
 margin_bottom = 40.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Nitro" type="TextureProgress" parent="HUD"]
 anchor_left = 0.716
@@ -111,9 +108,6 @@ margin_top = 6.0
 margin_right = 40.0
 margin_bottom = 14.0
 text = "Nitro"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Health" type="TextureProgress" parent="HUD"]
 anchor_left = 0.716
