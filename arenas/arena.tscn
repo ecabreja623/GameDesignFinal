@@ -91,10 +91,12 @@ __meta__ = {
 }
 
 [node name="Nitro" type="TextureProgress" parent="HUD"]
-margin_left = 820.0
-margin_top = 568.0
-margin_right = 860.0
-margin_bottom = 608.0
+anchor_left = 0.716
+anchor_top = 0.936
+anchor_right = 0.806
+anchor_bottom = 1.0
+margin_right = 336.0
+margin_bottom = 304.0
 script = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -111,10 +113,12 @@ __meta__ = {
 }
 
 [node name="Health" type="TextureProgress" parent="HUD"]
-margin_left = 820.0
-margin_top = 535.0
-margin_right = 860.0
-margin_bottom = 575.0
+anchor_left = 0.716
+anchor_top = 0.881
+anchor_right = 1.0
+anchor_bottom = 0.936
+margin_right = 336.0
+margin_bottom = 304.0
 script = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": true

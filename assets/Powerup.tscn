@@ -25,7 +25,7 @@ mesh = SubResource( 5 )
 material/0 = null
 
 [node name="Timer" type="Timer" parent="." groups=["Powerup"]]
-wait_time = 0.2
+wait_time = 10.0
 
 [connection signal="body_shape_entered" from="." to="." method="_on_Powerup_body_shape_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

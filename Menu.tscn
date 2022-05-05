@@ -40,6 +40,13 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="panteraText" type="Label" parent="VBoxContainer/Pantera"]
+margin_left = -150.0
+text = "Small Enemy Count "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Monster" type="HSlider" parent="VBoxContainer"]
 margin_top = 44.0
 margin_right = 265.0
@@ -49,6 +56,15 @@ max_value = 10.0
 value = 1.0
 __meta__ = {
 "_editor_description_": ""
+}
+
+[node name="truckText" type="Label" parent="VBoxContainer/Monster"]
+margin_left = -149.5
+margin_right = 115.5
+margin_bottom = 14.0
+text = "Large Enemy Count "
+__meta__ = {
+"_edit_use_anchors_": false
 }
 
 [node name="AI" type="HSlider" parent="VBoxContainer"]
@@ -62,42 +78,22 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="difficultyText" type="Label" parent="VBoxContainer/AI"]
+margin_left = -120.5
+margin_top = -1.0
+margin_right = 144.5
+margin_bottom = 13.0
+text = "AI Intelligence "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="quit" type="Button" parent="VBoxContainer"]
 margin_top = 84.0
 margin_right = 265.0
 margin_bottom = 104.0
 focus_neighbour_bottom = NodePath("../start")
 text = "Quit"
-
-[node name="panteraText" type="Label" parent="."]
-margin_left = 229.0
-margin_top = 291.0
-margin_right = 494.0
-margin_bottom = 305.0
-text = "Small Enemy Count "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="truckText" type="Label" parent="."]
-margin_left = 230.0
-margin_top = 310.0
-margin_right = 495.0
-margin_bottom = 324.0
-text = "Large Enemy Count "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="difficultyText" type="Label" parent="."]
-margin_left = 259.0
-margin_top = 329.0
-margin_right = 524.0
-margin_bottom = 343.0
-text = "AI Intelligence "
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="value_changed" from="VBoxContainer/Pantera" to="." method="_on_Pantera_value_changed"]

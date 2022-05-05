@@ -112,7 +112,7 @@ func _physics_process(delta):
 			
 			get_parent().add_child(bomb_instance)
 			
-			print_debug("mine dropped");
+			Globals.mine_ready = false
 		else:
 			# mine powerup not available, play sound to indicate error
 			print_debug("no mine powerup available")

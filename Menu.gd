@@ -38,17 +38,17 @@ func _on_quit_pressed():
 
 func _on_AI_value_changed(value):
 	Globals.ai_smartness = int(value)
-	$difficultyText.text = "AI Intelligence " + str($VBoxContainer/AI.value)
+	$VBoxContainer/AI/difficultyText.text = "AI Intelligence " + str($VBoxContainer/AI.value)
 	#print(Globals.ai_smartness)
 
 
 func _on_Monster_value_changed(value):
 	Globals.num_monsters = int(value)
-	$truckText.text = "Large Vehicle Count " + str($VBoxContainer/Monster.value)
+	$VBoxContainer/Monster/truckText.text = "Large Vehicle Count " + str($VBoxContainer/Monster.value)
 	#print(Globals.num_monsters)
 
 
 func _on_Pantera_value_changed(value):
 	Globals.num_pantera = int(value)
-	$panteraText.text = "Small Vehicle Count " + str($VBoxContainer/Pantera.value)
+	$VBoxContainer/Pantera/panteraText.text = "Small Vehicle Count " + str($VBoxContainer/Pantera.value)
 	#print(Globals.num_pantera)

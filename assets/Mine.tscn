@@ -27,5 +27,6 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
