@@ -176,13 +176,13 @@ func _physics_process(delta):
 	
 	#SpeedLines
 	
-	if kph<40:
+	if kph<50:
 		get_node("SpeedLines/Particles2D").emitting = false
 		get_node("SpeedLines/Particles2D").speed_scale = 0.2
 		
-	elif kph >= 40 and kph <50:
-		get_node("SpeedLines/Particles2D").emitting = true
-		get_node("SpeedLines/Particles2D").amount = 5
+#	elif kph >= 40 and kph <50:
+#		get_node("SpeedLines/Particles2D").emitting = true
+#		get_node("SpeedLines/Particles2D").amount = 5
 	elif kph >= 50 and kph <60:
 		get_node("SpeedLines/Particles2D").emitting = true
 		get_node("SpeedLines/Particles2D").amount = 6
