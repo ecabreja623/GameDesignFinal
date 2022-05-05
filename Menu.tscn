@@ -19,9 +19,6 @@ margin_left = -132.5
 margin_top = -34.0
 margin_right = 132.5
 margin_bottom = 34.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="start" type="Button" parent="VBoxContainer"]
 margin_right = 265.0
@@ -43,9 +40,6 @@ __meta__ = {
 [node name="panteraText" type="Label" parent="VBoxContainer/Pantera"]
 margin_left = -150.0
 text = "Small Enemy Count "
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Monster" type="HSlider" parent="VBoxContainer"]
 margin_top = 44.0

@@ -282,12 +282,14 @@ func _on_VehicleBody_body_entered(body):
 				Globals.player_health -= abs(kph) * 0.3
 			var enemydamage = abs(Globals.kph) * 0.1
 			health -= enemydamage
+			text.amount = enemydamage
 			add_child(text)
 			$Healthbar3D.update(health, max_health)
 		
 		else:
 			var enemydamage = abs(Globals.kph) * 0.3
 			health -= enemydamage
+			text.amount = enemydamage
 			add_child(text)
 			
 			if health <= 0:
