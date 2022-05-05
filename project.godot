@@ -22,6 +22,7 @@ _global_script_class_icons={
 
 config/name="GameDesignFinal"
 run/main_scene="res://Menu.tscn"
+boot_splash/image="res://Arena GT.png"
 config/icon="res://icon.png"
 
 [autoload]

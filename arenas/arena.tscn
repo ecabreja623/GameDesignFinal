@@ -162,36 +162,36 @@ texture = ExtResource( 5 )
 navmesh = SubResource( 4 )
 
 [node name="Track" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7241, 1.81169, 58.9014 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.663, 0, 57.048 )
 
 [node name="Static Objects" type="Spatial" parent="Navigation/NavigationMeshInstance"]
 
 [node name="Tunnel Ramp" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 28 )]
-transform = Transform( -0.334218, 0, -1.41374, 0, 1, 0, 0.942496, 0, -0.501327, -70.5479, -1.47332, -79.5381 )
+transform = Transform( -0.334218, 0, -1.41374, 0, 1, 0, 0.942496, 0, -0.501327, -70.5479, -3.29779, -79.5381 )
 
 [node name="Super Jump" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.9622, -1.20808, 33.4412 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.9622, -3.08512, 33.4412 )
 
 [node name="Simple Jump" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 14 )]
-transform = Transform( -0.999838, 0, -0.0180283, 0, 1, 0, 0.0180283, 0, -0.999838, -100.973, -1.01028, 77.3615 )
+transform = Transform( -0.999838, 0, -0.0180283, 0, 1, 0, 0.0180283, 0, -0.999838, -100.973, -2.92553, 77.3615 )
 
 [node name="Simple Jump2" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 14 )]
-transform = Transform( 0.00671957, 0, -0.999977, 0, 1, 0, 0.999977, 0, 0.00671957, -40.3813, -1.07674, 94.535 )
+transform = Transform( 0.00671957, 0, -0.999977, 0, 1, 0, 0.999977, 0, 0.00671957, -40.3813, -3.07574, 94.535 )
 
 [node name="Simple Jump3" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 14 )]
-transform = Transform( -0.027032, 0, 0.999635, 0, 1, 0, -0.999635, 0, -0.027032, -11.5747, -1.06948, 94.7457 )
+transform = Transform( -0.027032, 0, 0.999635, 0, 1, 0, -0.999635, 0, -0.027032, -11.5747, -2.71821, 94.7457 )
 
 [node name="Loop" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["staic"] instance=ExtResource( 25 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.978, -1.53543, -44.8983 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.978, -3.35063, -44.8983 )
 
 [node name="Ring" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 26 )]
-transform = Transform( -0.0294222, 0, 0.999567, 0, 1, 0, -0.999567, 0, -0.0294222, 39.9641, -1.26675, 33.1363 )
+transform = Transform( -0.0294222, 0, 0.999567, 0, 1, 0, -0.999567, 0, -0.0294222, 39.9641, -2.72058, 33.1363 )
 
 [node name="Tunnel" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 27 )]
-transform = Transform( 0.0501223, 0, -0.998743, -0.0421715, 0.999108, -0.00211643, 0.997852, 0.0422244, 0.0500776, -51.0652, -1.42177, -37.0397 )
+transform = Transform( 0.0501223, 0, -0.998743, -0.0421715, 0.999108, -0.00211643, 0.997852, 0.0422244, 0.0500776, -51.0652, -3.05097, -37.0397 )
 
 [node name="Kicker" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 24 )]
-transform = Transform( -0.0229491, 0, 0.999737, 0, 1, 0, -0.999737, 0, -0.0229491, -53.4144, -1.43437, 1.33122 )
+transform = Transform( -0.0229491, 0, 0.999737, 0, 1, 0, -0.999737, 0, -0.0229491, -53.4144, -3.44589, 1.33122 )
 mode = 1
 
 [node name="Big Box" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 13 )]
@@ -200,10 +200,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0879, -1.25328, 94.1052 )
 [node name="Rigid Objects" type="Spatial" parent="Navigation/NavigationMeshInstance"]
 
 [node name="Dumpster" parent="Navigation/NavigationMeshInstance/Rigid Objects" groups=["props", "static"] instance=ExtResource( 22 )]
-transform = Transform( -0.104372, 0, 0.994538, 0, 1, 0, -0.994538, 0, -0.104372, -26.9105, -0.789845, 89.7999 )
+transform = Transform( -0.104372, 0, 0.994538, 0, 1, 0, -0.994538, 0, -0.104372, -26.9105, -2.49032, 89.7999 )
 
 [node name="Garage Stand" parent="Navigation/NavigationMeshInstance/Rigid Objects" groups=["props", "static"] instance=ExtResource( 23 )]
-transform = Transform( 0.0839039, 0, -0.996474, 0, 1, 0, 0.996474, 0, 0.0839039, -100.862, -0.987846, 68.721 )
+transform = Transform( 0.0839039, 0, -0.996474, 0, 1, 0, 0.996474, 0, 0.0839039, -100.862, -2.25544, 68.721 )
 
 [node name="Barrels" type="Spatial" parent="Navigation/NavigationMeshInstance/Rigid Objects"]
 
@@ -285,34 +285,34 @@ transform = Transform( 0.0501223, 0, -0.998743, 0.0468036, 0.998902, 0.00234887,
 [node name="Cones" type="Spatial" parent="Navigation/NavigationMeshInstance/Rigid Objects"]
 
 [node name="Cone" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.6268, -1.47462, 28.5312 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.6268, -3.34408, 28.5312 )
 
 [node name="Cone7" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.5792, 2.40351, 70.4676 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.5792, -3.17114, 70.4676 )
 
 [node name="Cone8" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.5792, -1.9291, 67.0659 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.5792, -3.28599, 67.0659 )
 
 [node name="Cone9" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -99.7929, 0.834215, 63.2883 )
+transform = Transform( 1, 0, 0, 0, 0.999945, 0.0105067, 0, -0.0105067, 0.999945, -99.7929, -3.37732, 63.2883 )
 
 [node name="Cone10" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -103.105, -1.01164, 61.7421 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -103.105, -3.05338, 61.7421 )
 
 [node name="Cone2" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.8903, -1.39251, 28.5312 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.8903, -3.32783, 28.5312 )
 
 [node name="Cone3" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7092, -1.45707, 28.5312 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7092, -3.25771, 28.5312 )
 
 [node name="Cone4" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7092, -1.46828, 39.0675 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7092, -3.24389, 39.0675 )
 
 [node name="Cone5" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3802, -1.38675, 39.0675 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3802, -3.35332, 39.0675 )
 
 [node name="Cone6" parent="Navigation/NavigationMeshInstance/Rigid Objects/Cones" groups=["props"] instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6444, -1.38083, 39.0675 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6444, -3.18264, 39.0675 )
 
 [node name="Enemies" type="Spatial" parent="Navigation"]
 
