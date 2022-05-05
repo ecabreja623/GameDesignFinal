@@ -2,6 +2,7 @@ extends Spatial
 
 var countdown = 3;
 var exploded = false;
+var floating_text = preload("res://floatingtext.tscn")
 
 func _ready():
 	# start ticking / counting down
@@ -22,16 +23,30 @@ func _physics_process(delta):
 
 func _explode():
 	
+	
 	get_node("AnimationPlayer").play("explosion")
 	
 	var victims = $BlastArea.get_overlapping_bodies();
 	
 	for victim in victims:
+		var text = floating_text.instance()
+		
 		if victim.is_in_group("player"):
-			Globals.player_health -= 25;
+			Globals.player_health -= 15;
+			text.amount = 15
+			add_child(text)
+		
+
 			print_debug("player damaged by bomb")
+			
 		elif victim.is_in_group("enemy"):
-			victim.health -= 50;
+			var enemydamage =  50
+			victim.health -= enemydamage
+			text.amount = enemydamage
+			add_child(text)
+			
+			victim.update_healthbar(victim.health, victim.max_health)
+
 			print_debug("enemy damaged by bomb")
 	
 	yield(get_node("AnimationPlayer"), "animation_finished")

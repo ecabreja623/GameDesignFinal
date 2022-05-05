@@ -103,13 +103,15 @@ text = "Quit"
 [node name="Controls" type="Label" parent="VBoxContainer"]
 margin_top = 143.0
 margin_right = 265.0
-margin_bottom = 242.0
+margin_bottom = 276.0
 text = "
 Controls:
 Arrow Keys to drive
 Left Ctrl for Nitro
 Shift for handbrake/drift
-R to reset car once flipped over"
+R to reset car once flipped over
+Tab to look backwards
+SPACE to drop mine"
 align = 1
 
 [connection signal="value_changed" from="VBoxContainer/Pantera" to="." method="_on_Pantera_value_changed"]

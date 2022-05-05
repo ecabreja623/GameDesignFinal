@@ -295,6 +295,8 @@ func get_target_path(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
 	curr_path_index = 0
 
+func update_healthbar(curr_health, max_health):
+	$Healthbar3D.update(curr_health, max_health)
 
 func _on_VehicleBody_body_entered(body):
 	var text = floating_text.instance()
@@ -303,11 +305,12 @@ func _on_VehicleBody_body_entered(body):
 		if abs(kph) > abs(Globals.kph):	#enemy is moving faster than player
 			if !Globals.shield_active:
 				Globals.player_health -= abs(kph) * 0.3
+				
 			var enemydamage = abs(Globals.kph) * 0.1
 			health -= enemydamage
 			text.amount = enemydamage
 			add_child(text)
-			$Healthbar3D.update(health, max_health)
+			update_healthbar(health, max_health)
 		
 		else:
 			var enemydamage = abs(Globals.kph) * 0.3
@@ -318,7 +321,7 @@ func _on_VehicleBody_body_entered(body):
 			if health <= 0:
 				Globals.score += 500
 				
-			$Healthbar3D.update(health, max_health)
+			update_healthbar(health, max_health)
 			Globals.score += enemydamage * 8
 			if !Globals.shield_active:
 				Globals.player_health -= abs(kph) * 0.1
@@ -329,8 +332,11 @@ func _on_VehicleBody_body_entered(body):
 		#else:
 		#$Crash.play()
 	elif body.is_in_group("enemy"):
-		health -= abs(kph)*0.3
-		body.health -= abs(kph)*0.3
+		var enemydamage =  abs(kph)*0.3
+		health -= enemydamage
+		
+		update_healthbar(health, max_health)
+		
 #	else:
 #		if body.is_in_group("static"):
 #			print("need help")			
