@@ -61,6 +61,8 @@ var despawn = false;
 var airborne = false;
 var rng = RandomNumberGenerator.new()
 
+var despawn_wait = 3;
+
 func set_health(temp_string):
 	var health_bar = load("res://assets/Healthbar3D.tscn").instance()
 	if temp_string == 'pantera':
@@ -103,9 +105,13 @@ func _physics_process(delta):
 	if health <= 0:
 		despawn = true
 		$Explosion._explosion()
+		
+		
 		#get_node("AnimationPlayer").play("despawn")
 		#yield(get_node("AnimationPlayer"), "animation_finished")
-		queue_free()
+		despawn_wait -= delta;
+		if despawn_wait <= 0:
+			queue_free()
 	
 	if !(get_node("VehicleWheel").is_in_contact() and  get_node("VehicleWheel2").is_in_contact()
 		and  get_node("VehicleWheel3").is_in_contact() and  get_node("VehicleWheel4").is_in_contact()):

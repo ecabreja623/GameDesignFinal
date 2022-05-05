@@ -166,7 +166,7 @@ func _physics_process(delta):
 		brake = brake_strength
 
 	elif has_handbrake:
-		if Input.is_action_pressed("handbrake"):
+		if Input.is_action_pressed("drift"):
 			brake = brake_strength / 4
 
 			if (spin_out > 3):

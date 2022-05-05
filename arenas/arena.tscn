@@ -43,7 +43,9 @@ var bar_green = preload(\"res://assets/health_green.png\")
 var bar_yellow = preload(\"res://assets/health_yellow.png\")
 
 func _process(delta):
-	
+	if Globals.player_health <= 0:
+		queue_free()
+		
 	update_bar(Globals.player_health, 100)
 
 func update_bar(amount, full):
@@ -88,6 +90,9 @@ margin_right = 151.0
 margin_bottom = 40.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Nitro" type="TextureProgress" parent="HUD"]
 anchor_left = 0.716
