@@ -2,7 +2,7 @@ extends TextureProgress
 
 var bar_blue = preload("res://assets/health_blue.png")
 
-func _process(delta):
+func _process(_delta):
 	
 	update_nitro(Globals.nitro_fuel, 100)
 

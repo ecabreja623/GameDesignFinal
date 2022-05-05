@@ -2,7 +2,7 @@ extends CanvasLayer
 
 
 
-func _process(delta):
+func _process(_delta):
 	$MarginContainer/Needle.rotation_degrees =  abs(Globals.kph) - 90
 	#print_debug(abs(Globals.kph))
 	

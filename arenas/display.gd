@@ -33,7 +33,7 @@ func display_game_win_text():
 	self.text += '\n' + "Press ESC to Play Again!"
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	
 	
 	if Globals.player_health <= 0:
@@ -46,7 +46,7 @@ func _process(delta):
 			Globals.score = 0;
 
 			Globals.power_ups_collected = 0;
-			Globals.gear = 0;
+			#Globals.gear = 0;
 
 			Globals.player_pos = Vector3.ZERO;
 			
@@ -63,7 +63,7 @@ func _process(delta):
 			Globals.score = 0;
 
 			Globals.power_ups_collected = 0;
-			Globals.gear = 0;
+			#Globals.gear = 0;
 
 			Globals.player_pos = Vector3.ZERO;
 			
