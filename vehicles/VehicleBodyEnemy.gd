@@ -278,7 +278,8 @@ func _on_VehicleBody_body_entered(body):
 	
 	if body.is_in_group('player') and despawn == false:
 		if abs(kph) > abs(Globals.kph):	#enemy is moving faster than player
-			Globals.player_health -= abs(kph) * 0.3
+			if !Globals.shield_active:
+				Globals.player_health -= abs(kph) * 0.3
 			var enemydamage = abs(Globals.kph) * 0.1
 			health -= enemydamage
 			add_child(text)
@@ -288,10 +289,16 @@ func _on_VehicleBody_body_entered(body):
 			var enemydamage = abs(Globals.kph) * 0.3
 			health -= enemydamage
 			add_child(text)
-			$Healthbar3D.update(health, max_health)
-			Globals.score += 5
-			Globals.player_health -= abs(kph) * 0.1
 			
+			if health <= 0:
+				Globals.score += 500
+				
+			$Healthbar3D.update(health, max_health)
+			Globals.score += enemydamage * 8
+			if !Globals.shield_active:
+				Globals.player_health -= abs(kph) * 0.1
+			
+
 		#if get_node("Crash").is_playing():
 			#$Crash.stream_paused = false
 		#else:

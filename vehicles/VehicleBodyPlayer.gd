@@ -56,6 +56,10 @@ var airborne = false;
 var bomb = preload("res://Bomb.tscn")
 var bomb_script = preload("res://Bomb.gd")
 
+var shield_duration = 8;
+
+var frames_airborne = 0
+
 func _ready():
 	steering_speed_range = steering_to_speed - steering_from_speed
 	current_gear = 1
@@ -82,6 +86,12 @@ func apply_friction(delta):
 	
 func _physics_process(delta):
 	
+	if Globals.shield_active:
+		shield_duration -= delta
+		
+		if shield_duration <= 0:
+			Globals.shield_active = false;
+			shield_duration = 8
 	
 	if Input.is_action_just_pressed("reset"):
 		#get_tree().reload_current_scene()
@@ -94,9 +104,14 @@ func _physics_process(delta):
 			queue_free()
 	
 	if !(get_node("VehicleWheel").is_in_contact() and  get_node("VehicleWheel2").is_in_contact()
-		and  get_node("VehicleWheel3").is_in_contact() and  get_node("VehicleWheel4").is_in_contact()):
+		and  get_node("VehicleWheel3").is_in_contact() and  get_node("VehicleWheel4").is_in_contact())  and (Globals.player_pos.y > -2.8):
 		airborne = true;
+		frames_airborne += 1
 	else:
+		if frames_airborne > 60:
+			print_debug("airtime for ", frames_airborne," frames")
+			Globals.score += frames_airborne * 2
+		frames_airborne = 0
 		airborne = false;
 	
 	cooldown -= delta;
@@ -363,7 +378,7 @@ func doSkidmarks():
 	get_node("/root/Arena/skidmarks").add_child(skidmark)
 
 func _on_CollisionArea_body_entered(body):
-	if body.is_in_group("track"):
+	if body.is_in_group("track") && !Globals.shield_active:
 		if cooldown <= 0:
 			Globals.player_health -= abs(Globals.kph) * 0.05
 			cooldown = 1

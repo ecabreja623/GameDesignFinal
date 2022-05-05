@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://arenas/arena.gd" type="Script" id=1]
 [ext_resource path="res://track/track.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://props/bigbox/bigbox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://props/simple_jump1/simple_jump1.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/health_empty.png" type="Texture" id=15]
+[ext_resource path="res://Shield.tscn" type="PackedScene" id=16]
 [ext_resource path="res://vehicles/gt/gt.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/Mine.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/nitro_display.gd" type="Script" id=20]
@@ -357,6 +358,11 @@ transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 39.9634, 10.7226, 32 )
 
 [node name="Mine2" parent="Powerups/Mines" instance=ExtResource( 19 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 39.9634, -2.13756, 48.6111 )
+
+[node name="Shield" type="Spatial" parent="Powerups"]
+
+[node name="Shield" parent="Powerups/Shield" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8741, -2.53838, 0 )
 
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel2" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel2" method="_on_Barrel_body_entered"]

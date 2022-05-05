@@ -5,6 +5,6 @@ func _ready():
 
 func _on_Barrel_body_entered(body):
 	if body.is_in_group('player'):
-		Globals.score += 1
+		Globals.score += 10
 		Globals.player_health -= 1
 	return
