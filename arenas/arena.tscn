@@ -359,9 +359,9 @@ transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 39.9634, 10.7226, 32 )
 [node name="Mine2" parent="Powerups/Mines" instance=ExtResource( 19 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 39.9634, -2.13756, 48.6111 )
 
-[node name="Shield" type="Spatial" parent="Powerups"]
+[node name="Shields" type="Spatial" parent="Powerups"]
 
-[node name="Shield" parent="Powerups/Shield" instance=ExtResource( 16 )]
+[node name="Shield" parent="Powerups/Shields" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8741, -2.53838, 0 )
 
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" method="_on_Barrel_body_entered"]

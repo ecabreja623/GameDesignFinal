@@ -87,9 +87,11 @@ func apply_friction(delta):
 func _physics_process(delta):
 	
 	if Globals.shield_active:
+		$ShieldMesh.visible = true;
 		shield_duration -= delta
 		
 		if shield_duration <= 0:
+			$ShieldMesh.visible = false;
 			Globals.shield_active = false;
 			shield_duration = 8
 	
