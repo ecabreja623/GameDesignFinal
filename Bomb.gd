@@ -33,30 +33,41 @@ func _explode():
 		
 		if victim.is_in_group("player"):
 			Globals.player_health -= 15;
-			text.amount = 15
-			add_child(text)
-		
-
+			
 			print_debug("player damaged by bomb")
 			
 		elif victim.is_in_group("enemy"):
+			# this damage could be displayed on the side (out of view damage)
 			var enemydamage =  50
 			victim.health -= enemydamage
 			text.amount = enemydamage
 			add_child(text)
 			
 			victim.update_healthbar(victim.health, victim.max_health)
-
+			
+			Globals.score += 100
+			if victim.health <= 0:
+				Globals.score += 500
 			print_debug("enemy damaged by bomb")
 	
 	yield(get_node("AnimationPlayer"), "animation_finished")
 	queue_free()
 
 func _on_Area_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
+	var text = floating_text.instance()
+	
 	if body.is_in_group("enemy"):
 		if not exploded:
 			_explode();
-			body.health -= 10
+
+			
+			var enemydamage =  10
+			body.health -= enemydamage
+			text.amount = enemydamage
+			add_child(text)
+			
+			body.update_healthbar(body.health, body.max_health)
+			
 			print_debug("enemy ran into bomb")
 		
 	if body.is_in_group("player"):
