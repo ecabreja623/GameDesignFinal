@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://floatingtext.gd" type="Script" id=1]
+[ext_resource path="res://plaguard-font/Plaguard-ZVnjx.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 46
+font_data = ExtResource( 2 )
 
 [node name="floatingtext" type="Position2D"]
 script = ExtResource( 1 )
@@ -10,6 +15,7 @@ margin_left = 399.0
 margin_top = 216.0
 margin_right = 599.0
 margin_bottom = 266.0
+custom_fonts/font = SubResource( 1 )
 text = "200"
 align = 1
 valign = 1

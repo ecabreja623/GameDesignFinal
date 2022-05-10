@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://arenas/arena.gd" type="Script" id=1]
 [ext_resource path="res://track/track.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://props/simple_jump1/simple_jump1.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/health_empty.png" type="Texture" id=15]
 [ext_resource path="res://Shield.tscn" type="PackedScene" id=16]
+[ext_resource path="res://plaguard-font/Plaguard-ZVnjx.otf" type="DynamicFontData" id=17]
 [ext_resource path="res://vehicles/gt/gt.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/Mine.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/nitro_display.gd" type="Script" id=20]
@@ -27,6 +28,7 @@
 [ext_resource path="res://props/ring/ring.tscn" type="PackedScene" id=26]
 [ext_resource path="res://props/tunnel/tunnel.tscn" type="PackedScene" id=27]
 [ext_resource path="res://props/tunnel_jump/tunnel_jump.tscn" type="PackedScene" id=28]
+[ext_resource path="res://arenas/Label.gd" type="Script" id=29]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 3 )
@@ -34,6 +36,15 @@ panorama = ExtResource( 3 )
 [sub_resource type="Environment" id=2]
 background_mode = 2
 background_sky = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 24
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+font_data = ExtResource( 17 )
 
 [sub_resource type="GDScript" id=5]
 script/source = "extends TextureProgress
@@ -83,15 +94,28 @@ shadow_bias = 0.0
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
+[node name="Label" type="Label" parent="HUD"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -12.0
+margin_right = 20.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 7 )
+script = ExtResource( 29 )
+
 [node name="Debug text" type="Label" parent="HUD"]
-margin_left = 7.0
-margin_top = 9.0
-margin_right = 151.0
-margin_bottom = 40.0
+anchor_left = 0.774414
+anchor_top = 0.04
+anchor_right = 0.915039
+anchor_bottom = 0.0916667
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
 script = ExtResource( 9 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="Nitro" type="TextureProgress" parent="HUD"]

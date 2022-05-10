@@ -1,14 +1,32 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Menu.gd" type="Script" id=1]
+[ext_resource path="res://plaguard-font/Plaguard-ZVnjx.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 2 )
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 4.0
+margin_right = 3.0
+margin_bottom = 4.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="GameState" type="Label" parent="."]
+margin_left = 467.0
+margin_top = 117.0
+margin_right = 565.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 2 )
+align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -19,21 +37,19 @@ margin_left = -132.5
 margin_top = -84.0
 margin_right = 132.5
 margin_bottom = 158.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 margin_right = 265.0
-margin_bottom = 31.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 1 )
 text = "ARENA GT
 "
 align = 1
 
 [node name="Pantera" type="HSlider" parent="VBoxContainer"]
-margin_top = 35.0
+margin_top = 85.0
 margin_right = 265.0
-margin_bottom = 51.0
+margin_bottom = 101.0
 min_value = 1.0
 max_value = 10.0
 value = 1.0
@@ -46,9 +62,9 @@ margin_left = -150.0
 text = "Small Enemy Count "
 
 [node name="Monster" type="HSlider" parent="VBoxContainer"]
-margin_top = 55.0
+margin_top = 105.0
 margin_right = 265.0
-margin_bottom = 71.0
+margin_bottom = 121.0
 min_value = 1.0
 max_value = 10.0
 value = 1.0
@@ -66,9 +82,9 @@ __meta__ = {
 }
 
 [node name="AI" type="HSlider" parent="VBoxContainer"]
-margin_top = 75.0
+margin_top = 125.0
 margin_right = 265.0
-margin_bottom = 91.0
+margin_bottom = 141.0
 min_value = 1.0
 max_value = 5.0
 value = 1.0
@@ -87,23 +103,23 @@ __meta__ = {
 }
 
 [node name="start" type="Button" parent="VBoxContainer"]
-margin_top = 95.0
+margin_top = 145.0
 margin_right = 265.0
-margin_bottom = 115.0
+margin_bottom = 165.0
 focus_neighbour_top = NodePath("../quit")
 text = "Start"
 
 [node name="quit" type="Button" parent="VBoxContainer"]
-margin_top = 119.0
+margin_top = 169.0
 margin_right = 265.0
-margin_bottom = 139.0
+margin_bottom = 189.0
 focus_neighbour_bottom = NodePath("../start")
 text = "Quit"
 
 [node name="Controls" type="Label" parent="VBoxContainer"]
-margin_top = 143.0
+margin_top = 193.0
 margin_right = 265.0
-margin_bottom = 276.0
+margin_bottom = 326.0
 text = "
 Controls:
 Arrow Keys to drive

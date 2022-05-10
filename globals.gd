@@ -22,5 +22,7 @@ var num_monsters = 4; # range from 1 to 10
 var num_pantera = 4; # range from 1 to 10
 var ai_smartness = 3; # range form 1 to 5
 
+var game_text = null
+
 
 

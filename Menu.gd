@@ -12,6 +12,10 @@ func _ready():
 	$VBoxContainer/Pantera.value = 4
 	$VBoxContainer/Monster.value = 4
 	$VBoxContainer/AI.value = 3
+	if Globals.game_text == 'win':
+		$GameState.text = "You Won!"
+	elif Globals.game_text == 'lose':
+		$GameState.text = "You Lose!"
 	
 	#$panteraText.text += str($VBoxContainer/Pantera.value)
 	#$truckText.text += str($VBoxContainer/Monster.value)
