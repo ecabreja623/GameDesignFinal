@@ -7,7 +7,7 @@ func _ready():
 
 
 func _physics_process(_delta):
-	rotate_y(deg2rad(30))
+	rotate_y(deg2rad(1))
 
 func _on_Timer_timeout():
 	monitoring = true

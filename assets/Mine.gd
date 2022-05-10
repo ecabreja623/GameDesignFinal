@@ -7,7 +7,7 @@ func _ready():
 
 
 func _physics_process(_delta):
-	rotate_y(deg2rad(30))
+	rotate_y(deg2rad(1))
 
 func _on_Mine_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
 	if _body.is_in_group("player"):

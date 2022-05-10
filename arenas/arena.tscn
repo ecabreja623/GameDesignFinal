@@ -353,10 +353,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.37715, 195.722 )
 [node name="Mines" type="Spatial" parent="Powerups"]
 
 [node name="Mine" parent="Powerups/Mines" instance=ExtResource( 19 )]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 39.9634, 10.7226, 32 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9634, 10.7226, 32 )
 
 [node name="Mine2" parent="Powerups/Mines" instance=ExtResource( 19 )]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 39.9634, -2.13756, 48.6111 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9634, -2.13756, 48.6111 )
 
 [node name="Shields" type="Spatial" parent="Powerups"]
 
