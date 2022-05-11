@@ -146,7 +146,7 @@ func _physics_process(delta):
 		if ray.is_enabled() and ray.is_colliding():
 			var collObj = ray.get_collider()
 			if collObj.name in ['Big Box', 'Kicker', 'Dumpster', 'Tunnel', 'Ring', 'Super Jump', 'Simple Jump', 'Simple Jump2', 'Simple Jump3', "Loop", "Tunnel Ramp"]:
-				print("Reversing")
+				#print('reversing')
 				go_reverse = true
 			else:
 				var temp_groups = collObj.get_groups()
@@ -168,17 +168,25 @@ func _physics_process(delta):
 			# print('chasing player')
 			curr_target = Globals.player_pos
 		else:
-			print('Chasing enemy')
+			# print('Chasing enemy')
 			if change_enemy:
 				curr_target = new_target.global_transform.origin;
 				change_enemy = false
 		if go_reverse:
-			if floor(rand_range(0,2)):  # Random coin flip
-				steering_target = -1;
-				throttle = -0.6;
-			else:
-				steering_target = 1;
-				throttle = -0.6;
+			if 'enemy1' in groups_list:
+				if floor(rand_range(0,2)):  # Random coin flip
+					steering_target = -1;
+					throttle = -0.6;
+				else:
+					steering_target = 1
+					throttle = -0.6
+			elif 'enemy2' in groups_list:
+				if floor(rand_range(0,2)):  # Random coin flip
+					steering_target = -1;
+					throttle = -0.4;
+				else:
+					steering_target = 1
+					throttle = -0.4
 		else:
 			var dirToMovePosition = curr_target - transform.origin
 			var dot = get_global_transform().basis.z.dot(dirToMovePosition)
@@ -199,10 +207,10 @@ func _physics_process(delta):
 				else:
 					if floor(rand_range(0,2)):  # Random coin flip
 						steering_target = -1;
-						throttle = 0.5;
+						throttle = 0.4;
 					else:
 						steering_target = 1;
-						throttle = 0.5;
+						throttle = 0.4;
 
 			if angleToDir > -0.15 and angleToDir < 0.15:
 				steering_target = 0;
@@ -233,10 +241,10 @@ func _physics_process(delta):
 				else:
 					if floor(rand_range(0,2)):  # Random coin flip
 						steering_target = -1;
-						throttle = 0.5;
+						throttle = 0.4;
 					else:
 						steering_target = 1;
-						throttle = 0.5;
+						throttle = 0.4;
 
 			if angleToDir > -0.15 and angleToDir < 0.15:
 				steering_target = 0;
