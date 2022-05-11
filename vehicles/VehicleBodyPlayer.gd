@@ -135,9 +135,9 @@ func _physics_process(delta):
 			print_debug("no mine powerup available")
 	
 	if (Input.is_action_pressed("ui_left")):
-		steering_target = 1
+		steering_target = 1 - (Globals.kph)/200
 	elif (Input.is_action_pressed("ui_right")):
-		steering_target = -1
+		steering_target = -1 + (Globals.kph)/200
 	else:
 		steering_target = 0
 

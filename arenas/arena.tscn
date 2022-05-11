@@ -84,7 +84,7 @@ script = ExtResource( 1 )
 environment = SubResource( 2 )
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource( 18 )]
-transform = Transform( 0.0107661, -0.295799, -0.955189, -0.0092111, 0.955175, -0.295898, 0.9999, 0.0119839, 0.00755823, 4.0338, 11.6293, 33.6139 )
+transform = Transform( 0.0107661, -0.295799, -0.955189, -0.0092111, 0.955175, -0.295898, 0.9999, 0.0119839, 0.00755823, 2.65924, 10.4777, 33.6139 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.0279846, 0.816637, -0.576473, -0.0395966, 0.577152, 0.815676, 0.998824, -1.86045e-09, 0.0484874, 0, 28.959, 0 )
@@ -248,31 +248,31 @@ contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Barrel3" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.8637, 1.92722, 1.44707 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.8637, -5.09602, 1.44707 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Barrel4" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.8637, 0.437615, 53.0576 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.8637, -2.26916, 53.0576 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Barrel5" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.8637, 3.08173, 130.265 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.8637, -2.62083, 130.265 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Barrel6" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.63, 0.943612, 130.265 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.63, -2.95596, 130.265 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Barrel7" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1897, 4.7134, 130.265 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1897, -2.79309, 130.265 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
@@ -284,7 +284,7 @@ contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Barrel9" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1897, 0.268525, 7.5653 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1897, -2.76782, 7.5653 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
@@ -296,13 +296,13 @@ contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Barrel11" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6224, 2.90244, -12.8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6224, -0.445226, -12.8 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Barrel12" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6224, 0.959783, 62.2132 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6224, -2.89952, 62.2132 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
@@ -349,24 +349,24 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6444, -3.18264, 39.0675 )
 [node name="NitroHandler" type="Node" parent="Powerups"]
 
 [node name="Nitro" parent="Powerups/NitroHandler" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63.3973, -1.28035, 34.5984 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8493, -1.64084, 32.9632 )
 
 [node name="Nitro3" parent="Powerups/NitroHandler" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.6854, -2.30728, -36.1948 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.852, 2.62742, 93.7149 )
 
 [node name="Nitro4" parent="Powerups/NitroHandler" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9116, -1.99411, -54.3466 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6857, -1.99411, -50.8651 )
 
 [node name="Nitro2" parent="Powerups/NitroHandler" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.176, 2.42814, 93.6412 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3194, 2.31182, 93.6412 )
 
 [node name="Health" type="Spatial" parent="Powerups"]
 
 [node name="Powerup" parent="Powerups/Health" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.0206, -2.01201, -21.1923 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -39.3064, 1.25299, -141.633 )
 
 [node name="Powerup3" parent="Powerups/Health" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.679, 8.41671, -41.706 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0905, 0.413249, -39.8639 )
 
 [node name="Powerup2" parent="Powerups/Health" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.37715, 195.722 )
@@ -377,12 +377,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.37715, 195.722 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9634, 10.7226, 32 )
 
 [node name="Mine2" parent="Powerups/Mines" instance=ExtResource( 19 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9634, -2.13756, 48.6111 )
+transform = Transform( 0.990603, 0, -0.13677, 0, 1, 0, 0.13677, 0, 0.990603, -100.769, 1.20138, 88.2814 )
 
 [node name="Shields" type="Spatial" parent="Powerups"]
 
 [node name="Shield" parent="Powerups/Shields" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8741, -2.53838, 0 )
+transform = Transform( 0.858969, 0, -0.512028, 0, 1, 0, 0.512028, 0, 0.858969, -74.319, 5.61567, -65.6604 )
 
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel2" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel2" method="_on_Barrel_body_entered"]
