@@ -58,6 +58,7 @@ export var has_handbrake = true
 
 var kph;
 var despawn = false;
+var enem_follow = 0;
 var airborne = false;
 
 var despawn_wait = 3;
@@ -137,7 +138,7 @@ func _physics_process(delta):
 	if (current_gear == 1 and omega <= 1.0 and omega >= 0 and brake > 0):
 		current_gear = 0;
 	
-	if Globals.ai_smartness > 3:
+	if Globals.ai_smartness > 2:
 		var follow_player = true
 		var change_enemy = false
 		var curr_target = null
@@ -156,21 +157,40 @@ func _physics_process(delta):
 						follow_player = true
 						change_enemy = false
 				elif 'enemy' in temp_groups:
-					if not follow_player and floor(rand_range(0,2)):
-						change_enemy = true
-						new_target = collObj
-					elif follow_player and floor(rand_range(0,2)):
-						follow_player = false
-						change_enemy = true
-						new_target = collObj
+					if Globals.ai_smartness == 5:
+						if not follow_player and floor(rand_range(0,2)):
+							change_enemy = true
+							new_target = collObj
+						elif follow_player and floor(rand_range(0,4)) < 1:
+							follow_player = false
+							change_enemy = true
+							new_target = collObj
+					elif Globals.ai_smartness == 4:
+						if not follow_player and floor(rand_range(0,2)):
+							change_enemy = true
+							new_target = collObj
+						elif follow_player and floor(rand_range(0,2)):
+							follow_player = false
+							change_enemy = true
+							new_target = collObj
+					else:
+						if not follow_player:
+							change_enemy = true
+							new_target = collObj
+						else:
+							follow_player = false
+							change_enemy = true
+							new_target = collObj
 						
-		if Globals.ai_smartness == 5:
-			curr_target = Globals.player_pos
-		else:
+		if true:
+			if enem_follow > 20000 and Globals.ai_smartness > 3: # If enemy is following enemies for 20 secs.
+				follow_player = true
 			if follow_player:
+				enem_follow = 0
 				# print('chasing player')
 				curr_target = Globals.player_pos
 			else:
+				enem_follow += 1
 				# print('Chasing enemy')
 				if change_enemy:
 					curr_target = new_target.global_transform.origin;
@@ -226,37 +246,7 @@ func _physics_process(delta):
 		var dirToMovePosition = target - transform.origin
 		var dot = get_global_transform().basis.z.dot(dirToMovePosition)
 		var angleToDir = get_global_transform().basis.z.signed_angle_to(dirToMovePosition, Vector3.UP)
-		if Globals.ai_smartness == 3:
-			if "enemy1" in groups_list:
-				if dot > 0:
-					throttle = 0.8;
-				else:
-					if floor(rand_range(0,2)):
-						steering_target = -1;
-						throttle = 0.6;
-					else:
-						steering_target = 1;
-						throttle = 0.6
-					
-			elif "enemy2" in groups_list:
-				if dot > 0:
-					throttle = 0.6;
-				else:
-					if floor(rand_range(0,2)):  # Random coin flip
-						steering_target = -1;
-						throttle = 0.4;
-					else:
-						steering_target = 1;
-						throttle = 0.4;
-
-			if angleToDir > -0.15 and angleToDir < 0.15:
-				steering_target = 0;
-			elif angleToDir > 0.15:
-				steering_target = 1;
-			else:
-				steering_target = -1;
-			
-		else:
+		if true:
 			if dot > 0:
 				throttle = 0.7;
 			else:
