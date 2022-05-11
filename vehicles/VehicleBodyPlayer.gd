@@ -192,7 +192,7 @@ func _physics_process(delta):
 	var rpm = abs(omega) * abs(gear_ratios[current_gear]) * differential_ratio * (60.0 / 6.28)
 	
 	#SpeedLines
-	
+	get_node("SpeedLines").position = get_viewport().size/2
 	if kph<50:
 		get_node("SpeedLines/Particles2D").emitting = false
 		get_node("SpeedLines/Particles2D").speed_scale = 0.2
