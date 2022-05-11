@@ -38,7 +38,7 @@ func _on_quit_pressed():
 
 func _on_AI_value_changed(value):
 	Globals.ai_smartness = int(value)
-	$VBoxContainer/AI/difficultyText.text = "AI Intelligence " + str($VBoxContainer/AI.value)
+	$VBoxContainer/AI/difficultyText.text = "AI Difficulty " + str($VBoxContainer/AI.value)
 	#print(Globals.ai_smartness)
 
 
