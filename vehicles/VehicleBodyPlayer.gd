@@ -110,25 +110,9 @@ func _physics_process(delta):
 		airborne = true;
 		frames_airborne += 1
 	else:
-		if frames_airborne > 300:
-			print_debug("UNFATHOMABLE AIRTIME", frames_airborne)
+		if frames_airborne > 60:
+			print_debug("airtime for ", frames_airborne," frames")
 			Globals.score += frames_airborne * 2
-		elif frames_airborne > 250:
-			print_debug("CRAZY AIRTIME", frames_airborne)
-			Globals.score += frames_airborne * 2
-		elif frames_airborne > 200:
-			print_debug("WILD AIRTIME", frames_airborne)
-			Globals.score += frames_airborne * 2
-		elif frames_airborne > 150:
-			print_debug("GREAT AIRTIME", frames_airborne)
-			Globals.score += frames_airborne * 2
-		elif frames_airborne > 100:
-			print_debug("NICE AIRTIME", frames_airborne)
-			Globals.score += frames_airborne * 2
-		elif frames_airborne > 60:
-			print_debug("DECENT AIRTIME", frames_airborne)
-			Globals.score += frames_airborne * 2
-			
 		frames_airborne = 0
 		airborne = false;
 	
@@ -137,6 +121,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("ui_select"):
 		if Globals.mine_ready:
+			# add mine code here
 			
 			var bomb_instance = bomb.instance()
 			bomb_instance.set_script(bomb_script)

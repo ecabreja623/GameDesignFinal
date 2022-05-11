@@ -46,7 +46,7 @@ export var friction_coefficient = -0.8
 export var drag_coefficient = -0.8
 export var brake_strength = 25
 
-var stop_frame_count = 0
+
 var current_gear
 var spin_out = 8
 export var slip_speed = 9.0
@@ -59,7 +59,6 @@ export var has_handbrake = true
 var kph;
 var despawn = false;
 var airborne = false;
-var rng = RandomNumberGenerator.new()
 
 var despawn_wait = 3;
 
@@ -70,8 +69,11 @@ func set_health(temp_string):
 	elif temp_string == 'monster':
 		health_bar.translation.y += 1.72
 	add_child(health_bar)
-	
+
+var ray = null
+
 func _ready():
+	ray = get_node("RayCast")
 	Globals.enemies_left += 1
 	groups_list = get_groups()
 	if 'enemy1' in groups_list:
@@ -81,7 +83,6 @@ func _ready():
 	groups_list = get_groups()
 	steering_speed_range = steering_to_speed - steering_from_speed
 	current_gear = 1
-	rng.randomize()
 	
 
 func _exit_tree():
@@ -105,8 +106,6 @@ func _physics_process(delta):
 	if health <= 0:
 		despawn = true
 		$Explosion._explosion()
-		
-		
 		#get_node("AnimationPlayer").play("despawn")
 		#yield(get_node("AnimationPlayer"), "animation_finished")
 		despawn_wait -= delta;
@@ -137,68 +136,133 @@ func _physics_process(delta):
 
 	if (current_gear == 1 and omega <= 1.0 and omega >= 0 and brake > 0):
 		current_gear = 0;
-		
-		
-	target = Globals.player_pos
 	
-	var dirToMovePosition = target - transform.origin
-	var dot = get_global_transform().basis.z.dot(dirToMovePosition)
-	var angleToDir = get_global_transform().basis.z.signed_angle_to(dirToMovePosition, Vector3.UP)
-	
-	if Globals.ai_smartness > 2:
-		if "enemy1" in groups_list:
-			if dot > 0:
-				throttle = 0.8;
+	if Globals.ai_smartness > 3:
+		var follow_player = true
+		var change_enemy = false
+		var curr_target = null
+		var new_target = null
+		var go_reverse = false
+		if ray.is_enabled() and ray.is_colliding():
+			var collObj = ray.get_collider()
+			if collObj.name in ['Big Box', 'Kicker', 'Dumpster', 'Tunnel', 'Ring', 'Super Jump', 'Simple Jump', 'Simple Jump2', 'Simple Jump3', "Loop", "Tunnel Ramp"]:
+				print("Reversing")
+				go_reverse = true
 			else:
-				
+				var temp_groups = collObj.get_groups()
+				if 'player' in temp_groups:
+					# print('Saw player')
+					if not follow_player and floor(rand_range(0,2)):
+						follow_player = true
+						change_enemy = false
+				elif 'enemy' in temp_groups:
+					if not follow_player and floor(rand_range(0,2)):
+						change_enemy = true
+						new_target = collObj
+					elif follow_player and floor(rand_range(0,2)):
+						follow_player = false
+						change_enemy = true
+						new_target = collObj
+						
+		if follow_player:
+			# print('chasing player')
+			curr_target = Globals.player_pos
+		else:
+			print('Chasing enemy')
+			if change_enemy:
+				curr_target = new_target.global_transform.origin;
+				change_enemy = false
+		if go_reverse:
+			if floor(rand_range(0,2)):  # Random coin flip
 				steering_target = -1;
-				throttle = 0.5;
-				
-		elif "enemy2" in groups_list:
-			if dot > 0:
-				throttle = 0.5;
+				throttle = -0.6;
 			else:
-				if rng.randi_range(0,1):
-					steering_target = -1;
-					throttle = 0.5;
+				steering_target = 1;
+				throttle = -0.6;
+		else:
+			var dirToMovePosition = curr_target - transform.origin
+			var dot = get_global_transform().basis.z.dot(dirToMovePosition)
+			var angleToDir = get_global_transform().basis.z.signed_angle_to(dirToMovePosition, Vector3.UP)
+			if "enemy1" in groups_list:
+				if dot > 0:
+					throttle = 0.8;
 				else:
-					steering_target = -1;
-					throttle = 0.5;
+					if floor(rand_range(0,2)):  # Random coin flip
+						steering_target = -1;
+						throttle = 0.6;
+					else:
+						steering_target = 1;
+						throttle = 0.6;
+			elif "enemy2" in groups_list:
+				if dot > 0:
+					throttle = 0.6;
+				else:
+					if floor(rand_range(0,2)):  # Random coin flip
+						steering_target = -1;
+						throttle = 0.5;
+					else:
+						steering_target = 1;
+						throttle = 0.5;
 
-		if angleToDir > -0.15 and angleToDir < 0.15:
-			steering_target = 0;
-		elif angleToDir > 0.15:
-			steering_target = 1;
-		else:
-			steering_target = -1;
-		
-		if kph < 5 and stop_frame_count < 100:
-			stop_frame_count += 1;
-		elif kph > 15:
-			stop_frame_count = 0;
-		
-		if stop_frame_count > 100:
-			throttle = -0.6;
-			steering_target = 0;
-		
-	else:
-		if dot > 0:
-			throttle = 0.7;
-		else:
-			throttle = -0.7;
-		
-		if Globals.ai_smartness == 2:
 			if angleToDir > -0.15 and angleToDir < 0.15:
 				steering_target = 0;
 			elif angleToDir > 0.15:
 				steering_target = 1;
 			else:
 				steering_target = -1;
-		else:
-			if angleToDir > 0:
+	else:
+		target = Globals.player_pos
+		var dirToMovePosition = target - transform.origin
+		var dot = get_global_transform().basis.z.dot(dirToMovePosition)
+		var angleToDir = get_global_transform().basis.z.signed_angle_to(dirToMovePosition, Vector3.UP)
+		if Globals.ai_smartness == 3:
+			if "enemy1" in groups_list:
+				if dot > 0:
+					throttle = 0.8;
+				else:
+					if floor(rand_range(0,2)):
+						steering_target = -1;
+						throttle = 0.6;
+					else:
+						steering_target = 1;
+						throttle = 0.6
+					
+			elif "enemy2" in groups_list:
+				if dot > 0:
+					throttle = 0.6;
+				else:
+					if floor(rand_range(0,2)):  # Random coin flip
+						steering_target = -1;
+						throttle = 0.5;
+					else:
+						steering_target = 1;
+						throttle = 0.5;
+
+			if angleToDir > -0.15 and angleToDir < 0.15:
+				steering_target = 0;
+			elif angleToDir > 0.15:
 				steering_target = 1;
 			else:
 				steering_target = -1;
+			
+		else:
+			if dot > 0:
+				throttle = 0.7;
+			else:
+				throttle = -0.7;
+			
+			if Globals.ai_smartness == 2:
+				if angleToDir > -0.15 and angleToDir < 0.15:
+					steering_target = 0;
+				elif angleToDir > 0.15:
+					steering_target = 1;
+				else:
+					steering_target = -1;
+			else:
+				if angleToDir > 0:
+					steering_target = 1;
+				else:
+					steering_target = -1;
 	
 	
 	if current_gear == 0:

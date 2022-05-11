@@ -3,8 +3,6 @@ extends Label
 
 
 func _ready():
-	# self.text = ""
-	# display_text()
 	return 
 
 func display_text():
