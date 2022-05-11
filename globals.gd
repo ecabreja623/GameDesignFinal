@@ -18,8 +18,8 @@ var shield_active = false;
 var sec_elapsed = 0;
 var min_elapsed = 0;
 
-var num_monsters = 4; # range from 1 to 10
-var num_pantera = 4; # range from 1 to 10
+var num_monsters = 6; # range from 1 to 10
+var num_pantera = 6; # range from 1 to 10
 var ai_smartness = 3; # range form 1 to 5
 
 var game_text = null

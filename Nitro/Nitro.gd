@@ -16,7 +16,7 @@ func _on_Area_body_entered(body):
 			visible = false
 			$Timer.start()
 		
-		Globals.nitro_fuel += 50
+		Globals.nitro_fuel += 20
 		if Globals.nitro_fuel > 100 :
 			Globals.nitro_fuel = 100
 	

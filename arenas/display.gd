@@ -15,6 +15,8 @@ func display_text():
 	#self.text += '\n' + "Health Enemy2: " + str(Globals.enemy_health2)
 	#self.text += '\n' + "Speed(KPH):" + str(Globals.kph)
 	self.text += '\n' + "Time Elapsed: " + str(Globals.min_elapsed).pad_zeros(2) + ":" + str(Globals.sec_elapsed).pad_zeros(2).pad_decimals(2)
+	if Globals.mine_ready:
+		self.text += "\n" + "Mine Equipped"
 	return
 	
 	

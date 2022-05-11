@@ -146,7 +146,7 @@ func _physics_process(delta):
 		if ray.is_enabled() and ray.is_colliding():
 			var collObj = ray.get_collider()
 			if collObj.name in ['Big Box', 'Kicker', 'Dumpster', 'Tunnel', 'Ring', 'Super Jump', 'Simple Jump', 'Simple Jump2', 'Simple Jump3', "Loop", "Tunnel Ramp"]:
-				#print('reversing')
+				# print(collObj.name)
 				go_reverse = true
 			else:
 				var temp_groups = collObj.get_groups()
@@ -164,14 +164,17 @@ func _physics_process(delta):
 						change_enemy = true
 						new_target = collObj
 						
-		if follow_player:
-			# print('chasing player')
+		if Globals.ai_smartness == 5:
 			curr_target = Globals.player_pos
 		else:
-			# print('Chasing enemy')
-			if change_enemy:
-				curr_target = new_target.global_transform.origin;
-				change_enemy = false
+			if follow_player:
+				# print('chasing player')
+				curr_target = Globals.player_pos
+			else:
+				# print('Chasing enemy')
+				if change_enemy:
+					curr_target = new_target.global_transform.origin;
+					change_enemy = false
 		if go_reverse:
 			if 'enemy1' in groups_list:
 				if floor(rand_range(0,2)):  # Random coin flip

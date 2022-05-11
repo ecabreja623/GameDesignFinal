@@ -9,13 +9,9 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$VBoxContainer/start.grab_focus()
-	$VBoxContainer/Pantera.value = 4
-	$VBoxContainer/Monster.value = 4
+	$VBoxContainer/Pantera.value = 6
+	$VBoxContainer/Monster.value = 6
 	$VBoxContainer/AI.value = 3
-	if Globals.game_text == 'win':
-		$GameState.text = "You Won!"
-	elif Globals.game_text == 'lose':
-		$GameState.text = "You Lose!"
 	
 	#$panteraText.text += str($VBoxContainer/Pantera.value)
 	#$truckText.text += str($VBoxContainer/Monster.value)
