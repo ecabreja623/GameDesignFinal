@@ -11,5 +11,5 @@ dest_files=[ "res://.import/caraccelerationnoise.mp3-a8892106a0ee6d03461089feac4
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/ccrashcar2.mp3-d7677de6d5d49905f5e08ca9a10a149f.mp3s
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

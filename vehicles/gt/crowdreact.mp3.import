@@ -11,5 +11,5 @@ dest_files=[ "res://.import/crowdreact.mp3-d5609407add09cc6fabb8bc128f0e621.mp3s
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

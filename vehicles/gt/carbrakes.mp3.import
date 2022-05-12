@@ -11,5 +11,5 @@ dest_files=[ "res://.import/carbrakes.mp3-1b59e959b14cd63d083b0b17317e2ac8.mp3st
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

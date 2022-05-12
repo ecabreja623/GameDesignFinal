@@ -11,5 +11,5 @@ dest_files=[ "res://.import/cardrfit.mp3-33134f1c4541028fdeec170425bf6707.mp3str
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

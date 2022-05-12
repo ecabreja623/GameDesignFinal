@@ -105,12 +105,19 @@ func _physics_process(delta):
 		explosion_countdown -= delta
 		if explosion_countdown <= 0:
 			Globals.player_dead = true;
-			#queue_free()
 	
 	if !(get_node("VehicleWheel").is_in_contact() and  get_node("VehicleWheel2").is_in_contact()
 		and  get_node("VehicleWheel3").is_in_contact() and  get_node("VehicleWheel4").is_in_contact())  and (Globals.player_pos.y > -2.5):
 		airborne = true;
 		frames_airborne += 1
+		
+		if (Globals.player_pos.y > 6):
+			if $CrowdReact.is_playing():
+				$CrowdReact.stream_paused = false
+			else:
+				$CrowdReact.play()
+		else:
+			$CrowdReact.stream_paused = true
 	else:
 		if frames_airborne > 60 and not Globals.game_over:
 			print_debug("airtime for ", frames_airborne," frames")
@@ -350,14 +357,6 @@ func _physics_process(delta):
 			$Brake_Sound.play()
 	else:
 		$Brake_Sound.stream_paused = true
-		
-	if ($"Scene Root/obj1".get_global_transform().origin.y > 5):
-		if $CrowdReact.is_playing():
-			$CrowdReact.stream_paused = false
-		else:
-			$CrowdReact.play()
-	else:
-		$CrowdReact.stream_paused = true
 		
 		
 
