@@ -225,6 +225,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.9622, -3.08512, 33.4412 )
 [node name="Simple Jump" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 14 )]
 transform = Transform( -0.999838, 0, -0.0180283, 0, 1, 0, 0.0180283, 0, -0.999838, -100.973, -2.92553, 77.3615 )
 
+[node name="Simple Jump4" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 14 )]
+transform = Transform( -0.999838, 0, -0.0180283, 0, 1, 0, 0.0180283, 0, -0.999838, 25.952, -2.92553, -75.1498 )
+
 [node name="Simple Jump2" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 14 )]
 transform = Transform( 0.00671957, 0, -0.999977, 0, 1, 0, 0.999977, 0, 0.00671957, -40.3813, -3.07574, 94.535 )
 
@@ -239,6 +242,15 @@ transform = Transform( -0.0294222, 0, 0.999567, 0, 1, 0, -0.999567, 0, -0.029422
 
 [node name="Tunnel" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 27 )]
 transform = Transform( 0.0501223, 0, -0.998743, -0.0421715, 0.999108, -0.00211643, 0.997852, 0.0422244, 0.0500776, -51.0652, -3.05097, -37.0397 )
+
+[node name="Tunnel2" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 27 )]
+transform = Transform( 0.0501223, 0, -0.998743, -0.462096, 0.886527, -0.0231905, 0.885412, 0.462677, 0.0444347, -41.111, -1.75886, -141.319 )
+
+[node name="Tunnel3" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 27 )]
+transform = Transform( 0.0501223, 0, -0.998743, 0.0468036, 0.998902, 0.00234887, 0.997645, -0.0468626, 0.0500672, 0, -3.24592, 161.974 )
+
+[node name="Tunnel4" parent="Navigation/NavigationMeshInstance/Static Objects" instance=ExtResource( 27 )]
+transform = Transform( -0.0197597, 0.0251217, -0.999489, 0.338082, 0.940964, 0.0169668, 0.940908, -0.337575, -0.0270865, -9.54894, -0.448544, 255.933 )
 
 [node name="Kicker" parent="Navigation/NavigationMeshInstance/Static Objects" groups=["static"] instance=ExtResource( 24 )]
 transform = Transform( -0.0229491, 0, 0.999737, 0, 1, 0, -0.999737, 0, -0.0229491, -53.4144, -3.44589, 1.33122 )
@@ -312,7 +324,55 @@ contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Barrel10" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1897, 1.86667, -79.3025 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.039, -2.09656, -69.8739 )
+contacts_reported = 100
+contact_monitor = true
+script = ExtResource( 11 )
+
+[node name="Barrel18" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2227, -2.09656, -69.8739 )
+contacts_reported = 100
+contact_monitor = true
+script = ExtResource( 11 )
+
+[node name="Barrel19" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2227, -2.09656, -68.6578 )
+contacts_reported = 100
+contact_monitor = true
+script = ExtResource( 11 )
+
+[node name="Barrel20" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3397, -2.09656, -67.3387 )
+contacts_reported = 100
+contact_monitor = true
+script = ExtResource( 11 )
+
+[node name="Barrel13" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4803, -1.72048, -69.8739 )
+contacts_reported = 100
+contact_monitor = true
+script = ExtResource( 11 )
+
+[node name="Barrel14" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5293, -1.86174, -68.5849 )
+contacts_reported = 100
+contact_monitor = true
+script = ExtResource( 11 )
+
+[node name="Barrel15" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.657, -1.78949, -68.5849 )
+contacts_reported = 100
+contact_monitor = true
+script = ExtResource( 11 )
+
+[node name="Barrel16" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9556, -1.87644, -67.2576 )
+contacts_reported = 100
+contact_monitor = true
+script = ExtResource( 11 )
+
+[node name="Barrel17" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" groups=["props"] instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6793, -2.00138, -67.2576 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
@@ -328,9 +388,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6224, -2.89952, 62.2132 )
 contacts_reported = 100
 contact_monitor = true
 script = ExtResource( 11 )
-
-[node name="Tunnel2" parent="Navigation/NavigationMeshInstance/Rigid Objects/Barrels" instance=ExtResource( 27 )]
-transform = Transform( 0.0501223, 0, -0.998743, 0.0468036, 0.998902, 0.00234887, 0.997645, -0.0468626, 0.0500672, 0, -3.24592, 195.722 )
 
 [node name="Cones" type="Spatial" parent="Navigation/NavigationMeshInstance/Rigid Objects"]
 
@@ -379,6 +436,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.852, 2.62742, 93.7149 )
 [node name="Nitro4" parent="Powerups/NitroHandler" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6857, -1.99411, -50.8651 )
 
+[node name="Nitro5" parent="Powerups/NitroHandler" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.5553, -1.99411, -115.389 )
+
 [node name="Nitro2" parent="Powerups/NitroHandler" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3194, 2.31182, 93.6412 )
 
@@ -390,13 +450,25 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -39.3064, 1.25299, -141.633 )
 [node name="Powerup3" parent="Powerups/Health" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0905, 0.413249, -39.8639 )
 
+[node name="Powerup4" parent="Powerups/Health" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.8713, 2.91377, 93.9983 )
+
 [node name="Powerup2" parent="Powerups/Health" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.37715, 195.722 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.37715, 162.564 )
+
+[node name="Powerup5" parent="Powerups/Health" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0192, 0.733011, 254.648 )
 
 [node name="Mines" type="Spatial" parent="Powerups"]
 
 [node name="Mine" parent="Powerups/Mines" instance=ExtResource( 19 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9634, 10.7226, 32 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9634, 10.7226, 33.0653 )
+
+[node name="Mine3" parent="Powerups/Mines" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3085, 0.433701, -68.9158 )
+
+[node name="Mine4" parent="Powerups/Mines" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -107.335, -2.00564, 206.682 )
 
 [node name="Mine2" parent="Powerups/Mines" instance=ExtResource( 19 )]
 transform = Transform( 0.990603, 0, -0.13677, 0, 1, 0, 0.13677, 0, 0.990603, -100.769, 1.20138, 88.2814 )
@@ -405,6 +477,12 @@ transform = Transform( 0.990603, 0, -0.13677, 0, 1, 0, 0.13677, 0, 0.990603, -10
 
 [node name="Shield" parent="Powerups/Shields" instance=ExtResource( 16 )]
 transform = Transform( 0.858969, 0, -0.512028, 0, 1, 0, 0.512028, 0, 0.858969, -74.319, 5.61567, -65.6604 )
+
+[node name="Shield2" parent="Powerups/Shields" instance=ExtResource( 16 )]
+transform = Transform( 0.858969, 0, -0.512028, 0, 1, 0, 0.512028, 0, 0.858969, 76.0591, -1.98176, 31.1712 )
+
+[node name="Shield3" parent="Powerups/Shields" instance=ExtResource( 16 )]
+transform = Transform( 0.858969, 0, -0.512028, 0, 1, 0, 0.512028, 0, 0.858969, -124.121, -1.98176, 31.1712 )
 
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel2" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel2" method="_on_Barrel_body_entered"]
@@ -416,7 +494,17 @@ transform = Transform( 0.858969, 0, -0.512028, 0, 1, 0, 0.512028, 0, 0.858969, -
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel8" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel8" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel9" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel9" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel10" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel10" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel18" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel18" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel19" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel19" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel20" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel20" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel13" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel13" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel14" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel14" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel15" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel15" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel16" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel16" method="_on_Barrel_body_entered"]
+[connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel17" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel17" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel11" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel11" method="_on_Barrel_body_entered"]
 [connection signal="body_entered" from="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel12" to="Navigation/NavigationMeshInstance/Rigid Objects/Barrels/Barrel12" method="_on_Barrel_body_entered"]
 [connection signal="body_shape_entered" from="Powerups/Mines/Mine" to="Powerups/Mines/Mine" method="_on_Mine_body_shape_entered"]
+[connection signal="body_shape_entered" from="Powerups/Mines/Mine3" to="Powerups/Mines/Mine3" method="_on_Mine_body_shape_entered"]
+[connection signal="body_shape_entered" from="Powerups/Mines/Mine4" to="Powerups/Mines/Mine4" method="_on_Mine_body_shape_entered"]
 [connection signal="body_shape_entered" from="Powerups/Mines/Mine2" to="Powerups/Mines/Mine2" method="_on_Mine_body_shape_entered"]
