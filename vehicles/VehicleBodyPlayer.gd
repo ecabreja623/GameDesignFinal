@@ -214,6 +214,8 @@ func _physics_process(delta):
 		get_node("SpeedLines/Particles2D").amount = 11
 	# print(get_node("SpeedLines/Particles2D").emitting)
 	
+	#Camera Fov
+	get_node("Camera1").set_fov(70.0 + (kph*4)/9)
 		
 	
 	if rpm < torque_curve_rpms[0]:

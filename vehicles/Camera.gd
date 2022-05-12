@@ -9,7 +9,8 @@ export var autoturn_ray_aperture = 25
 export var autoturn_speed = 50
 var max_height = 4.0
 var min_height = 2.0
-
+var min_fov = 70.0
+var max_fov = 100
 
 func _physics_process(_dt):
 	pass
