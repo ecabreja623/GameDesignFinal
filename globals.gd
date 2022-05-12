@@ -24,5 +24,8 @@ var ai_smartness = 3; # range form 1 to 5
 
 var game_text = null
 
+var game_over = false
+var game_result = null
+
 
 

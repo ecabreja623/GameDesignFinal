@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Menu.gd" type="Script" id=1]
 [ext_resource path="res://plaguard-font/Plaguard-ZVnjx.otf" type="DynamicFontData" id=2]
@@ -8,7 +8,29 @@ size = 20
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=1]
-size = 40
+size = 58
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=3]
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=10]
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 2 )
 
 [node name="Menu" type="Control"]
@@ -19,6 +41,9 @@ margin_top = 4.0
 margin_right = 3.0
 margin_bottom = 4.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GameState" type="Label" parent="."]
 margin_left = 467.0
@@ -28,28 +53,40 @@ margin_bottom = 160.0
 custom_fonts/font = SubResource( 2 )
 align = 1
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1018.0
+margin_bottom = 595.0
+color = Color( 0.231373, 0.545098, 0.74902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.37
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -132.5
 margin_top = -84.0
 margin_right = 132.5
 margin_bottom = 158.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title" type="Label" parent="VBoxContainer"]
-margin_right = 265.0
-margin_bottom = 81.0
+margin_right = 277.0
+margin_bottom = 115.0
 custom_fonts/font = SubResource( 1 )
 text = "ARENA GT
 "
 align = 1
 
 [node name="Pantera" type="HSlider" parent="VBoxContainer"]
-margin_top = 85.0
-margin_right = 265.0
-margin_bottom = 101.0
+margin_top = 119.0
+margin_right = 277.0
+margin_bottom = 135.0
+theme = SubResource( 3 )
 min_value = 1.0
 max_value = 10.0
 value = 1.0
@@ -58,13 +95,17 @@ __meta__ = {
 }
 
 [node name="panteraText" type="Label" parent="VBoxContainer/Pantera"]
-margin_left = -150.0
+margin_left = -163.0
+custom_fonts/font = SubResource( 4 )
 text = "Small Enemy Count "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Monster" type="HSlider" parent="VBoxContainer"]
-margin_top = 105.0
-margin_right = 265.0
-margin_bottom = 121.0
+margin_top = 139.0
+margin_right = 277.0
+margin_bottom = 155.0
 min_value = 1.0
 max_value = 10.0
 value = 1.0
@@ -73,15 +114,16 @@ __meta__ = {
 }
 
 [node name="truckText" type="Label" parent="VBoxContainer/Monster"]
-margin_left = -149.5
+margin_left = -160.0
 margin_right = 115.5
 margin_bottom = 14.0
+custom_fonts/font = SubResource( 5 )
 text = "Large Enemy Count "
 
 [node name="AI" type="HSlider" parent="VBoxContainer"]
-margin_top = 125.0
-margin_right = 265.0
-margin_bottom = 141.0
+margin_top = 159.0
+margin_right = 277.0
+margin_bottom = 175.0
 min_value = 1.0
 max_value = 5.0
 value = 1.0
@@ -90,35 +132,42 @@ __meta__ = {
 }
 
 [node name="difficultyText" type="Label" parent="VBoxContainer/AI"]
-margin_left = -120.5
+margin_left = -110.0
 margin_top = -1.0
 margin_right = 144.5
 margin_bottom = 13.0
+custom_fonts/font = SubResource( 6 )
 text = "AI Difficulty "
 
 [node name="start" type="Button" parent="VBoxContainer"]
-margin_top = 145.0
-margin_right = 265.0
-margin_bottom = 165.0
+margin_top = 179.0
+margin_right = 277.0
+margin_bottom = 202.0
 focus_neighbour_top = NodePath("../quit")
+focus_neighbour_bottom = NodePath("../quit")
+theme = SubResource( 10 )
+custom_fonts/font = SubResource( 7 )
 text = "Start"
 
 [node name="quit" type="Button" parent="VBoxContainer"]
-margin_top = 169.0
-margin_right = 265.0
-margin_bottom = 189.0
+margin_top = 206.0
+margin_right = 277.0
+margin_bottom = 229.0
+focus_neighbour_top = NodePath("../start")
 focus_neighbour_bottom = NodePath("../start")
+custom_fonts/font = SubResource( 8 )
 text = "Quit"
 
 [node name="Controls" type="Label" parent="VBoxContainer"]
-margin_top = 193.0
-margin_right = 265.0
-margin_bottom = 326.0
+margin_top = 233.0
+margin_right = 277.0
+margin_bottom = 390.0
+custom_fonts/font = SubResource( 9 )
 text = "
 Controls:
 Arrow Keys to drive
-Z for Nitro
-Shift for handbrake/drift
+Ctrl for Nitro
+Shift for handbrake/
 R to reset car once flipped over
 Tab to look backwards
 SPACE to drop mine"

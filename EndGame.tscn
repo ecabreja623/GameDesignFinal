@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://EndGame.gd" type="Script" id=1]
+[ext_resource path="res://plaguard-font/Plaguard-ZVnjx.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 58
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 2 )
+
+[node name="EndGame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1026.0
+margin_bottom = 602.0
+color = Color( 0.403922, 0.0392157, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Result" type="Label" parent="."]
+margin_left = 135.0
+margin_top = 75.0
+margin_right = 411.0
+margin_bottom = 154.0
+custom_fonts/font = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Data" type="Label" parent="."]
+margin_left = 271.0
+margin_top = 244.0
+margin_right = 828.0
+margin_bottom = 488.0
+custom_fonts/font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
