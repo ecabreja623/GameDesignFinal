@@ -31,7 +31,7 @@ func _explode():
 	for victim in victims:
 		var text = floating_text.instance()
 		
-		if victim.is_in_group("player"):
+		if victim.is_in_group("player") and not Globals.game_over:
 			Globals.player_health -= 15;
 			
 			print_debug("player damaged by bomb")

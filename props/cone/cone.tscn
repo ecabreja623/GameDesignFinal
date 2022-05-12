@@ -56,3 +56,5 @@ shape = SubResource( 5 )
 [node name="shape2" type="CollisionShape" parent="."]
 transform = Transform( 0.0207958, -0.999784, 0, 0.999784, 0.0207958, 0, 0, 0, 1, 0, 0.22, 0 )
 shape = SubResource( 6 )
+
+[connection signal="body_entered" from="." to="." method="_on_Cone_body_entered"]

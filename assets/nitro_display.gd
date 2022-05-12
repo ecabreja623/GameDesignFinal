@@ -3,7 +3,7 @@ extends TextureProgress
 var bar_blue = preload("res://assets/health_blue.png")
 
 func _process(_delta):
-	if Globals.player_health <= 0:
+	if Globals.game_over:
 		queue_free()
 		
 	update_nitro(Globals.nitro_fuel, 100)

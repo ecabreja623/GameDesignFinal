@@ -100,17 +100,19 @@ func _physics_process(delta):
 		apply_impulse(Vector3(1, 0, 0), Vector3(0, mass * 2, 0))
 	
 	if Globals.player_health <= 0:
+		
 		$Explosion._explosion();
 		explosion_countdown -= delta
 		if explosion_countdown <= 0:
-			queue_free()
+			Globals.player_dead = true;
+			#queue_free()
 	
 	if !(get_node("VehicleWheel").is_in_contact() and  get_node("VehicleWheel2").is_in_contact()
-		and  get_node("VehicleWheel3").is_in_contact() and  get_node("VehicleWheel4").is_in_contact())  and (Globals.player_pos.y > -2.8):
+		and  get_node("VehicleWheel3").is_in_contact() and  get_node("VehicleWheel4").is_in_contact())  and (Globals.player_pos.y > -2.5):
 		airborne = true;
 		frames_airborne += 1
 	else:
-		if frames_airborne > 60:
+		if frames_airborne > 60 and not Globals.game_over:
 			print_debug("airtime for ", frames_airborne," frames")
 			Globals.score += frames_airborne * 2
 		frames_airborne = 0
@@ -382,7 +384,7 @@ func doSkidmarks():
 	get_node("/root/Arena/skidmarks").add_child(skidmark)
 
 func _on_CollisionArea_body_entered(body):
-	if body.is_in_group("track") && !Globals.shield_active:
+	if body.is_in_group("track") && !Globals.shield_active and not Globals.game_over:
 		if cooldown <= 0:
 			Globals.player_health -= abs(Globals.kph) * 0.05
 			cooldown = 1

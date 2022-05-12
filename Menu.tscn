@@ -36,10 +36,6 @@ font_data = ExtResource( 2 )
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 3.0
-margin_top = 4.0
-margin_right = 3.0
-margin_bottom = 4.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -54,8 +50,8 @@ custom_fonts/font = SubResource( 2 )
 align = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1018.0
-margin_bottom = 595.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color( 0.231373, 0.545098, 0.74902, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -95,7 +91,7 @@ __meta__ = {
 }
 
 [node name="panteraText" type="Label" parent="VBoxContainer/Pantera"]
-margin_left = -163.0
+margin_left = -191.0
 custom_fonts/font = SubResource( 4 )
 text = "Small Enemy Count "
 __meta__ = {
@@ -114,7 +110,7 @@ __meta__ = {
 }
 
 [node name="truckText" type="Label" parent="VBoxContainer/Monster"]
-margin_left = -160.0
+margin_left = -189.0
 margin_right = 115.5
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 5 )
@@ -132,7 +128,7 @@ __meta__ = {
 }
 
 [node name="difficultyText" type="Label" parent="VBoxContainer/AI"]
-margin_left = -110.0
+margin_left = -123.0
 margin_top = -1.0
 margin_right = 144.5
 margin_bottom = 13.0

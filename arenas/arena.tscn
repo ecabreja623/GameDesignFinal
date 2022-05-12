@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://arenas/arena.gd" type="Script" id=1]
 [ext_resource path="res://track/track.tscn" type="PackedScene" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://props/tunnel/tunnel.tscn" type="PackedScene" id=27]
 [ext_resource path="res://props/tunnel_jump/tunnel_jump.tscn" type="PackedScene" id=28]
 [ext_resource path="res://arenas/Label.gd" type="Script" id=29]
+[ext_resource path="res://arenas/Time Label.gd" type="Script" id=30]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 3 )
@@ -38,12 +39,12 @@ background_mode = 2
 background_sky = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=7]
-size = 24
+size = 44
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 17 )
 
 [sub_resource type="DynamicFont" id=6]
-size = 20
+size = 32
 font_data = ExtResource( 17 )
 
 [sub_resource type="GDScript" id=5]
@@ -54,7 +55,7 @@ var bar_green = preload(\"res://assets/health_green.png\")
 var bar_yellow = preload(\"res://assets/health_yellow.png\")
 
 func _process(delta):
-	if Globals.player_health <= 0:
+	if Globals.game_over:
 		queue_free()
 		
 	update_bar(Globals.player_health, 100)
@@ -94,28 +95,46 @@ shadow_bias = 0.0
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="HUD"]
+[node name="Win Label" type="Label" parent="HUD"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -182.0
-margin_top = -100.0
-margin_right = 179.0
-margin_bottom = 123.0
+margin_left = -512.0
+margin_top = 30.0
+margin_right = 512.0
+margin_bottom = 135.0
+custom_colors/font_color = Color( 0.054902, 0.627451, 0.239216, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
+align = 1
+autowrap = true
 script = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Debug text" type="Label" parent="HUD"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -286.0
-margin_top = 25.0
-margin_right = -142.0
-margin_bottom = 56.0
+[node name="ScoreEnemies" type="Label" parent="HUD"]
+margin_right = 144.0
+margin_bottom = 31.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 6 )
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time Label" type="Label" parent="HUD"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -378.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 6 )
+script = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Nitro" type="TextureProgress" parent="HUD"]
 anchor_left = 1.0
@@ -150,6 +169,9 @@ margin_right = 336.0
 margin_bottom = 265.6
 texture_under = ExtResource( 15 )
 script = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="HUD/Health"]
 margin_left = -48.0
